@@ -5,4 +5,6 @@ package com.heyfood.heyfoodapp.usuario.dominio;
  */
 
 public class Usuario {
+    private String login;
+    private String senha;
 }
