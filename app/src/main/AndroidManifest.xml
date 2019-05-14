@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".usuario.ui.Login"
+            android:name=".usuario.ui.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".infra.ui.MainActivity" />
-        <activity android:name=".cliente.ui.CadastrarCliente"></activity>
+        <activity android:name=".cliente.ui.CadastrarClienteActivity"></activity>
     </application>
 
 </manifest>

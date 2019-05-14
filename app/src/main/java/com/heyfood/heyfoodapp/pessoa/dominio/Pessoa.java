@@ -10,7 +10,8 @@ public class Pessoa {
     private String id;
     private String nome;
     private String cpf;
-    private Date dataNAscimento;
+    private Date dataNascimento;
+    private TipoGenero genero;
 
     public String getId() {
         return id;
@@ -36,11 +37,16 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
-    public Date getDataNAscimento() {
-        return dataNAscimento;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDataNAscimento(Date dataNAscimento) {
-        this.dataNAscimento = dataNAscimento;
+    public void setDataNAscimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
+
+    public TipoGenero getGenero(){ return genero; }
+
+    public void setGenero(TipoGenero genero){ this.genero = genero; }
+
 }

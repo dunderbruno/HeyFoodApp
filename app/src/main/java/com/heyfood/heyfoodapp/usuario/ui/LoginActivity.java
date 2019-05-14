@@ -8,10 +8,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
-import com.heyfood.heyfoodapp.cliente.ui.CadastrarCliente;
+import com.heyfood.heyfoodapp.cliente.ui.CadastrarClienteActivity;
 import com.heyfood.heyfoodapp.infra.ui.MainActivity;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void abrirTelaCadastroCliente(View view){
-        Intent novaTela = new Intent(this, CadastrarCliente.class);
+        Intent novaTela = new Intent(this, CadastrarClienteActivity.class);
         startActivity(novaTela);
     }
 

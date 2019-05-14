@@ -1,11 +1,14 @@
 package com.heyfood.heyfoodapp.usuario.dominio;
 
+import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
+
 /**
  * Created by bruno.silvaleite on 10/05/2019.
  */
 
 public class Usuario {
     private String id;
+    private Pessoa pessoa;
     private String login;
     private String senha;
 
@@ -16,6 +19,10 @@ public class Usuario {
     public void setId(String id) {
         this.id = id;
     }
+
+    public Pessoa getPessoa() { return pessoa; }
+
+    public void setPessoa(Pessoa pessoa) { this.pessoa = pessoa; }
 
     public String getLogin() {
         return login;

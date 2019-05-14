@@ -6,14 +6,14 @@ package com.heyfood.heyfoodapp.pessoa.dominio;
 
 public enum TipoGenero {
     MASCULINO("Masculino"), FEMININO("Feminino"), OUTROS("Outros");
-    private final String tipoGenero;
+    private final String TIPO_GENERO;
 
     TipoGenero(String tipoGenero) {
-        this.tipoGenero = tipoGenero;
+        this.TIPO_GENERO = tipoGenero;
     }
 
     public String getTipoGenero(){
-        return tipoGenero;
+        return TIPO_GENERO;
     }
 
 }

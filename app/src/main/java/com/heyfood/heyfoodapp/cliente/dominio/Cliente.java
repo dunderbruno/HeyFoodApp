@@ -1,5 +1,7 @@
 package com.heyfood.heyfoodapp.cliente.dominio;
 
+import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
+
 import java.util.Date;
 
 /**
@@ -8,6 +10,7 @@ import java.util.Date;
 
 public class Cliente {
     private String id;
+    private Usuario usuario;
     private Date dataCadastro;
 
     public String getId() {
@@ -17,6 +20,10 @@ public class Cliente {
     public void setId(String id) {
         this.id = id;
     }
+
+    public Usuario getUsuario() {return usuario; }
+
+    public void setUsuario(Usuario usuario) {this.usuario = usuario; }
 
     public Date getDataCadastro() {
         return dataCadastro;
