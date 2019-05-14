@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.heyfood.heyfoodapp.R;
+import com.heyfood.heyfoodapp.cliente.ui.CadastrarCliente;
+import com.heyfood.heyfoodapp.infra.ui.MainActivity;
 
 public class Login extends AppCompatActivity {
 
@@ -16,7 +18,13 @@ public class Login extends AppCompatActivity {
     }
 
     public void abrirTelaCadastroCliente(View view){
+        Intent novaTela = new Intent(this, CadastrarCliente.class);
+        startActivity(novaTela);
+    }
 
+    public void abrirTelaPrincipal(View view){
+        Intent novaTela = new Intent(this, MainActivity.class);
+        startActivity(novaTela);
     }
 
 }
