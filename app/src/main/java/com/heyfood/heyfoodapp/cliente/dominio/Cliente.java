@@ -7,7 +7,16 @@ import java.util.Date;
  */
 
 public class Cliente {
+    private String id;
     private Date dataCadastro;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Date getDataCadastro() {
         return dataCadastro;
