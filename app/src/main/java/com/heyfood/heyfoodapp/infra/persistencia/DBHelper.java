@@ -39,6 +39,13 @@ public class DBHelper extends SQLiteOpenHelper {
                 TABELA_USUARIO, CAMPO_ID, CAMPO_LOGIN, CAMPO_PASSWORD);
         db.execSQL(sqlTbUsuario);
     }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        dropTables(db);
+        onCreate(db);
+    }
+
     private void dropTables(SQLiteDatabase db) {
         StringBuilder dropTables = new StringBuilder();
         for (String tabela : TABELAS) {
