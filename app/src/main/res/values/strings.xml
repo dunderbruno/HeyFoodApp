@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">HeyFood</string>
+    <string name="msg_sucesso">Operação concluída com sucesso</string>
+    <string name="msg_falha">Erro ao executar a operação</string>
+    <string name="msg_cancelado">Operação cancelada</string>
 </resources>

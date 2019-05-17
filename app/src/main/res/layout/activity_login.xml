@@ -8,7 +8,7 @@
     tools:context="com.heyfood.heyfoodapp.infra.ui.MainActivity">
 
     <EditText
-        android:id="@+id/campoEmailId"
+        android:id="@+id/campoLoginId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -35,17 +35,17 @@
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoEmailId" />
+        app:layout_constraintTop_toBottomOf="@+id/campoLoginId" />
 
     <Button
         android:id="@+id/botaoEntrarId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:background="@color/corBotaoLogin"
-        android:onClick="abrirTelaPrincipal"
+        android:onClick="logar"
         android:text="ENTRAR"
         android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,9 +68,9 @@
         android:id="@+id/botaoCadastrarClienteId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:background="@color/corBotaoCadastrar"
         android:onClick="abrirTelaCadastroCliente"
         android:text="CADASTRAR CLIENTE"

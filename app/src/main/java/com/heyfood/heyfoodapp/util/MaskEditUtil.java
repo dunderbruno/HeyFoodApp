@@ -1,4 +1,4 @@
-package com.heyfood.heyfoodapp.infra.ui;
+package com.heyfood.heyfoodapp.util;
 
 import android.text.Editable;
 import android.text.TextWatcher;

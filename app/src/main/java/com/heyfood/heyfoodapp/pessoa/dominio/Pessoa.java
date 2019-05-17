@@ -1,5 +1,6 @@
 package com.heyfood.heyfoodapp.pessoa.dominio;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -7,17 +8,17 @@ import java.util.Date;
  */
 
 public class Pessoa {
-    private String id;
+    private int id;
     private String nome;
     private String cpf;
-    private Date dataNascimento;
-    private TipoGenero genero;
+    private String dataNascimento;
+    //private TipoGenero genero;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -37,16 +38,16 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNAscimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
+    public void setDataNAscimento(String dataNascimento) { this.dataNascimento = dataNascimento; }
 
+    /*
     public TipoGenero getGenero(){ return genero; }
 
     public void setGenero(TipoGenero genero){ this.genero = genero; }
+    */
 
 }

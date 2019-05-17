@@ -9,14 +9,26 @@ import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.cliente.ui.CadastrarClienteActivity;
+import com.heyfood.heyfoodapp.infra.HeyFoodAppException;
+import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.infra.ui.MainActivity;
+import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
+import com.heyfood.heyfoodapp.usuario.negocio.UsuarioServices;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private EditText login;
+    private EditText senha;
+
+    private final UsuarioServices services = new UsuarioServices(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        login = findViewById(R.id.campoLoginId);
+        senha = findViewById(R.id.campoSenhaId);
     }
 
     public void abrirTelaCadastroCliente(View view){
@@ -24,15 +36,14 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(novaTela);
     }
 
-    public void abrirTelaPrincipal(View view) {
-        EditText campoEmail = findViewById(R.id.campoEmailId);
-        EditText campoSenha = findViewById(R.id.campoSenhaId);
-
-        if (campoEmail.getText().toString().trim().equals("") || campoSenha.getText().toString().trim().equals("")) {
-            Toast.makeText(this, "Preencha os campos", Toast.LENGTH_LONG).show();
-        } else {
+    public void logar(View view) {
+        try{
+            services.login(login.getText().toString(), senha.getText().toString());
             Intent novaTela = new Intent(this, MainActivity.class);
             startActivity(novaTela);
+        }
+        catch(Exception e){
+            Toast.makeText(this, "Usuário não cadastrado", Toast.LENGTH_LONG).show();
         }
 
     }

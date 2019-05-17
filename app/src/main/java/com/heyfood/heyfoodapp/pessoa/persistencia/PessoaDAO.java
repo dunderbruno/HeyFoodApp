@@ -1,0 +1,60 @@
+package com.heyfood.heyfoodapp.pessoa.persistencia;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.heyfood.heyfoodapp.infra.HeyFoodAppException;
+import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
+import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
+import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
+
+public class PessoaDAO extends AbstractDAO{
+    private SQLiteDatabase db;
+    private DBHelper helper;
+    private Context context;
+
+    public PessoaDAO(Context context){
+        this.context = context;
+        helper = new DBHelper(context);
+    }
+
+    public Pessoa getPessoa(int id) {
+        Pessoa result = null;
+        db = helper.getReadableDatabase();
+        String sql = "SELECT * FROM " + DBHelper.TABELA_PESSOA+ " WHERE " + DBHelper.CAMPO_ID_PESSOA + " LIKE ?;";
+        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(id)});
+        if (cursor.moveToFirst()) {
+            result = createPessoa(cursor);
+        }
+        super.close(cursor, db);
+        return result;
+    }
+
+    public int cadastrar(Pessoa pessoa) {
+        db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.CAMPO_NOME, pessoa.getNome());
+        values.put(DBHelper.CAMPO_CPF, pessoa.getCpf());
+        values.put(DBHelper.CAMPO_DATA_NASCIMENTO, pessoa.getDataNascimento());
+
+        long retorno = db.insert(DBHelper.TABELA_PESSOA, null, values);
+        super.close(db);
+
+        return (int) retorno;
+    }
+
+    private Pessoa createPessoa(Cursor cursor){
+        Pessoa result = new Pessoa();
+        int columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ID_PESSOA);
+        result.setId(Integer.parseInt(cursor.getString(columnIndex)));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_NOME);
+        result.setNome(cursor.getString(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_CPF);
+        result.setCpf(cursor.getString(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_DATA_NASCIMENTO);
+        result.setDataNAscimento(cursor.getString(columnIndex));
+        return result;
+    }
+}

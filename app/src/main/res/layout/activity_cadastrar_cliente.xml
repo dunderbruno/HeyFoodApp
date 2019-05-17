@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="@+id/toolbar2" />
 
     <EditText
-        android:id="@+id/campoNomeId"
+        android:id="@+id/textNomeId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -71,7 +71,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoNomeId" />
+        app:layout_constraintTop_toBottomOf="@+id/textNomeId" />
 
     <EditText
         android:id="@+id/campoDataId"
@@ -105,10 +105,11 @@
         android:id="@+id/botaoCadastrarId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:background="@color/corBotaoLogin"
+        android:onClick="cadastrar"
         android:text="Cadastrar"
         android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="parent"
