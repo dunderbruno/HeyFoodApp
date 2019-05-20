@@ -9,10 +9,7 @@ import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.cliente.ui.CadastrarClienteActivity;
-import com.heyfood.heyfoodapp.infra.HeyFoodAppException;
-import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.infra.ui.MainActivity;
-import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 import com.heyfood.heyfoodapp.usuario.negocio.UsuarioServices;
 
 public class LoginActivity extends AppCompatActivity {

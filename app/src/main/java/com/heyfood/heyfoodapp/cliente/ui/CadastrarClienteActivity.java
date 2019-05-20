@@ -8,16 +8,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
-import com.heyfood.heyfoodapp.infra.HeyFoodAppException;
-import com.heyfood.heyfoodapp.infra.Sessao;
-import com.heyfood.heyfoodapp.infra.ui.MainActivity;
 import com.heyfood.heyfoodapp.usuario.negocio.UsuarioServices;
 import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
 import com.heyfood.heyfoodapp.util.MaskEditUtil;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
-
-import java.text.ParseException;
 
 public class CadastrarClienteActivity extends AppCompatActivity {
 
@@ -85,7 +80,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
             startActivity(novaTela);
         }
         catch (Exception e){
-            Toast.makeText(this, "Este login já existe", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Este login jรก existe", Toast.LENGTH_LONG).show();
         }
 
     }

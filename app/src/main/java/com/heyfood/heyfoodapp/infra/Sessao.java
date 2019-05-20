@@ -1,13 +1,10 @@
 package com.heyfood.heyfoodapp.infra;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.SharedPreferences;
 
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -4,12 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
-import com.heyfood.heyfoodapp.infra.HeyFoodAppException;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
-import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
 import com.heyfood.heyfoodapp.pessoa.persistencia.PessoaDAO;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 

@@ -1,8 +1,5 @@
 package com.heyfood.heyfoodapp.pessoa.dominio;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  * Created by bruno.silvaleite on 10/05/2019.
  */
@@ -43,11 +40,5 @@ public class Pessoa {
     }
 
     public void setDataNAscimento(String dataNascimento) { this.dataNascimento = dataNascimento; }
-
-    /*
-    public TipoGenero getGenero(){ return genero; }
-
-    public void setGenero(TipoGenero genero){ this.genero = genero; }
-    */
 
 }

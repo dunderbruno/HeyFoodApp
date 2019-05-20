@@ -1,8 +1,5 @@
 package com.heyfood.heyfoodapp.infra.persistencia;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-
 import com.heyfood.heyfoodapp.infra.HeyFoodAppRuntimeException;
 
 import java.io.Closeable;
@@ -19,17 +16,4 @@ public abstract class AbstractDAO {
         }
     }
 
-    /*
-    protected SQLiteDatabase getReadableDatabase() {
-        DBHelper dbHelper = new DBHelper();
-        return dbHelper.getReadableDatabase();
-    }
-
-    protected SQLiteDatabase getWritableDatabase() {
-        DBHelper dbHelper = new DBHelper();
-        return dbHelper.getWritableDatabase();
-    }
-    */
-
 }
-

@@ -1,6 +1,6 @@
 package com.heyfood.heyfoodapp.infra;
 
-public class HeyFoodAppRunTimeException extends RuntimeException{
+public class HeyFoodAppRuntimeException extends RuntimeException {
     public HeyFoodAppRuntimeException(String msg) {
         super(msg);
     }
