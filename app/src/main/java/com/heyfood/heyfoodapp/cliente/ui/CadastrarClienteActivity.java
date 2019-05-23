@@ -42,21 +42,27 @@ public class CadastrarClienteActivity extends AppCompatActivity {
     }
     private boolean validarCpf(){
 
-        String campoCpf = this.cpf.getText().toString().replace(".","");
+        String campoCpf = this.cpf.getText().toString().replace(".", "");
         campoCpf = campoCpf.replace("-","");
         //int cpf = Integer.parseInt(campoCpf);
         int soma = 0;
         for (int i=10, j=0 ; i>1 ; i--, j++){
             soma += Integer.parseInt(campoCpf.substring(j, j+1)) * i;
         }
-        if (!((soma*10)%11 == Integer.parseInt(campoCpf.substring(10, 11)))){
+        if((soma*10)%11 == 10){
+            soma = 0;
+        }
+        if (!((soma*10)%11 == Integer.parseInt(campoCpf.substring(9,10)))){
             return false;
         }
         soma = 0;
         for (int i=11, j=0 ; i>1 ; i--, j++) {
             soma += Integer.parseInt(campoCpf.substring(j, j + 1)) * i;
         }
-        if (!((soma*10)%11 == Integer.parseInt(campoCpf.substring(11, 12)))){
+        if((soma*10)%11 == 10) {
+            soma = 0;
+        }
+        if (!((soma*10)%11 == Integer.parseInt(campoCpf.substring(10)))){
             return false;
         }
         return true;
@@ -95,7 +101,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_LONG).show();
             return;
         }
-        if (validarCpf()){
+        if (!validarCpf()){
             Toast.makeText(this, "CPF inválido.", Toast.LENGTH_LONG).show();
             return;
         }
@@ -104,9 +110,10 @@ public class CadastrarClienteActivity extends AppCompatActivity {
             services.cadastrar(usuario);
             Intent novaTela = new Intent(this, LoginActivity.class);
             startActivity(novaTela);
+            Toast.makeText(this, "Cadastro realizado", Toast.LENGTH_LONG).show();
         }
         catch (Exception e){
-            Toast.makeText(this, "Este login jรก existe", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Este login já existe", Toast.LENGTH_LONG).show();
         }
 
     }
