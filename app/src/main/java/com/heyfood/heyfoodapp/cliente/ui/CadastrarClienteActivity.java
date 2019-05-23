@@ -40,6 +40,28 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         dataNascimento.addTextChangedListener(MaskEditUtil.mask(dataNascimento, MaskEditUtil.FORMAT_DATE));
         cpf.addTextChangedListener(MaskEditUtil.mask(cpf, MaskEditUtil.FORMAT_CPF));
     }
+    private boolean validarCpf(){
+
+        String campoCpf = this.cpf.getText().toString().replace(".","");
+        campoCpf = campoCpf.replace("-","");
+        //int cpf = Integer.parseInt(campoCpf);
+        int soma = 0;
+        for (int i=10, j=0 ; i>1 ; i--, j++){
+            soma += Integer.parseInt(campoCpf.substring(j, j+1)) * i;
+        }
+        if (!((soma*10)%11 == Integer.parseInt(campoCpf.substring(10, 11)))){
+            return false;
+        }
+        soma = 0;
+        for (int i=11, j=0 ; i>1 ; i--, j++) {
+            soma += Integer.parseInt(campoCpf.substring(j, j + 1)) * i;
+        }
+        if (!((soma*10)%11 == Integer.parseInt(campoCpf.substring(11, 12)))){
+            return false;
+        }
+        return true;
+
+    }
 
     private Pessoa createPessoa(){
         Pessoa pessoa = new Pessoa();
@@ -58,19 +80,23 @@ public class CadastrarClienteActivity extends AppCompatActivity {
     }
 
     private boolean validarCampos(){
-        boolean campoNome = nome.getText().toString().length() != 0;
-        boolean campoLogin = login.getText().toString().length() != 0;
-        boolean campoSenha = senha.getText().toString().length() != 0;
-        boolean campoDataNascimento = dataNascimento.getText().toString().length() != 0;
-        boolean campoCpf = cpf.getText().toString().length() != 0;
+        return
+                nome.getText().toString().length() != 0 &&
+        login.getText().toString().length() != 0 &&
+        senha.getText().toString().length() != 0 &&
+        dataNascimento.getText().toString().length() != 0 &&
+        cpf.getText().toString().length() == 14;
 
-        return campoNome && campoLogin && campoSenha && campoDataNascimento && campoCpf;
     }
 
 
     public void cadastrar(View view) {
         if(!validarCampos()){
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (validarCpf()){
+            Toast.makeText(this, "CPF inválido.", Toast.LENGTH_LONG).show();
             return;
         }
         Usuario usuario = createUsuario();
