@@ -3,6 +3,7 @@ package com.heyfood.heyfoodapp.cliente.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,6 +14,11 @@ import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
 import com.heyfood.heyfoodapp.util.MaskEditUtil;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class CadastrarClienteActivity extends AppCompatActivity {
 
@@ -41,7 +47,9 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         cpf.addTextChangedListener(MaskEditUtil.mask(cpf, MaskEditUtil.FORMAT_CPF));
     }
     private boolean validarCpf(){
-
+        if (this.cpf.getText().toString().length()<14){
+            return false;
+        }
         String campoCpf = this.cpf.getText().toString().replace(".", "");
         campoCpf = campoCpf.replace("-","");
         //int cpf = Integer.parseInt(campoCpf);
@@ -68,6 +76,27 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         return true;
 
     }
+    private boolean validarEmail(){
+        String email = login.getText().toString();
+        if(Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean validarData(){
+        String data = dataNascimento.getText().toString();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        format.setLenient(false);
+
+        try{
+            Date date = format.parse(data);
+            return true;
+        }
+        catch(ParseException e){
+            return false;
+        }
+    }
 
     private Pessoa createPessoa(){
         Pessoa pessoa = new Pessoa();
@@ -91,14 +120,21 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         login.getText().toString().length() != 0 &&
         senha.getText().toString().length() != 0 &&
         dataNascimento.getText().toString().length() != 0 &&
-        cpf.getText().toString().length() == 14;
+        cpf.getText().toString().length() !=0;
 
     }
-
 
     public void cadastrar(View view) {
         if(!validarCampos()){
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (!validarEmail()){
+            Toast.makeText(this, "Email inválido.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (!validarData()){
+            Toast.makeText(this, "Data inválida.", Toast.LENGTH_LONG).show();
             return;
         }
         if (!validarCpf()){
