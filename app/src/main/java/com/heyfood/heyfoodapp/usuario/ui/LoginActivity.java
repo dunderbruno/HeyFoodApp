@@ -5,17 +5,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.cliente.ui.CadastrarClienteActivity;
 import com.heyfood.heyfoodapp.infra.ui.MainActivity;
+import com.heyfood.heyfoodapp.restaurante.proprietario.ui.CadastrarProprietarioActivity;
 import com.heyfood.heyfoodapp.usuario.negocio.UsuarioServices;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText login;
     private EditText senha;
+    private Switch switchEstado;
 
     private final UsuarioServices services = new UsuarioServices(this);
 
@@ -26,11 +29,22 @@ public class LoginActivity extends AppCompatActivity {
 
         login = findViewById(R.id.campoLoginId);
         senha = findViewById(R.id.campoSenhaId);
+
+        switchEstado = findViewById(R.id.switchEstado);
+
     }
 
     public void abrirTelaCadastroCliente(View view){
-        Intent novaTela = new Intent(this, CadastrarClienteActivity.class);
-        startActivity(novaTela);
+
+        if(switchEstado.isChecked()){
+            Intent novaTela = new Intent(this, CadastrarProprietarioActivity.class);
+            startActivity(novaTela);
+
+        }else{
+            Intent novaTela = new Intent(this, CadastrarClienteActivity.class);
+            startActivity(novaTela);
+        }
+
     }
 
     public void logar(View view) {

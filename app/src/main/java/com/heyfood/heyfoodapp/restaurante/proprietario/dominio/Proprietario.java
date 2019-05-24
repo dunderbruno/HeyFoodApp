@@ -1,5 +1,6 @@
-package com.heyfood.heyfoodapp.restaurante;
+package com.heyfood.heyfoodapp.restaurante.proprietario.dominio;
 
+import com.heyfood.heyfoodapp.restaurante.Restaurante;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 
 public class Proprietario {

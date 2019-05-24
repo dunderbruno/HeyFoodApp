@@ -10,6 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".restaurante.proprietario.ui.CadastrarProprietarioActivity"></activity>
         <activity
             android:name=".usuario.ui.LoginActivity"
             android:screenOrientation="portrait">
@@ -20,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".infra.ui.MainActivity" />
-        <activity android:name=".cliente.ui.CadastrarClienteActivity"></activity>
+        <activity android:name=".cliente.ui.CadastrarClienteActivity" />
     </application>
 
 </manifest>
