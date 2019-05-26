@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String NOME_DB = "heyfood.db";
-    public static final int VERSAO = 1;
+    public static final int VERSAO = 2;
     public static final String TAG = "SQLite";
 
     //Tabela Pessoa
@@ -15,6 +15,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_NOME = "nome";
     public static final String CAMPO_CPF = "cpf";
     public static final String CAMPO_DATA_NASCIMENTO = "data_nascimento";
+    public static final String CAMPO_FK_ENDERECO = "fk_endereco";
 
     //Tabela Usuario
     public static final String TABELA_USUARIO = "tb_usuario";
@@ -24,9 +25,17 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_SENHA = "senha";
 
     //Tabela Endereço
+    public static final String TABELA_ENDERECO = "tb_endereco";
+    public static final String CAMPO_ID_ENDERECO = "id";
+    public static final String CAMPO_CEP = "cep";
+    public static final String CAMPO_RUA = "rua";
+    public static final String CAMPO_BAIRRO = "bairro";
+    public static final String CAMPO_CIDADE= "cidade";
+    public static final String CAMPO_NUMERO = "numero";
+
 
     private static final String[] TABELAS = {
-            TABELA_PESSOA, TABELA_USUARIO
+            TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO
     };
 
     public DBHelper(Context context) {
@@ -37,6 +46,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         createTabelaPessoa(db);
         createTabelaUsuario(db);
+        createTabelaEndereco(db);
     }
 
     public void createTabelaPessoa(SQLiteDatabase db){
@@ -46,9 +56,10 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %3$s TEXT NOT NULL, " +
                         "  %4$s TEXT NOT NULL UNIQUE, " +
                         "  %5$s TEXT NOT NULL " +
+                        "  %6$s TEXT NOT NULL " +
                         ");";
         sqlTbPessoa = String.format(sqlTbPessoa,
-                TABELA_PESSOA, CAMPO_ID_PESSOA, CAMPO_NOME, CAMPO_CPF, CAMPO_DATA_NASCIMENTO);
+                TABELA_PESSOA, CAMPO_ID_PESSOA, CAMPO_NOME, CAMPO_CPF, CAMPO_DATA_NASCIMENTO, CAMPO_FK_ENDERECO);
 
         db.execSQL(sqlTbPessoa);
 
@@ -65,6 +76,21 @@ public class DBHelper extends SQLiteOpenHelper {
         sqlTbUsuario = String.format(sqlTbUsuario,
                 TABELA_USUARIO, CAMPO_ID_USUARIO, CAMPO_FK_PESSOA, CAMPO_LOGIN, CAMPO_SENHA);
         db.execSQL(sqlTbUsuario);
+    }
+
+    public void createTabelaEndereco(SQLiteDatabase db){
+        String sqlTbEndereco =
+                "CREATE TABLE %1$s ( "  +
+                        "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "  %3$s TEXT NOT NULL, " +
+                        "  %4$s TEXT NOT NULL, " +
+                        "  %5$s TEXT NOT NULL " +
+                        "  %6$s TEXT NOT NULL " +
+                        "  %7$s TEXT NOT NULL " +
+                        ");";
+        sqlTbEndereco = String.format(sqlTbEndereco,
+                TABELA_ENDERECO, CAMPO_ID_ENDERECO, CAMPO_CEP, CAMPO_RUA, CAMPO_BAIRRO, CAMPO_CIDADE, CAMPO_NUMERO);
+        db.execSQL(sqlTbEndereco);
     }
 
     @Override
