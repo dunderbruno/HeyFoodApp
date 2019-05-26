@@ -23,6 +23,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_LOGIN = "login";
     public static final String CAMPO_SENHA = "senha";
 
+    //Tabela Endereço
+
     private static final String[] TABELAS = {
             TABELA_PESSOA, TABELA_USUARIO
     };
