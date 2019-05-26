@@ -2,6 +2,7 @@ package com.heyfood.heyfoodapp.endereco.dominio;
 
 public class Endereco {
 
+    private int id;
     private String rua;
     private String bairro;
     private String cidade;
@@ -14,6 +15,10 @@ public class Endereco {
         this.cidade = cidade;
         this.cep = cep;
         this.numero = numero;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getRua() {
@@ -34,6 +39,10 @@ public class Endereco {
 
     public String getNumero() {
         return numero;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setRua(String rua) {
