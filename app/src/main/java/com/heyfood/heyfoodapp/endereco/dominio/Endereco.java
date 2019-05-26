@@ -1,4 +1,4 @@
-package com.heyfood.heyfoodapp.endereco;
+package com.heyfood.heyfoodapp.endereco.dominio;
 
 public class Endereco {
 
