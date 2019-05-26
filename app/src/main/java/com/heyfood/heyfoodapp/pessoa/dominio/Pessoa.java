@@ -1,5 +1,7 @@
 package com.heyfood.heyfoodapp.pessoa.dominio;
 
+import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
+
 /**
  * Created by bruno.silvaleite on 10/05/2019.
  */
@@ -9,6 +11,7 @@ public class Pessoa {
     private String nome;
     private String cpf;
     private String dataNascimento;
+    private Endereco endereco;
     //private TipoGenero genero;
 
     public int getId() {
@@ -41,4 +44,11 @@ public class Pessoa {
 
     public void setDataNAscimento(String dataNascimento) { this.dataNascimento = dataNascimento; }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 }
