@@ -50,15 +50,15 @@ public class EnderecoDAO extends AbstractDAO{
         Endereco result = new Endereco();
         int columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ID_ENDERECO);
         result.setId(Integer.parseInt(cursor.getString(columnIndex)));
-        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_CEP;
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_CEP);
         result.setCep(cursor.getString(columnIndex));
-        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_RUA;
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_RUA);
         result.setRua(cursor.getString(columnIndex));
-        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_BAIRRO;
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_BAIRRO);
         result.setBairro(cursor.getString(columnIndex));
-        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_CIDADE;
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_CIDADE);
         result.setCidade(cursor.getString(columnIndex));
-        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_NUMERO;
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_NUMERO);
         result.setNumero(cursor.getString(columnIndex));
         return result;
     }

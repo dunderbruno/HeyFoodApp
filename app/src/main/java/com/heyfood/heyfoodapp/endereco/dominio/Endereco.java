@@ -9,13 +9,6 @@ public class Endereco {
     private String cep;
     private String numero;
 
-    public Endereco(String rua, String bairro, String cidade, String cep, String numero) {
-        this.rua = rua;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.cep = cep;
-        this.numero = numero;
-    }
 
     public int getId() {
         return id;
