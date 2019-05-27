@@ -50,9 +50,15 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_FK_ENDERECO_RESTAURANTE = "fk_endereco";
     public static final String CAMPO_FK_CONTATO_RESTAURANTE = "fk_contato";
 
+    //Tabela Proprietario
+    public static final String TABELA_PROPRIETARIO = "tb_proprietario";
+    public static final String CAMPO_ID_PROPRIETARIO = "id";
+    public static final String CAMPO_FK_USUARIO_PROPRIETARIO = "usuario";
+    public static final String CAMPO_FK_RESTAURANTE = "restaurante";
+
 
     private static final String[] TABELAS = {
-            TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE
+            TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE, TABELA_PROPRIETARIO
     };
 
     public DBHelper(Context context) {
@@ -66,6 +72,7 @@ public class DBHelper extends SQLiteOpenHelper {
         createTabelaEndereco(db);
         createTabelaContato(db);
         createTabelaRestaurante(db);
+        createTabelaProprietario(db);
     }
 
     public void createTabelaPessoa(SQLiteDatabase db){
@@ -140,6 +147,19 @@ public class DBHelper extends SQLiteOpenHelper {
                 TABELA_RESTAURANTE, CAMPO_ID_RESTAURANTE, CAMPO_NOME_RESTAURANTE, CAMPO_CNPJ, CAMPO_NOTA_MEDIA, CAMPO_FK_ENDERECO_RESTAURANTE, CAMPO_FK_CONTATO_RESTAURANTE);
 
         db.execSQL(sqlTbRestaurante);
+    }
+
+    public void createTabelaProprietario(SQLiteDatabase db){
+        String sqlTbProprietario =
+                "CREATE TABLE %1$s ( "  +
+                        "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "  %3$s TEXT NOT NULL, " +
+                        "  %4$s TEXT NOT NULL, " +
+                        "  %5$s TEXT NOT NULL " +
+                        ");";
+        sqlTbProprietario = String.format(sqlTbProprietario,
+                TABELA_PROPRIETARIO, CAMPO_ID_PROPRIETARIO, CAMPO_FK_USUARIO_PROPRIETARIO, CAMPO_FK_RESTAURANTE);
+        db.execSQL(sqlTbProprietario);
     }
 
     @Override
