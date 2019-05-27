@@ -1,18 +1,18 @@
-package com.heyfood.heyfoodapp.restaurante;
+package com.heyfood.heyfoodapp.restaurante.dominio;
 
-import java.util.Arrays;
+import com.heyfood.heyfoodapp.contato.dominio.Contato;
+import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
 
 public class Restaurante {
+    private int id;
     private String nome;
     private float notaMedia;
     private String cnpj;
-    private String[] comentarios;
+    private Endereco endereco;
+    private Contato contato;
 
-    public Restaurante(String nome, float notaMedia, String cnpj, String[] comentarios) {
-        this.nome = nome;
-        this.notaMedia = notaMedia;
-        this.cnpj = cnpj;
-        this.comentarios = comentarios;
+    public int getId() {
+        return id;
     }
 
     public String getNome() {
@@ -27,8 +27,16 @@ public class Restaurante {
         return cnpj;
     }
 
-    public String[] getComentarios() {
-        return comentarios;
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public Contato getContato() {
+        return contato;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setNome(String nome) {
@@ -43,8 +51,12 @@ public class Restaurante {
         this.cnpj = cnpj;
     }
 
-    public void setComentarios(String[] comentarios) {
-        this.comentarios = comentarios;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public void setContato(Contato contato) {
+        this.contato = contato;
     }
 
     @Override
@@ -53,7 +65,6 @@ public class Restaurante {
                 "nome='" + nome + '\'' +
                 ", notaMedia=" + notaMedia +
                 ", cnpj='" + cnpj + '\'' +
-                ", comentarios=" + Arrays.toString(comentarios) +
                 '}';
     }
 }

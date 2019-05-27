@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.cliente.ui.CadastrarClienteActivity;
 import com.heyfood.heyfoodapp.infra.ui.MainActivity;
-import com.heyfood.heyfoodapp.restaurante.proprietario.ui.CadastrarProprietarioActivity;
+import com.heyfood.heyfoodapp.proprietario.ui.CadastrarProprietarioActivity;
 import com.heyfood.heyfoodapp.usuario.negocio.UsuarioServices;
 
 public class LoginActivity extends AppCompatActivity {

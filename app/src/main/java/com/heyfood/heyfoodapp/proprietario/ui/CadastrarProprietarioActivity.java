@@ -1,4 +1,4 @@
-package com.heyfood.heyfoodapp.restaurante.proprietario.ui;
+package com.heyfood.heyfoodapp.proprietario.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

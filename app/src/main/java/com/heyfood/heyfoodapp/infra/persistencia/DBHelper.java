@@ -41,9 +41,18 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_EMAIL = "email";
     public static final String CAMPO_SITE = "site";
 
+    //Tabela Restaurante
+    public static final String TABELA_RESTAURANTE = "tb_restaurante";
+    public static final String CAMPO_ID_RESTAURANTE = "id";
+    public static final String CAMPO_NOME_RESTAURANTE = "nome";
+    public static final String CAMPO_CNPJ = "cnpj";
+    public static final String CAMPO_NOTA_MEDIA = "nota_media";
+    public static final String CAMPO_FK_ENDERECO_RESTAURANTE = "fk_endereco";
+    public static final String CAMPO_FK_CONTATO_RESTAURANTE = "fk_contato";
+
 
     private static final String[] TABELAS = {
-            TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO
+            TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE
     };
 
     public DBHelper(Context context) {
@@ -56,6 +65,7 @@ public class DBHelper extends SQLiteOpenHelper {
         createTabelaUsuario(db);
         createTabelaEndereco(db);
         createTabelaContato(db);
+        createTabelaRestaurante(db);
     }
 
     public void createTabelaPessoa(SQLiteDatabase db){
@@ -114,6 +124,22 @@ public class DBHelper extends SQLiteOpenHelper {
         sqlTbContato = String.format(sqlTbContato,
                 TABELA_CONTATO, CAMPO_ID_CONTATO, CAMPO_TELEFONE, CAMPO_EMAIL, CAMPO_SITE);
         db.execSQL(sqlTbContato);
+    }
+
+    public void createTabelaRestaurante(SQLiteDatabase db){
+        String sqlTbRestaurante =
+                "CREATE TABLE %1$s ( "  +
+                        "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "  %3$s TEXT NOT NULL, " +
+                        "  %4$s TEXT NOT NULL, " +
+                        "  %5$s TEXT NOT NULL " +
+                        "  %6$s TEXT NOT NULL " +
+                        "  %7$s TEXT NOT NULL " +
+                        ");";
+        sqlTbRestaurante = String.format(sqlTbRestaurante,
+                TABELA_RESTAURANTE, CAMPO_ID_RESTAURANTE, CAMPO_NOME_RESTAURANTE, CAMPO_CNPJ, CAMPO_NOTA_MEDIA, CAMPO_FK_ENDERECO_RESTAURANTE, CAMPO_FK_CONTATO_RESTAURANTE);
+
+        db.execSQL(sqlTbRestaurante);
     }
 
     @Override
