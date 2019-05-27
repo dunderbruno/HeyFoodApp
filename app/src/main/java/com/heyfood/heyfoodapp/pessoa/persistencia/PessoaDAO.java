@@ -40,6 +40,7 @@ public class PessoaDAO extends AbstractDAO{
         values.put(DBHelper.CAMPO_CPF, pessoa.getCpf());
         values.put(DBHelper.CAMPO_DATA_NASCIMENTO, pessoa.getDataNascimento());
         values.put(DBHelper.CAMPO_FK_ENDERECO, pessoa.getEndereco().getId());
+        values.put(DBHelper.CAMPO_FK_CONTATO, pessoa.getContato().getId());
 
         long retorno = db.insert(DBHelper.TABELA_PESSOA, null, values);
         super.close(db);
