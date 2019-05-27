@@ -1,14 +1,13 @@
-package com.heyfood.heyfoodapp.contato;
+package com.heyfood.heyfoodapp.contato.dominio;
 
 public class Contato {
+    private int id;
     private String telefone;
     private String email;
     private String site;
 
-    public Contato(String telefone, String email, String site) {
-        this.telefone = telefone;
-        this.email = email;
-        this.site = site;
+    public int getId() {
+        return id;
     }
 
     public String getTelefone() {
@@ -21,6 +20,10 @@ public class Contato {
 
     public String getSite() {
         return site;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setTelefone(String telefone) {
