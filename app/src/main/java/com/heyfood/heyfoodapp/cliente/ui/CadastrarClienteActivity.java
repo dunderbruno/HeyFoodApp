@@ -27,6 +27,8 @@ public class CadastrarClienteActivity extends AppCompatActivity {
     private EditText senha;
     private EditText dataNascimento;
     private EditText cpf;
+    private EditText telefone;
+    private EditText cep;
 
     private final UsuarioServices services = new UsuarioServices(this);
 
@@ -41,10 +43,15 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         senha = findViewById(R.id.campoSenhaId);
         dataNascimento = findViewById(R.id.campoDataId);
         cpf = findViewById(R.id.campoCpfId);
+        telefone = findViewById(R.id.campoTelefoneId);
+        cep = findViewById(R.id.campoCepId);
 
         //Configurando mascara dos campos de Data e CPF
         dataNascimento.addTextChangedListener(MaskEditUtil.mask(dataNascimento, MaskEditUtil.FORMAT_DATE));
         cpf.addTextChangedListener(MaskEditUtil.mask(cpf, MaskEditUtil.FORMAT_CPF));
+        telefone.addTextChangedListener(MaskEditUtil.mask(telefone, MaskEditUtil.FORMAT_FONE));
+        cep.addTextChangedListener(MaskEditUtil.mask(cep, MaskEditUtil.FORMAT_CEP));
+
     }
     private boolean validarCpf(){
         if (this.cpf.getText().toString().length()<14){
