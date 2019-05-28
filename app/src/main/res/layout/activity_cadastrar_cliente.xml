@@ -46,6 +46,7 @@
             android:ems="10"
             android:hint="Nome"
             android:inputType="textPersonName"
+            android:text="Fulano"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
@@ -60,6 +61,7 @@
             android:ems="10"
             android:hint="Senha"
             android:inputType="textPassword"
+            android:text="1234"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/campoLoginId" />
@@ -74,6 +76,7 @@
             android:ems="10"
             android:hint="Email"
             android:inputType="textPersonName"
+            android:text="fulano@gmail.com"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textNomeId" />
@@ -88,6 +91,7 @@
             android:ems="10"
             android:hint="Data de Nascimento"
             android:inputType="date"
+            android:text="01/01/2001"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/campoSenhaId" />
@@ -102,6 +106,7 @@
             android:ems="10"
             android:hint="CPF"
             android:inputType="number"
+            android:text="708.714.364-69"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/campoDataId" />
@@ -120,7 +125,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText9" />
+            app:layout_constraintTop_toBottomOf="@+id/campoCidadeId" />
 
         <EditText
             android:id="@+id/campoTelefoneId"
@@ -132,6 +137,7 @@
             android:ems="10"
             android:hint="Telefone"
             android:inputType="phone"
+            android:text="(81) 99999-9999"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/campoCpfId" />
@@ -146,12 +152,13 @@
             android:ems="10"
             android:hint="CEP"
             android:inputType="number"
-            app:layout_constraintEnd_toStartOf="@+id/button"
+            android:text="52190-290"
+            app:layout_constraintEnd_toStartOf="@+id/botaoBuscarEndereco"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/campoTelefoneId" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/campoRuaId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -160,12 +167,13 @@
             android:ems="10"
             android:hint="Rua"
             android:inputType="textPersonName"
+            android:text="Ruazinha"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/campoCepId" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/campoNumeroId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -173,13 +181,14 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="Nº"
-            android:inputType="textPersonName"
+            android:inputType="number"
+            android:text="01"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+            app:layout_constraintTop_toBottomOf="@+id/campoRuaId" />
 
         <EditText
-            android:id="@+id/editText7"
+            android:id="@+id/campoCidadeId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -188,12 +197,13 @@
             android:ems="10"
             android:hint="Cidade"
             android:inputType="textPersonName"
+            android:text="Recife"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText4" />
+            app:layout_constraintTop_toBottomOf="@+id/campoBairroId" />
 
         <EditText
-            android:id="@+id/editText9"
+            android:id="@+id/campoBairroId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -202,12 +212,13 @@
             android:ems="10"
             android:hint="Bairro"
             android:inputType="textPersonName"
+            android:text="Dos Irmãos"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText7" />
+            app:layout_constraintTop_toBottomOf="@+id/campoNumeroId" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/botaoBuscarEndereco"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"

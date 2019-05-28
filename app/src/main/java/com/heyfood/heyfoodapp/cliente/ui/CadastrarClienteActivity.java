@@ -9,11 +9,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
+import com.heyfood.heyfoodapp.contato.dominio.Contato;
+import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
 import com.heyfood.heyfoodapp.usuario.negocio.UsuarioServices;
 import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
 import com.heyfood.heyfoodapp.util.MaskEditUtil;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
+import com.heyfood.heyfoodapp.util.cep.ViaCEP;
+import com.heyfood.heyfoodapp.util.cep.ViaCEPException;
+
+import org.json.JSONException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,6 +35,10 @@ public class CadastrarClienteActivity extends AppCompatActivity {
     private EditText cpf;
     private EditText telefone;
     private EditText cep;
+    private EditText rua;
+    private EditText numero;
+    private EditText bairro;
+    private EditText cidade;
 
     private final UsuarioServices services = new UsuarioServices(this);
 
@@ -45,6 +55,10 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         cpf = findViewById(R.id.campoCpfId);
         telefone = findViewById(R.id.campoTelefoneId);
         cep = findViewById(R.id.campoCepId);
+        rua = findViewById(R.id.campoRuaId);
+        numero = findViewById(R.id.campoNumeroId);
+        bairro = findViewById(R.id.campoBairroId);
+        cidade = findViewById(R.id.campoCidadeId);
 
         //Configurando mascara dos campos de Data e CPF
         dataNascimento.addTextChangedListener(MaskEditUtil.mask(dataNascimento, MaskEditUtil.FORMAT_DATE));
@@ -107,6 +121,8 @@ public class CadastrarClienteActivity extends AppCompatActivity {
 
     private Pessoa createPessoa(){
         Pessoa pessoa = new Pessoa();
+        pessoa.setContato(createContato());
+        pessoa.setEndereco(createEndereco());
         pessoa.setNome(nome.getText().toString());
         pessoa.setDataNAscimento(dataNascimento.getText().toString());
         pessoa.setCpf(cpf.getText().toString());
@@ -119,6 +135,25 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         usuario.setLogin(login.getText().toString());
         usuario.setSenha(senha.getText().toString());
         return usuario;
+    }
+
+    private Contato createContato(){
+        Contato contato = new Contato();
+        contato.setTelefone(telefone.getText().toString());
+        contato.setEmail(login.getText().toString());
+        contato.setSite("");
+        return contato;
+    }
+
+    private Endereco createEndereco(){
+        Endereco endereco = new Endereco();
+        endereco.setCep(cep.getText().toString());
+        endereco.setRua(rua.getText().toString());
+        endereco.setNumero(numero.getText().toString());
+        endereco.setBairro(bairro.getText().toString());
+        endereco.setCidade(cidade.getText().toString());
+
+        return endereco;
     }
 
     private boolean validarCampos(){
@@ -159,6 +194,22 @@ public class CadastrarClienteActivity extends AppCompatActivity {
             Toast.makeText(this, "Este login já existe", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    public void buscarEndereco(View view){
+        ViaCEP viaCEP = new ViaCEP();
+        try{
+            viaCEP.buscar(cep.getText().toString());
+            rua.setText(viaCEP.getLogradouro());
+            bairro.setText(viaCEP.getBairro());
+            cidade.setText(viaCEP.getLocalidade());
+        }
+        catch (ViaCEPException e){
+            Toast.makeText(this, "CEP não existe", Toast.LENGTH_LONG).show();
+        }
+        catch (JSONException e){
+            Toast.makeText(this, "Erro de JSon", Toast.LENGTH_LONG).show();
+        }
     }
 
 }
