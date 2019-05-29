@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="@+id/toolbar5" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/textNomeId"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar5" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/campoCnpjId"
         android:layout_width="367dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -60,10 +60,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/textNomeId" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/campoCepId"
         android:layout_width="364dp"
         android:layout_height="50dp"
         android:layout_marginEnd="16dp"
@@ -74,10 +74,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/campoCnpjId" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/campoRuaId"
         android:layout_width="368dp"
         android:layout_height="42dp"
         android:layout_marginEnd="16dp"
@@ -88,10 +88,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/campoCepId" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/campoNumeroId"
         android:layout_width="367dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -102,10 +102,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintTop_toBottomOf="@+id/campoRuaId" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/campoBairroId"
         android:layout_width="361dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -116,10 +116,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintTop_toBottomOf="@+id/campoNumeroId" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/campoCidadeId"
         android:layout_width="362dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -130,7 +130,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        app:layout_constraintTop_toBottomOf="@+id/campoBairroId" />
 
     <Button
         android:id="@+id/button2"
@@ -147,7 +147,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText8"
+        app:layout_constraintTop_toBottomOf="@+id/campoCidadeId"
         app:layout_constraintVertical_bias="0.271" />
 
 </android.support.constraint.ConstraintLayout>

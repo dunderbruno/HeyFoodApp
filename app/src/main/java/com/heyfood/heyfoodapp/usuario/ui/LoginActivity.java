@@ -13,6 +13,7 @@ import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 import com.heyfood.heyfoodapp.cliente.ui.CadastrarClienteActivity;
 import com.heyfood.heyfoodapp.infra.ui.MainActivity;
 import com.heyfood.heyfoodapp.proprietario.ui.CadastrarProprietarioActivity;
+import com.heyfood.heyfoodapp.restaurante.ui.InformacoesRestauranteActivity;
 import com.heyfood.heyfoodapp.usuario.negocio.UsuarioServices;
 
 public class LoginActivity extends AppCompatActivity {
@@ -59,5 +60,12 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
+
+    public void abrirTela(View view){
+
+
+        Intent novaTela = new Intent(this, InformacoesRestauranteActivity.class);
+        startActivity(novaTela);
+        }
 
 }
