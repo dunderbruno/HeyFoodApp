@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 import com.heyfood.heyfoodapp.pessoa.persistencia.PessoaDAO;
@@ -20,6 +21,18 @@ public class UsuarioDAO extends AbstractDAO {
         helper = new DBHelper(context);
     }
 
+    public Usuario getUsuarioById(int id){
+        Usuario result = null;
+        db = helper.getReadableDatabase();
+        String sql = "SELECT * FROM " + DBHelper.TABELA_USUARIO+ " WHERE " + DBHelper.CAMPO_ID_USUARIO + " LIKE ?;";
+        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(id)});
+        if (cursor.moveToFirst()) {
+            result = createUsuario(cursor);
+        }
+        super.close(cursor, db);
+
+        return result;
+    }
 
     public Usuario getUsuario(String login) {
         Usuario result = null;

@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
+import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
+import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 import com.heyfood.heyfoodapp.contato.dominio.Contato;
 import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
 import com.heyfood.heyfoodapp.usuario.negocio.UsuarioServices;
@@ -40,7 +42,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
     private EditText bairro;
     private EditText cidade;
 
-    private final UsuarioServices services = new UsuarioServices(this);
+    private final ClienteServices services = new ClienteServices(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +131,13 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         return pessoa;
     }
 
+    private Cliente createCliente(){
+        Cliente cliente = new Cliente();
+        cliente.setUsuario(createUsuario());
+
+        return cliente;
+    }
+
     private Usuario createUsuario(){
         Usuario usuario = new Usuario();
         usuario.setPessoa(createPessoa());
@@ -183,9 +192,9 @@ public class CadastrarClienteActivity extends AppCompatActivity {
             Toast.makeText(this, "CPF inválido.", Toast.LENGTH_LONG).show();
             return;
         }
-        Usuario usuario = createUsuario();
+        Cliente cliente = createCliente();
         try{
-            services.cadastrar(usuario);
+            services.cadastrar(cliente);
             Intent novaTela = new Intent(this, LoginActivity.class);
             startActivity(novaTela);
             Toast.makeText(this, "Cadastro realizado", Toast.LENGTH_LONG).show();

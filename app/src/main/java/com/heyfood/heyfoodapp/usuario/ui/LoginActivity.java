@@ -9,6 +9,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
+import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 import com.heyfood.heyfoodapp.cliente.ui.CadastrarClienteActivity;
 import com.heyfood.heyfoodapp.infra.ui.MainActivity;
 import com.heyfood.heyfoodapp.proprietario.ui.CadastrarProprietarioActivity;
@@ -20,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText senha;
     private Switch switchEstado;
 
-    private final UsuarioServices services = new UsuarioServices(this);
+    private final ClienteServices services = new ClienteServices(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

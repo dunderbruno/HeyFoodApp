@@ -9,6 +9,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final int VERSAO = 1;
     public static final String TAG = "SQLite";
 
+    //Tabela Cliente
+    public static final String TABELA_CLIENTE = "tb_cliente";
+    public static final String CAMPO_ID_CLIENTE = "id";
+    public static final String CAMPO_FK_USUARIO_CLIENTE = "fk_usuario";
+
+
     //Tabela Pessoa
     public static final String TABELA_PESSOA = "tb_pessoa";
     public static final String CAMPO_ID_PESSOA = "id";
@@ -53,12 +59,12 @@ public class DBHelper extends SQLiteOpenHelper {
     //Tabela Proprietario
     public static final String TABELA_PROPRIETARIO = "tb_proprietario";
     public static final String CAMPO_ID_PROPRIETARIO = "id";
-    public static final String CAMPO_FK_USUARIO_PROPRIETARIO = "usuario";
-    public static final String CAMPO_FK_RESTAURANTE = "restaurante";
+    public static final String CAMPO_FK_USUARIO_PROPRIETARIO = "fk_usuario";
+    public static final String CAMPO_FK_RESTAURANTE = "fk_restaurante";
 
 
     private static final String[] TABELAS = {
-            TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE, TABELA_PROPRIETARIO
+            TABELA_CLIENTE, TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE, TABELA_PROPRIETARIO
     };
 
     public DBHelper(Context context) {
@@ -67,12 +73,26 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        createTabelaCliente(db);
         createTabelaPessoa(db);
         createTabelaUsuario(db);
         createTabelaEndereco(db);
         createTabelaContato(db);
         createTabelaRestaurante(db);
         createTabelaProprietario(db);
+    }
+
+    public void createTabelaCliente(SQLiteDatabase db){
+        String sqlTbCliente =
+                "CREATE TABLE %1$s ( "  +
+                        "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "  %3$s TEXT NOT NULL " +
+                        ");";
+        sqlTbCliente = String.format(sqlTbCliente,
+                TABELA_CLIENTE, CAMPO_ID_CLIENTE, CAMPO_FK_USUARIO_CLIENTE);
+
+        db.execSQL(sqlTbCliente);
+
     }
 
     public void createTabelaPessoa(SQLiteDatabase db){

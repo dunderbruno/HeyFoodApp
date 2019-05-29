@@ -2,6 +2,7 @@ package com.heyfood.heyfoodapp.infra;
 
 import android.annotation.SuppressLint;
 
+import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 
 import java.text.SimpleDateFormat;
@@ -20,6 +21,14 @@ public class Sessao {
 
     public Usuario getUsuario() {
         return (Usuario)values.get("sessao.Usuario");
+    }
+
+    public void setCliente(Cliente cliente) {
+        setValue("sessao.Cliente", cliente);
+    }
+
+    public Cliente getCliente() {
+        return (Cliente)values.get("sessao.Cliente");
     }
 
 
