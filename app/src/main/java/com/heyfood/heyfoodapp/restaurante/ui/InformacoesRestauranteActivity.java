@@ -19,12 +19,25 @@ public class InformacoesRestauranteActivity extends AppCompatActivity {
 
         abre.addTextChangedListener(MaskEditUtil.mask(abre, MaskEditUtil.FORMAT_HOUR));
         fecha.addTextChangedListener(MaskEditUtil.mask(fecha, MaskEditUtil.FORMAT_HOUR));
+    }
 
-//        private boolean validarHora(){
-//        }
-
+    private boolean validarHora() {
+        String horaAbre1 = abre.getText().toString();
+        horaAbre1 = horaAbre1.replace(":", "");
+        String horaFecha1 = fecha.getText().toString();
+        horaFecha1 = horaFecha1.replace(":", "");
+        int valido = Integer.parseInt(horaAbre1);
+        int valido2 = Integer.parseInt(horaFecha1);
+        if (valido >= 0000 && valido <= 2359 && valido2 >= 0000 && valido2 <= 2359) {
+            return true;
+        }else {
+            return false;
+        }
 
     }
-}
-    
 
+
+
+
+
+}
