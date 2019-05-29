@@ -18,8 +18,7 @@ import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
 import com.heyfood.heyfoodapp.util.MaskEditUtil;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
-import com.heyfood.heyfoodapp.util.cep.ViaCEP;
-import com.heyfood.heyfoodapp.util.cep.ViaCEPException;
+
 
 import org.json.JSONException;
 
@@ -205,20 +204,5 @@ public class CadastrarClienteActivity extends AppCompatActivity {
 
     }
 
-    public void buscarEndereco(View view){
-        ViaCEP viaCEP = new ViaCEP();
-        try{
-            viaCEP.buscar(cep.getText().toString());
-            rua.setText(viaCEP.getLogradouro());
-            bairro.setText(viaCEP.getBairro());
-            cidade.setText(viaCEP.getLocalidade());
-        }
-        catch (ViaCEPException e){
-            Toast.makeText(this, "CEP não existe", Toast.LENGTH_LONG).show();
-        }
-        catch (JSONException e){
-            Toast.makeText(this, "Erro de JSon", Toast.LENGTH_LONG).show();
-        }
-    }
 
 }
