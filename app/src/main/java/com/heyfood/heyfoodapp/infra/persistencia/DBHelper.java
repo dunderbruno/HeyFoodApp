@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String NOME_DB = "heyfood.db";
-    public static final int VERSAO = 2;
+    public static final int VERSAO = 1;
     public static final String TAG = "SQLite";
 
     //Tabela Pessoa
@@ -80,7 +80,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "CREATE TABLE %1$s ( "  +
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "  %3$s TEXT NOT NULL, " +
-                        "  %4$s TEXT NOT NULL UNIQUE, " +
+                        "  %4$s TEXT NOT NULL, " +
                         "  %5$s TEXT NOT NULL, " +
                         "  %6$s TEXT NOT NULL, " +
                         "  %7$s TEXT NOT NULL " +
@@ -154,8 +154,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "CREATE TABLE %1$s ( "  +
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "  %3$s TEXT NOT NULL, " +
-                        "  %4$s TEXT NOT NULL, " +
-                        "  %5$s TEXT NOT NULL " +
+                        "  %4$s TEXT NOT NULL " +
                         ");";
         sqlTbProprietario = String.format(sqlTbProprietario,
                 TABELA_PROPRIETARIO, CAMPO_ID_PROPRIETARIO, CAMPO_FK_USUARIO_PROPRIETARIO, CAMPO_FK_RESTAURANTE);
