@@ -22,11 +22,11 @@ public class ProprietarioDAO extends AbstractDAO {
         helper = new DBHelper(context);
     }
 
-    public Proprietario getProprietario(int id) {
+    public Proprietario getProprietario(int fk_usuario) {
         Proprietario result = null;
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_PROPRIETARIO + " WHERE " + DBHelper.CAMPO_ID_PROPRIETARIO + " LIKE ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(id)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(fk_usuario)});
         if (cursor.moveToFirst()) {
             result = createProprietario(cursor);
         }
