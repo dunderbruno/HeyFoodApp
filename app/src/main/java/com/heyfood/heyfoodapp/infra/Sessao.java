@@ -3,6 +3,7 @@ package com.heyfood.heyfoodapp.infra;
 import android.annotation.SuppressLint;
 
 import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
+import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 
 import java.text.SimpleDateFormat;
@@ -25,6 +26,10 @@ public class Sessao {
 
     public void setCliente(Cliente cliente) {
         setValue("sessao.Cliente", cliente);
+    }
+
+    public void setProprietario(Proprietario proprietario){
+        setValue("secao.Proprietario", proprietario);
     }
 
     public Cliente getCliente() {
