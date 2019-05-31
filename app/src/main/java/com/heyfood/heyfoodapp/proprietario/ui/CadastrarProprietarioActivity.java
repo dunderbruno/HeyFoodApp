@@ -14,6 +14,7 @@ import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
 import com.heyfood.heyfoodapp.util.MaskEditUtil;
+import com.heyfood.heyfoodapp.proprietario.negocio.ProprietarioServices;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,6 +26,8 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
     private EditText senha;
     private EditText dataNascimento;
     private EditText cpf;
+
+    private final ProprietarioServices services = new ProprietarioServices(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +96,7 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
         }
     }
 
-    private Proprietario creatProprietario(){
+    private Proprietario createProprietario(){
         Proprietario proprietario = new Proprietario();
         proprietario.setUsuario(createUsuario());
         return proprietario;
@@ -144,7 +147,7 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
             Toast.makeText(this, "CPF inválido.", Toast.LENGTH_LONG).show();
             return;
         }
-        Proprietario proprietario = creatProprietario();
+        Proprietario proprietario = createProprietario();
         try{
             Intent novaTela = new Intent(this, LoginActivity.class);
             startActivity(novaTela);
