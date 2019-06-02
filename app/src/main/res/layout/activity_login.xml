@@ -67,7 +67,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:background="@color/corBotaoCadastrar"
-            android:onClick="abrirTelaCadastroCliente"
+            android:onClick="abrirTelaCadastro"
             android:text="CADASTRE-SE"
             android:textColor="@android:color/background_light"
             app:layout_constraintEnd_toEndOf="parent"

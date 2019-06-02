@@ -15,8 +15,8 @@ public class ProprietarioServices {
     private ProprietarioDAO proprietarioDAO;
     private UsuarioDAO usuarioDAO;
     private PessoaDAO pessoaDAO;
-    private ContatoDAO contatoDAO;
-    private EnderecoDAO enderecoDAO;
+    //private ContatoDAO contatoDAO;
+    //private EnderecoDAO enderecoDAO;
 
     public ProprietarioServices(Context context){
         proprietarioDAO = new ProprietarioDAO(context);

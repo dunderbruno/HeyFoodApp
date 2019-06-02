@@ -12,9 +12,9 @@ import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 import com.heyfood.heyfoodapp.cliente.ui.CadastrarClienteActivity;
 import com.heyfood.heyfoodapp.infra.ui.MainActivity;
+import com.heyfood.heyfoodapp.proprietario.negocio.ProprietarioServices;
 import com.heyfood.heyfoodapp.proprietario.ui.CadastrarProprietarioActivity;
 import com.heyfood.heyfoodapp.restaurante.ui.InformacoesRestauranteActivity;
-import com.heyfood.heyfoodapp.usuario.negocio.UsuarioServices;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -22,7 +22,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText senha;
     private Switch switchEstado;
 
-    private final ClienteServices services = new ClienteServices(this);
+    private final ClienteServices clienteServices = new ClienteServices(this);
+    private final ProprietarioServices proprietarioServices = new ProprietarioServices(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void abrirTelaCadastroCliente(View view){
+    public void abrirTelaCadastro(View view){
 
         if(switchEstado.isChecked()){
             Intent novaTela = new Intent(this, CadastrarProprietarioActivity.class);
@@ -51,9 +52,15 @@ public class LoginActivity extends AppCompatActivity {
 
     public void logar(View view) {
         try{
-            services.login(login.getText().toString(), senha.getText().toString());
-            Intent novaTela = new Intent(this, MainActivity.class);
-            startActivity(novaTela);
+            if(switchEstado.isChecked()) {
+                proprietarioServices.login(login.getText().toString(), senha.getText().toString());
+                Intent novaTela = new Intent(this, MainActivity.class);
+                startActivity(novaTela);
+            }else{
+                clienteServices.login(login.getText().toString(), senha.getText().toString());
+                Intent novaTela = new Intent(this, MainActivity.class);
+                startActivity(novaTela);
+            }
         }
         catch(Exception e){
             Toast.makeText(this, "Usuário não cadastrado", Toast.LENGTH_LONG).show();
