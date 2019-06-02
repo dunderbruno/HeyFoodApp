@@ -149,6 +149,7 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
         }
         Proprietario proprietario = createProprietario();
         try{
+            services.cadastrar(proprietario);
             Intent novaTela = new Intent(this, LoginActivity.class);
             startActivity(novaTela);
             Toast.makeText(this, "Cadastro realizado", Toast.LENGTH_LONG).show();
