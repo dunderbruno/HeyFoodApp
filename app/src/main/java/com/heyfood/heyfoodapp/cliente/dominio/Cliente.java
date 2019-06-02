@@ -1,5 +1,6 @@
 package com.heyfood.heyfoodapp.cliente.dominio;
 
+import com.heyfood.heyfoodapp.categoria.dominio.Categoria;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 
 /**
@@ -9,6 +10,7 @@ import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 public class Cliente {
     private int id;
     private Usuario usuario;
+    private Categoria preferencias;
 
     public int getId() {
         return id;
@@ -24,5 +26,13 @@ public class Cliente {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Categoria getPreferencias() {
+        return preferencias;
+    }
+
+    public void setPreferencias(Categoria preferencias) {
+        this.preferencias = preferencias;
     }
 }
