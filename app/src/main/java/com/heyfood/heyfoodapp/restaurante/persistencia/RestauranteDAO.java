@@ -40,6 +40,8 @@ public class RestauranteDAO extends AbstractDAO{
         values.put(DBHelper.CAMPO_NOME_RESTAURANTE, restaurante.getNome());
         values.put(DBHelper.CAMPO_CNPJ, restaurante.getCnpj());
         values.put(DBHelper.CAMPO_NOTA_MEDIA, restaurante.getNotaMedia());
+        //TODO: CAMPO CONTATO
+        values.put(DBHelper.CAMPO_FK_ESPECIALIDADES, restaurante.getEspecialidades().getId());
 
         long retorno = db.insert(DBHelper.TABELA_RESTAURANTE, null, values);
         super.close(db);
@@ -51,6 +53,7 @@ public class RestauranteDAO extends AbstractDAO{
         Restaurante result = new Restaurante();
         EnderecoDAO enderecoDAO = new EnderecoDAO(context);
         ContatoDAO contatoDAO = new ContatoDAO(context);
+        EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO;
         int columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ID_RESTAURANTE);
         result.setId(Integer.parseInt(cursor.getString(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_NOME_RESTAURANTE);
@@ -63,6 +66,8 @@ public class RestauranteDAO extends AbstractDAO{
         result.setEndereco(enderecoDAO.getEndereco(cursor.getInt(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_CONTATO_RESTAURANTE);
         result.setContato(contatoDAO.getContato(cursor.getInt(columnIndex)));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_ESPECIALIDADES);
+        result.setEspecialidades(especialidadeDAO.getEspecialidades(cursor.getInt(columnIndex)));
         return result;
     }
 }

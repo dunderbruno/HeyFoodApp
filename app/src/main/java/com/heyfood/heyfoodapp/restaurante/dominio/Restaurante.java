@@ -1,5 +1,6 @@
 package com.heyfood.heyfoodapp.restaurante.dominio;
 
+import com.heyfood.heyfoodapp.categoria.dominio.Categoria;
 import com.heyfood.heyfoodapp.contato.dominio.Contato;
 import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
 
@@ -10,6 +11,7 @@ public class Restaurante {
     private String cnpj;
     private Endereco endereco;
     private Contato contato;
+    private Categoria especialidades;
 
     public int getId() {
         return id;
@@ -35,6 +37,10 @@ public class Restaurante {
         return contato;
     }
 
+    public Categoria getEspecialidades() {
+        return especialidades;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -57,6 +63,10 @@ public class Restaurante {
 
     public void setContato(Contato contato) {
         this.contato = contato;
+    }
+
+    public void setEspecialidades(Categoria especialidades) {
+        this.especialidades = especialidades;
     }
 
     @Override
