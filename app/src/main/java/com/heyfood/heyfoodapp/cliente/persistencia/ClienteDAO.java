@@ -63,7 +63,7 @@ public class ClienteDAO extends AbstractDAO {
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_USUARIO_CLIENTE);
         result.setUsuario(usuarioDAO.getUsuarioById(cursor.getInt(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_PREFERENCIAS);
-        result.setPreferencias(preferenciaDAO.getPreferenciaById(cursor.getInt(columnIndex)));
+        result.setPreferencias(preferenciaDAO.getPreferencia(cursor.getInt(columnIndex)));  //TODO renomear o método para getPreferenciaById
 
         return result;
     }

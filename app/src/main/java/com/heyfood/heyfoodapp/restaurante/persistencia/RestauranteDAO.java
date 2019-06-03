@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.heyfood.heyfoodapp.categoria.persistencia.EspecialidadeDAO;
 import com.heyfood.heyfoodapp.contato.persistencia.ContatoDAO;
 import com.heyfood.heyfoodapp.endereco.persistencia.EnderecoDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
@@ -53,7 +54,7 @@ public class RestauranteDAO extends AbstractDAO{
         Restaurante result = new Restaurante();
         EnderecoDAO enderecoDAO = new EnderecoDAO(context);
         ContatoDAO contatoDAO = new ContatoDAO(context);
-        EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO;
+        EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO(context);
         int columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ID_RESTAURANTE);
         result.setId(Integer.parseInt(cursor.getString(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_NOME_RESTAURANTE);
@@ -67,7 +68,7 @@ public class RestauranteDAO extends AbstractDAO{
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_CONTATO_RESTAURANTE);
         result.setContato(contatoDAO.getContato(cursor.getInt(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_ESPECIALIDADES);
-        result.setEspecialidades(especialidadeDAO.getEspecialidades(cursor.getInt(columnIndex)));
+        result.setEspecialidades(especialidadeDAO.getEspecialidade(cursor.getInt(columnIndex))); //TODO renomear o método para getEspecialidadeById
         return result;
     }
 }
