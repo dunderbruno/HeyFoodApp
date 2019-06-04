@@ -3,6 +3,8 @@ package com.heyfood.heyfoodapp.cliente.ui;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.heyfood.heyfoodapp.R;
+
 public class PreferenciaClienteActivity extends AppCompatActivity {
 
     @Override

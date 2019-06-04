@@ -9,7 +9,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.heyfood.heyfoodapp.infra.ui.MainActivity">
+        tools:context="com.heyfood.heyfoodapp.infra.ui.MainClienteActivity">
 
         <TextView
             android:id="@+id/textView"
@@ -20,7 +20,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textBoasVIndasId"
+            app:layout_constraintTop_toBottomOf="@+id/textBoasVindasId"
             app:layout_constraintVertical_bias="0.19999999" />
 
         <ImageView
@@ -34,7 +34,7 @@
             app:srcCompat="@drawable/logo" />
 
         <TextView
-            android:id="@+id/textBoasVIndasId"
+            android:id="@+id/textBoasVindasId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

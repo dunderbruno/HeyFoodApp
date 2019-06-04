@@ -1,5 +1,6 @@
 package com.heyfood.heyfoodapp.restaurante.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 import java.util.InputMismatchException;
 
 import com.heyfood.heyfoodapp.R;
+import com.heyfood.heyfoodapp.proprietario.ui.CadastrarProprietarioActivity;
 import com.heyfood.heyfoodapp.util.MaskEditUtil;
 
 public class CadastrarRestauranteActivity extends AppCompatActivity {
@@ -123,5 +125,14 @@ public class CadastrarRestauranteActivity extends AppCompatActivity {
             Toast.makeText(this, "CNPJ inválido.", Toast.LENGTH_LONG).show();
             return;
         }
+
+
+        //### OBS Falta salvar os dados(sessão) para continuar p/ proxima tela ###
+        Intent novaTela = new Intent(this, EspecialidadeRestauranteActivity.class);
+        startActivity(novaTela);
+
+
     }
+
+
 }

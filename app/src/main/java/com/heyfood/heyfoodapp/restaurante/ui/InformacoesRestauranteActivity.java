@@ -28,7 +28,7 @@ public class InformacoesRestauranteActivity extends AppCompatActivity {
         horaFecha1 = horaFecha1.replace(":", "");
         int valido = Integer.parseInt(horaAbre1);
         int valido2 = Integer.parseInt(horaFecha1);
-        if (valido >= 0000 && valido <= 2359 && valido2 >= 0000 && valido2 <= 2359) {
+        if (valido >= 0 && valido <= 2359 && valido2 >= 0 && valido2 <= 2359) {
             return true;
         }else {
             return false;
