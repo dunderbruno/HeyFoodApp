@@ -20,7 +20,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textBoasVindasId"
+            app:layout_constraintTop_toBottomOf="@+id/textBoasVindasProprietarioId"
             app:layout_constraintVertical_bias="0.247" />
 
         <ImageView
@@ -34,12 +34,12 @@
             app:srcCompat="@drawable/logo" />
 
         <TextView
-            android:id="@+id/textBoasVindasId"
+            android:id="@+id/textBoasVindasClienteId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
             android:gravity="center"
             android:text="Bem vindo!"
             android:textAllCaps="false"

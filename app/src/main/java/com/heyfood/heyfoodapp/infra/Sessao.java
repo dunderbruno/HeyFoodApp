@@ -28,12 +28,16 @@ public class Sessao {
         setValue("sessao.Cliente", cliente);
     }
 
+    public Cliente getCliente() {
+        return (Cliente)values.get("sessao.Cliente");
+    }
+
     public void setProprietario(Proprietario proprietario){
         setValue("secao.Proprietario", proprietario);
     }
 
-    public Cliente getCliente() {
-        return (Cliente)values.get("sessao.Cliente");
+    public Proprietario getProprietario() {
+        return (Proprietario) values.get("sessao.Proprietario");
     }
 
 

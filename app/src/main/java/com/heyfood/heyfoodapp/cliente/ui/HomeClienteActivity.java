@@ -20,7 +20,7 @@ public class HomeClienteActivity extends AppCompatActivity {
 
         cliente = Sessao.instance.getCliente();
 
-        nome = findViewById(R.id.textBoasVindasId);
+        nome = findViewById(R.id.textBoasVindasClienteId);
         nome.setText(String.format("Bem vindo, %s!", cliente.getUsuario().getPessoa().getNome()));
     }
 }
