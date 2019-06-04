@@ -24,7 +24,8 @@
         <activity android:name=".cliente.ui.CadastrarClienteActivity" />
         <activity android:name=".restaurante.ui.CadastrarRestauranteActivity" />
         <activity android:name=".restaurante.ui.EspecialidadeRestauranteActivity" />
-        <activity android:name=".restaurante.ui.InformacoesRestauranteActivity"></activity>
+        <activity android:name=".restaurante.ui.InformacoesRestauranteActivity" />
+        <activity android:name=".cliente.ui.HomeClienteActivity"></activity>
     </application>
 
 </manifest>

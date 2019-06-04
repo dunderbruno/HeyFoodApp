@@ -48,7 +48,7 @@ public class UsuarioDAO extends AbstractDAO {
 
     public Usuario getUsuario(String login, String senha) {
         Usuario result = getUsuario(login);
-        if (result != null && !senha.equals(result.getSenha())) {
+        if ((result != null) && !(senha.equals(result.getSenha()))) {
             result = null;
         }
         return result;
