@@ -60,6 +60,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/corBotaoLogin"
+            android:onClick="abrirTelaCadastroRestaurante"
             android:text="CADASTRAR RESTAURANTE"
             android:textColor="@android:color/background_light"
             app:layout_constraintBottom_toBottomOf="parent"
