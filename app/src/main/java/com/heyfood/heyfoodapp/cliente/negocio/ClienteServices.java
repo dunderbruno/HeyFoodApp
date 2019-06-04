@@ -62,5 +62,6 @@ public class ClienteServices {
     public void logout() {
         Sessao sessao = Sessao.instance;
         sessao.reset();
+        //TODO: volta pra loginActivity ?
     }
 }

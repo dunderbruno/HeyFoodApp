@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent novaTela = new Intent(this, MainActivity.class);
             startActivity(novaTela);
         }
-        catch(Exception e){
+        catch(Exception e){ // TODO: TRATAR ESPECIFICAMENTE
             Toast.makeText(this, "Usuário não cadastrado", Toast.LENGTH_LONG).show();
         }
 
