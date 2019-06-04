@@ -5,16 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.heyfood.heyfoodapp.usuario.persistencia.UsuarioDAO;
 import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
-import com.heyfood.heyfoodapp.contato.persistencia.ContatoDAO;
-import com.heyfood.heyfoodapp.endereco.persistencia.EnderecoDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
+import com.heyfood.heyfoodapp.contato.persistencia.ContatoDAO;
+import com.heyfood.heyfoodapp.endereco.persistencia.EnderecoDAO;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
-import com.heyfood.heyfoodapp.usuario.persistencia.UsuarioDAO;
-import com.heyfood.heyfoodapp.categoria.persistencia.PreferenciaDAO;
-
 
 /**
  * Created by GABRIEL.CABOCLO on 29/05/2019.
@@ -46,7 +44,6 @@ public class ClienteDAO extends AbstractDAO {
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_FK_USUARIO_CLIENTE, cliente.getUsuario().getId());
-        values.put(DBHelper.CAMPO_FK_PREFERENCIAS, cliente.getPreferencias().getId());
 
         long retorno = db.insert(DBHelper.TABELA_CLIENTE, null, values);
         super.close(db);
@@ -57,13 +54,10 @@ public class ClienteDAO extends AbstractDAO {
     private Cliente createCliente(Cursor cursor){
         Cliente result = new Cliente();
         UsuarioDAO usuarioDAO = new UsuarioDAO(context);
-        PreferenciaDAO preferenciaDAO = new PreferenciaDAO(context);
         int columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ID_CLIENTE);
         result.setId(Integer.parseInt(cursor.getString(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_USUARIO_CLIENTE);
         result.setUsuario(usuarioDAO.getUsuarioById(cursor.getInt(columnIndex)));
-        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_PREFERENCIAS);
-        result.setPreferencias(preferenciaDAO.getPreferencia(cursor.getInt(columnIndex)));  //TODO renomear o método para getPreferenciaById
 
         return result;
     }

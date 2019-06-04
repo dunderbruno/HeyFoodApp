@@ -1,5 +1,6 @@
 package com.heyfood.heyfoodapp.proprietario.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -8,7 +9,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
+import com.heyfood.heyfoodapp.contato.dominio.Contato;
+import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
+import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
+import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
+import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
+import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
 import com.heyfood.heyfoodapp.util.MaskEditUtil;
+import com.heyfood.heyfoodapp.proprietario.negocio.ProprietarioServices;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,6 +28,8 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
     private EditText senha;
     private EditText dataNascimento;
     private EditText cpf;
+
+    private final ProprietarioServices services = new ProprietarioServices(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +97,51 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
 
         }
     }
+
+    private Proprietario createProprietario(){
+        Proprietario proprietario = new Proprietario();
+        proprietario.setUsuario(createUsuario());
+        return proprietario;
+    }
+
+    private Pessoa createPessoa(){
+        Pessoa pessoa = new Pessoa();
+        pessoa.setContato(createContato());
+        pessoa.setEndereco(createEndereco());
+        pessoa.setNome(nome.getText().toString());
+        pessoa.setDataNAscimento(dataNascimento.getText().toString());
+        pessoa.setCpf(cpf.getText().toString());
+        return pessoa;
+    }
+
+    private Usuario createUsuario(){
+        Usuario usuario = new Usuario();
+        usuario.setPessoa(createPessoa());
+        usuario.setLogin(login.getText().toString());
+        usuario.setSenha(senha.getText().toString());
+        return usuario;
+    }
+
+    private Contato createContato(){
+        Contato contato = new Contato();
+        //contato.setTelefone(telefone.getText().toString());
+        //contato.setEmail(login.getText().toString());
+        //contato.setSite("");
+        return contato;
+    }
+
+    private Endereco createEndereco(){
+        Endereco endereco = new Endereco();
+        /*
+        endereco.setCep(cep.getText().toString());
+        endereco.setRua(rua.getText().toString());
+        endereco.setNumero(numero.getText().toString());
+        endereco.setBairro(bairro.getText().toString());
+        endereco.setCidade(cidade.getText().toString());
+        */
+        return endereco;
+    }
+
     private boolean validarCampos(){
         return
                 nome.getText().toString().length() != 0 &&
@@ -114,5 +169,26 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
             Toast.makeText(this, "CPF inválido.", Toast.LENGTH_LONG).show();
             return;
         }
+        Proprietario proprietario = createProprietario();
+
+        try{
+            services.cadastrar(proprietario);
+            Intent novaTela = new Intent(this, LoginActivity.class);
+            startActivity(novaTela);
+            Toast.makeText(this, "Cadastro realizado", Toast.LENGTH_LONG).show();
+        }
+        catch (NullPointerException exec) {
+            Toast.makeText(this, "Null Pointer Exception", Toast.LENGTH_LONG).show();
+        }
+        catch (ArrayIndexOutOfBoundsException exec) {
+            Toast.makeText(this, "Array Index Out of Bounds", Toast.LENGTH_LONG).show();
+        }
+        catch (RuntimeException exec) {
+            Toast.makeText(this, "Run Time Exception", Toast.LENGTH_LONG).show();
+        }
+        catch (Exception e){
+            Toast.makeText(this, "Este login já existe", Toast.LENGTH_LONG).show();
+        }
+
     }
 }
