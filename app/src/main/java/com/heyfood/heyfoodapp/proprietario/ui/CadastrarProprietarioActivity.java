@@ -107,7 +107,7 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
 
         try {
             Date date = format.parse(data);
-            // Se converter para o objeto para o tipo Date
+            // Se converter o objeto para o tipo Date
             // É porque a data está no formato correto
             return true;
         } catch (ParseException e) {
