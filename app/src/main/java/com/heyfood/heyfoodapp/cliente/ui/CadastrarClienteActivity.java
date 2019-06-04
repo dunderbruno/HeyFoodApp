@@ -122,17 +122,19 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         return false;
     }
 
-    private boolean validarData(){
+    private boolean validarData() {
         String data = dataNascimento.getText().toString();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        format.setLenient(false);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy"); // Formatar datas
+        format.setLenient(false); // Quando seta para "falso", datas incorretas não são aceitas
 
-        try{
+        try {
             Date date = format.parse(data);
+            // Se converter o objeto para o tipo Date
+            // É porque a data está no formato correto
             return true;
-        }
-        catch(ParseException e){
+        } catch (ParseException e) {
             return false;
+
         }
     }
 
