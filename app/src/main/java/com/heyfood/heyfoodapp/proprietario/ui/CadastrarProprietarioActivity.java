@@ -92,9 +92,10 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
 
     }
 
-    private boolean validarEmail() {
-        String email = login.getText().toString();
-        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+    private boolean validarEmail(){
+        String email = login.getText().toString(); // Transforma para String
+        // Verifica se tem '@' e '.com'
+        if(Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             return true;
         }
         return false;
