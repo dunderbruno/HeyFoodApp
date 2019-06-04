@@ -12,9 +12,9 @@ import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 import com.heyfood.heyfoodapp.cliente.ui.CadastrarClienteActivity;
 import com.heyfood.heyfoodapp.cliente.ui.HomeClienteActivity;
-import com.heyfood.heyfoodapp.infra.ui.MainProprietarioActivity;
 import com.heyfood.heyfoodapp.proprietario.negocio.ProprietarioServices;
 import com.heyfood.heyfoodapp.proprietario.ui.CadastrarProprietarioActivity;
+import com.heyfood.heyfoodapp.proprietario.ui.HomeProprietarioActivity;
 import com.heyfood.heyfoodapp.restaurante.ui.InformacoesRestauranteActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         try{
             if(switchEstado.isChecked()) {
                 proprietarioServices.login(login.getText().toString(), senha.getText().toString());
-                Intent novaTela = new Intent(this, MainProprietarioActivity.class);
+                Intent novaTela = new Intent(this, HomeProprietarioActivity.class);
                 startActivity(novaTela);
             }else{
                 clienteServices.login(login.getText().toString(), senha.getText().toString());
