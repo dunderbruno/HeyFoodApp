@@ -69,29 +69,45 @@ public class CadastrarClienteActivity extends AppCompatActivity {
 
     }
     private boolean validarCpf(){
+        // Verifica se o campo está preenchido com 14 digitos
+        //incluindo pontos e o ífem
         if (this.cpf.getText().toString().length()<14){
             return false;
         }
+        // Remove os pontos
         String campoCpf = this.cpf.getText().toString().replace(".", "");
+        // Remove o ífem
         campoCpf = campoCpf.replace("-","");
         //int cpf = Integer.parseInt(campoCpf);
         int soma = 0;
+        // VERIFICAÇÃO DO PENÚLTIMO DÍGITO
+        // Multiplica os digitos por 10, 9, 8,...,2
+        // Cada digito é multiplicado por um valor e cada resultudO é somado
         for (int i=10, j=0 ; i>1 ; i--, j++){
             soma += Integer.parseInt(campoCpf.substring(j, j+1)) * i;
         }
+        // Calcular o resto da divisão
+        // Se for igual a 10, o resto será 0
         if((soma*10)%11 == 10){
             soma = 0;
         }
+        // Verificar se o resto da divisão é igual ao penúltimo dígito
         if (!((soma*10)%11 == Integer.parseInt(campoCpf.substring(9,10)))){
             return false;
         }
         soma = 0;
+        // VERIFICAÇÃO DO ÚLTIMO DÍGITO
+        // Multiplica os digitos por 11, 10, 9,...,2
+        // Cada digito é multiplicado por um valor e cada resultudO é somado
         for (int i=11, j=0 ; i>1 ; i--, j++) {
             soma += Integer.parseInt(campoCpf.substring(j, j + 1)) * i;
         }
+        // Calcular o resto da divisão
+        // Se for igual a 10, o resto será 0
         if((soma*10)%11 == 10) {
             soma = 0;
         }
+        // Verificar se o resto da divisão é igual ao último dígito
         if (!((soma*10)%11 == Integer.parseInt(campoCpf.substring(10)))){
             return false;
         }
