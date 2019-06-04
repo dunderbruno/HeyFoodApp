@@ -110,8 +110,8 @@ public class DBHelper extends SQLiteOpenHelper {
         String sqlTbCliente =
                 "CREATE TABLE %1$s ( "  +
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "  %3$s TEXT NOT NULL " +
-                        "  %4$s TEXT NOT NULL " +
+                        "  %3$s TEXT NOT NULL, " +
+                        "  %4$s TEXT " +
                         ");";
         sqlTbCliente = String.format(sqlTbCliente,
                 TABELA_CLIENTE, CAMPO_ID_CLIENTE, CAMPO_FK_USUARIO_CLIENTE, CAMPO_FK_PREFERENCIAS);
@@ -186,7 +186,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %4$s TEXT NOT NULL, " +
                         "  %5$s TEXT NOT NULL, " +
                         "  %6$s TEXT NOT NULL, " +
-                        "  %7$s TEXT NOT NULL " +
+                        "  %7$s TEXT NOT NULL, " +
                         "  %8$s TEXT NOT NULL " +
                         ");";
         sqlTbRestaurante = String.format(sqlTbRestaurante,
@@ -200,7 +200,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "CREATE TABLE %1$s ( "  +
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "  %3$s TEXT NOT NULL, " +
-                        "  %4$s TEXT NOT NULL " +
+                        "  %4$s TEXT " +
                         ");";
         sqlTbProprietario = String.format(sqlTbProprietario,
                 TABELA_PROPRIETARIO, CAMPO_ID_PROPRIETARIO, CAMPO_FK_USUARIO_PROPRIETARIO, CAMPO_FK_RESTAURANTE);
@@ -213,8 +213,8 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "  %3$s INTEGER NOT NULL, " +
                         "  %4$s INTEGER NOT NULL, " +
-                        "  %5$s INTEGER NOT NULL " +
-                        "  %6$s INTEGER NOT NULL " +
+                        "  %5$s INTEGER NOT NULL, " +
+                        "  %6$s INTEGER NOT NULL, " +
                         "  %7$s INTEGER NOT NULL " +
                         ");";
         sqlTbEspecialidades = String.format(sqlTbEspecialidades,
@@ -228,8 +228,8 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "  %3$s INTEGER NOT NULL, " +
                         "  %4$s INTEGER NOT NULL, " +
-                        "  %5$s INTEGER NOT NULL " +
-                        "  %6$s INTEGER NOT NULL " +
+                        "  %5$s INTEGER NOT NULL, " +
+                        "  %6$s INTEGER NOT NULL, " +
                         "  %7$s INTEGER NOT NULL " +
                         ");";
         sqlTbPreferencias = String.format(sqlTbPreferencias,
