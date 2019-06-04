@@ -5,14 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.heyfood.heyfoodapp.usuario.persistencia.UsuarioDAO;
 import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
-import com.heyfood.heyfoodapp.contato.persistencia.ContatoDAO;
-import com.heyfood.heyfoodapp.endereco.persistencia.EnderecoDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
+import com.heyfood.heyfoodapp.contato.persistencia.ContatoDAO;
+import com.heyfood.heyfoodapp.endereco.persistencia.EnderecoDAO;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
-import com.heyfood.heyfoodapp.usuario.persistencia.UsuarioDAO;
 
 /**
  * Created by GABRIEL.CABOCLO on 29/05/2019.
