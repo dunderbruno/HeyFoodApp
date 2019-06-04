@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
+import com.heyfood.heyfoodapp.contato.dominio.Contato;
+import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
 import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
@@ -104,8 +106,8 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
 
     private Pessoa createPessoa(){
         Pessoa pessoa = new Pessoa();
-        //pessoa.setContato(createContato());
-        //pessoa.setEndereco(createEndereco());
+        pessoa.setContato(createContato());
+        pessoa.setEndereco(createEndereco());
         pessoa.setNome(nome.getText().toString());
         pessoa.setDataNAscimento(dataNascimento.getText().toString());
         pessoa.setCpf(cpf.getText().toString());
@@ -118,6 +120,26 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
         usuario.setLogin(login.getText().toString());
         usuario.setSenha(senha.getText().toString());
         return usuario;
+    }
+
+    private Contato createContato(){
+        Contato contato = new Contato();
+        //contato.setTelefone(telefone.getText().toString());
+        //contato.setEmail(login.getText().toString());
+        //contato.setSite("");
+        return contato;
+    }
+
+    private Endereco createEndereco(){
+        Endereco endereco = new Endereco();
+        /*
+        endereco.setCep(cep.getText().toString());
+        endereco.setRua(rua.getText().toString());
+        endereco.setNumero(numero.getText().toString());
+        endereco.setBairro(bairro.getText().toString());
+        endereco.setCidade(cidade.getText().toString());
+        */
+        return endereco;
     }
 
     private boolean validarCampos(){
@@ -148,13 +170,25 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
             return;
         }
         Proprietario proprietario = createProprietario();
+
         try{
             services.cadastrar(proprietario);
             Intent novaTela = new Intent(this, LoginActivity.class);
             startActivity(novaTela);
             Toast.makeText(this, "Cadastro realizado", Toast.LENGTH_LONG).show();
-        }catch (Exception e){
+        }
+        catch (NullPointerException exec) {
+            Toast.makeText(this, "Null Pointer Exception", Toast.LENGTH_LONG).show();
+        }
+        catch (ArrayIndexOutOfBoundsException exec) {
+            Toast.makeText(this, "Array Index Out of Bounds", Toast.LENGTH_LONG).show();
+        }
+        catch (RuntimeException exec) {
+            Toast.makeText(this, "Run Time Exception", Toast.LENGTH_LONG).show();
+        }
+        catch (Exception e){
             Toast.makeText(this, "Este login já existe", Toast.LENGTH_LONG).show();
         }
+
     }
 }
