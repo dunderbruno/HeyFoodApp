@@ -102,11 +102,13 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
 
     private boolean validarData() {
         String data = dataNascimento.getText().toString();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        format.setLenient(false);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy"); // Formatar datas
+        format.setLenient(false); // Quando seta para "falso", datas incorretas não são aceitas
 
         try {
             Date date = format.parse(data);
+            // Se converter para o objeto para o tipo Date
+            // É porque a data está no formato correto
             return true;
         } catch (ParseException e) {
             return false;
