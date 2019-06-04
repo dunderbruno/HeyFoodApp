@@ -53,7 +53,7 @@ public class ProprietarioDAO extends AbstractDAO {
         int columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ID_PROPRIETARIO);
         result.setId(Integer.parseInt(cursor.getString(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_USUARIO_PROPRIETARIO);
-        result.setUsuario(usuarioDAO.getUsuario(cursor.getString(columnIndex)));
+        result.setUsuario(usuarioDAO.getUsuarioById(cursor.getInt(columnIndex)));
         //columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_RESTAURANTE);
         //result.setRestaurante(restauranteDAO.getRestaurante(cursor.getInt(columnIndex)));
         return result;
