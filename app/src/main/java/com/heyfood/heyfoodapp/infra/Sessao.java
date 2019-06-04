@@ -33,7 +33,7 @@ public class Sessao {
     }
 
     public void setProprietario(Proprietario proprietario){
-        setValue("secao.Proprietario", proprietario);
+        setValue("sessao.Proprietario", proprietario);
     }
 
     public Proprietario getProprietario() {
