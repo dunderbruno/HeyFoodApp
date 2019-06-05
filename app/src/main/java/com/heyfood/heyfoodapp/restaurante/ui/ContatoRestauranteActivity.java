@@ -17,7 +17,7 @@ public class ContatoRestauranteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contato_restaurante);
 
-        telefone = findViewById(R.id.campoTelefoneId);
+        telefone = findViewById(R.id.campoNomeId);
         email = findViewById(R.id.campoEmailId);
         site = findViewById(R.id.campoSiteId);
 
