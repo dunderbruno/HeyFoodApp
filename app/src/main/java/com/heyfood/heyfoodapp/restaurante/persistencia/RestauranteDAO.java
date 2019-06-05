@@ -39,7 +39,9 @@ public class RestauranteDAO extends AbstractDAO{
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_NOME_RESTAURANTE, restaurante.getNome());
         values.put(DBHelper.CAMPO_CNPJ, restaurante.getCnpj());
-        values.put(DBHelper.CAMPO_NOTA_MEDIA, restaurante.getNotaMedia());
+        //values.put(DBHelper.CAMPO_NOTA_MEDIA, restaurante.getNotaMedia());
+        values.put(DBHelper.CAMPO_FK_ENDERECO_RESTAURANTE, restaurante.getEndereco().getId());
+        values.put(DBHelper.CAMPO_FK_CONTATO_RESTAURANTE, restaurante.getContato().getId());
 
         long retorno = db.insert(DBHelper.TABELA_RESTAURANTE, null, values);
         super.close(db);
@@ -57,8 +59,8 @@ public class RestauranteDAO extends AbstractDAO{
         result.setNome(cursor.getString(columnIndex));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_CNPJ);
         result.setCnpj(cursor.getString(columnIndex));
-        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_NOTA_MEDIA);
-        result.setNotaMedia(cursor.getFloat(columnIndex));
+        //columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_NOTA_MEDIA);
+        //result.setNotaMedia(cursor.getFloat(columnIndex));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_ENDERECO_RESTAURANTE);
         result.setEndereco(enderecoDAO.getEndereco(cursor.getInt(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_CONTATO_RESTAURANTE);

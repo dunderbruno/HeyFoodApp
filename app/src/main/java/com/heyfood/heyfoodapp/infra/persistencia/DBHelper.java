@@ -83,8 +83,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_ITALIANA_PREF = "italiana";
     public static final String CAMPO_FRANCESA_PREF = "francesa";
 
-
-
     private static final String[] TABELAS = {
             TABELA_CLIENTE, TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE, TABELA_PROPRIETARIO, TABELA_ESPECIALIDADES, TABELA_PREFERENCIAS
     };
@@ -184,10 +182,10 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "  %3$s TEXT NOT NULL, " +
                         "  %4$s TEXT NOT NULL, " +
-                        "  %5$s TEXT NOT NULL, " +
+                        "  %5$s TEXT, " +
                         "  %6$s TEXT NOT NULL, " +
                         "  %7$s TEXT NOT NULL, " +
-                        "  %8$s TEXT NOT NULL " +
+                        "  %8$s TEXT " +
                         ");";
         sqlTbRestaurante = String.format(sqlTbRestaurante,
                 TABELA_RESTAURANTE, CAMPO_ID_RESTAURANTE, CAMPO_NOME_RESTAURANTE, CAMPO_CNPJ, CAMPO_NOTA_MEDIA, CAMPO_FK_ENDERECO_RESTAURANTE, CAMPO_FK_CONTATO_RESTAURANTE, CAMPO_FK_ESPECIALIDADES);
