@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HeyFoodApp.iml" filepath="$PROJECT_DIR$/HeyFoodApp.iml" />
+      <module fileurl="file://C:\Users\andre.csassis\Desktop\HeyFoodApp\HeyFoodApp.iml" filepath="C:\Users\andre.csassis\Desktop\HeyFoodApp\HeyFoodApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\andre.csassis\Desktop\HeyFoodApp\app\app.iml" filepath="C:\Users\andre.csassis\Desktop\HeyFoodApp\app\app.iml" />
     </modules>
   </component>
 </project>
