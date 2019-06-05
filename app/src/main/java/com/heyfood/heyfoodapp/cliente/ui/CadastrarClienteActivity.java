@@ -13,14 +13,11 @@ import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 import com.heyfood.heyfoodapp.contato.dominio.Contato;
 import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
-import com.heyfood.heyfoodapp.usuario.negocio.UsuarioServices;
 import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
 import com.heyfood.heyfoodapp.util.MaskEditUtil;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 
-
-import org.json.JSONException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,12 +46,12 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_cliente);
 
         //Inicializando objetos dos componentes de Layout
-        nome = findViewById(R.id.textNomeId);
+        nome = findViewById(R.id.campoNomeId);
         login = findViewById(R.id.campoLoginId);
         senha = findViewById(R.id.campoSenhaId);
         dataNascimento = findViewById(R.id.campoDataId);
         cpf = findViewById(R.id.campoCpfId);
-        telefone = findViewById(R.id.campoTelefoneId);
+        telefone = findViewById(R.id.campoNomeId);
         cep = findViewById(R.id.campoCepId);
         rua = findViewById(R.id.campoRuaId);
         numero = findViewById(R.id.campoNumeroId);

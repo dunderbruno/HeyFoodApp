@@ -37,7 +37,7 @@
             app:layout_constraintTop_toTopOf="@+id/toolbar2" />
 
         <EditText
-            android:id="@+id/textNomeId"
+            android:id="@+id/campoNomeId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -79,7 +79,7 @@
             android:text="fulano@gmail.com"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textNomeId" />
+            app:layout_constraintTop_toBottomOf="@+id/campoNomeId" />
 
         <EditText
             android:id="@+id/campoDataId"
@@ -128,7 +128,7 @@
             app:layout_constraintTop_toBottomOf="@+id/campoCidadeId" />
 
         <EditText
-            android:id="@+id/campoTelefoneId"
+            android:id="@+id/campoNomeId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -153,9 +153,9 @@
             android:hint="CEP"
             android:inputType="number"
             android:text="52190-290"
-            app:layout_constraintEnd_toStartOf="@+id/botaoBuscarEndereco"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/campoTelefoneId" />
+            app:layout_constraintTop_toBottomOf="@+id/campoNomeId" />
 
         <EditText
             android:id="@+id/campoRuaId"
@@ -216,16 +216,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/campoNumeroId" />
-
-        <Button
-            android:id="@+id/botaoBuscarEndereco"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:elevation="0dp"
-            android:text="Buscar Endereço"
-            app:layout_constraintBottom_toBottomOf="@+id/campoCepId"
-            app:layout_constraintEnd_toEndOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 

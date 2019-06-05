@@ -36,7 +36,7 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_proprietario);
 
-        nome = findViewById(R.id.textNomeId);
+        nome = findViewById(R.id.campoNomeId);
         login = findViewById(R.id.campoLoginId);
         senha = findViewById(R.id.campoSenhaId);
         dataNascimento = findViewById(R.id.campoDataId);
