@@ -95,6 +95,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         return true;
 
     }
+
     private boolean validarEmail(){
         String email = login.getText().toString();
         if(Patterns.EMAIL_ADDRESS.matcher(email).matches()){

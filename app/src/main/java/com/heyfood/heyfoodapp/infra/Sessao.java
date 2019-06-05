@@ -56,7 +56,7 @@ public class Sessao {
         this.values.clear();
     }
 
-    public String getRestaurante(){ return (String) values.get("sessao.Restaurante");}
+    public Restaurante getRestaurante(){ return (Restaurante) values.get("sessao.Restaurante");}
 
     public void setRestaurante(Restaurante restaurante) { setValue("sessao.Restaurante", restaurante);}
 
