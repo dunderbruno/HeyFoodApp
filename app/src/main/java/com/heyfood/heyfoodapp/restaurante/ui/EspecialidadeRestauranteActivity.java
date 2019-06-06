@@ -33,9 +33,10 @@ public class EspecialidadeRestauranteActivity extends AppCompatActivity {
 
             Intent novaTela = new Intent(this, HomeProprietarioActivity.class);
             startActivity(novaTela);
+            Toast.makeText(this, "Restaurante cadastrado com sucesso", Toast.LENGTH_LONG).show();
         }
         catch (Exception e){
-            Toast.makeText(this, "Deu erro", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Erro ao cadastrar restaurante", Toast.LENGTH_LONG).show();
         }
 
     }
