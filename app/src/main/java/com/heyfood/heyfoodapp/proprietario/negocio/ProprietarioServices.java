@@ -44,6 +44,11 @@ public class ProprietarioServices {
             throw new Exception();
         }
         Proprietario proprietario = proprietarioDAO.getProprietario(usuario.getId());
+
+        if (proprietario == null) {
+            throw new Exception();
+        }
+
         Sessao.instance.setProprietario(proprietario);
     }
 

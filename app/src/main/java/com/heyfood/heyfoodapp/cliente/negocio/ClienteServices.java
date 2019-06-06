@@ -56,6 +56,9 @@ public class ClienteServices {
             throw new Exception();
         }
         Cliente cliente = clienteDAO.getCliente(usuario.getId());
+        if (cliente == null) {
+            throw new Exception();
+        }
         Sessao.instance.setCliente(cliente);
     }
 
