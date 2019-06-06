@@ -70,7 +70,6 @@ public class ContatoRestauranteActivity extends AppCompatActivity {
             return;
         }
         restaurante.setContato(createContato());
-        Sessao.instance.reset();
         Sessao.instance.setRestaurante(restaurante);
 
         Intent novaTela = new Intent(this, EspecialidadeRestauranteActivity.class);

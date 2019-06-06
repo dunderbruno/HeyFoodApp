@@ -46,6 +46,8 @@ public class ProprietarioDAO extends AbstractDAO {
         return (int) retorno;
     }
 
+
+
     private Proprietario createProprietario(Cursor cursor){
         Proprietario result = new Proprietario();
         UsuarioDAO usuarioDAO = new UsuarioDAO((context));

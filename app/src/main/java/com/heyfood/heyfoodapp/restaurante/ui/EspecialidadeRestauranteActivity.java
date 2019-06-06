@@ -12,6 +12,7 @@ import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.proprietario.ui.HomeProprietarioActivity;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.restaurante.negocio.RestauranteServices;
+import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
 
 public class EspecialidadeRestauranteActivity extends AppCompatActivity {
     Restaurante restaurante;
