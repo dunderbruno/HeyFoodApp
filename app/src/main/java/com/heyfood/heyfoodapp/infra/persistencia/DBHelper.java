@@ -231,15 +231,15 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %4$s INTEGER NOT NULL, " +
                         "  %5$s INTEGER NOT NULL, " +
                         "  %6$s INTEGER NOT NULL, " +
-                        "  %7$s INTEGER NOT NULL " +
-                        "  %8$s INTEGER NOT NULL " +
-                        "  %9$s INTEGER NOT NULL " +
-                        "  %10$s INTEGER NOT NULL " +
-                        "  %11$s INTEGER NOT NULL " +
-                        "  %12$s INTEGER NOT NULL " +
-                        "  %13$s INTEGER NOT NULL " +
-                        "  %14$s INTEGER NOT NULL " +
-                        "  %15$s INTEGER NOT NULL " +
+                        "  %7$s INTEGER NOT NULL, " +
+                        "  %8$s INTEGER NOT NULL, " +
+                        "  %9$s INTEGER NOT NULL, " +
+                        "  %10$s INTEGER NOT NULL, " +
+                        "  %11$s INTEGER NOT NULL, " +
+                        "  %12$s INTEGER NOT NULL, " +
+                        "  %13$s INTEGER NOT NULL, " +
+                        "  %14$s INTEGER NOT NULL, " +
+                        "  %15$s INTEGER NOT NULL, " +
                         "  %16$s INTEGER NOT NULL " +
                         ");";
         sqlTbEspecialidades = String.format(sqlTbEspecialidades,
@@ -257,15 +257,15 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %4$s INTEGER NOT NULL, " +
                         "  %5$s INTEGER NOT NULL, " +
                         "  %6$s INTEGER NOT NULL, " +
-                        "  %7$s INTEGER NOT NULL " +
-                        "  %8$s INTEGER NOT NULL " +
-                        "  %9$s INTEGER NOT NULL " +
-                        "  %10$s INTEGER NOT NULL " +
-                        "  %11$s INTEGER NOT NULL " +
-                        "  %12$s INTEGER NOT NULL " +
-                        "  %13$s INTEGER NOT NULL " +
-                        "  %14$s INTEGER NOT NULL " +
-                        "  %15$s INTEGER NOT NULL " +
+                        "  %7$s INTEGER NOT NULL, " +
+                        "  %8$s INTEGER NOT NULL, " +
+                        "  %9$s INTEGER NOT NULL, " +
+                        "  %10$s INTEGER NOT NULL, " +
+                        "  %11$s INTEGER NOT NULL, " +
+                        "  %12$s INTEGER NOT NULL, " +
+                        "  %13$s INTEGER NOT NULL, " +
+                        "  %14$s INTEGER NOT NULL, " +
+                        "  %15$s INTEGER NOT NULL, " +
                         "  %16$s INTEGER NOT NULL " +
                         ");";
         sqlTbPreferencias = String.format(sqlTbPreferencias,
