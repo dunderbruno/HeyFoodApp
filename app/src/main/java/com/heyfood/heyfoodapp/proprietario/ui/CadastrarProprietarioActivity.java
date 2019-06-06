@@ -72,6 +72,13 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
         if (!((soma*10)%11 == Integer.parseInt(campoCpf.substring(10)))){
             return false;
         }
+
+        if (campoCpf.equals("00000000000") || campoCpf.equals("11111111111") ||
+                campoCpf.equals("22222222222") || campoCpf.equals("33333333333") ||
+                campoCpf.equals("44444444444") || campoCpf.equals("55555555555") ||
+                campoCpf.equals("66666666666") || campoCpf.equals("77777777777") ||
+                campoCpf.equals("88888888888") || campoCpf.equals("99999999999")){
+            return false;}
         return true;
 
     }

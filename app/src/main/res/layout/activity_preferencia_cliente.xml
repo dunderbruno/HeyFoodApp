@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.heyfood.heyfoodapp.restaurante.ui.CadastrarRestauranteActivity">
+    tools:context="com.heyfood.heyfoodapp.cliente.ui.PreferenciaClienteActivity">
 
     <TextView
         android:id="@+id/textView4"
@@ -54,7 +54,7 @@
         android:layout_marginStart="24dp"
         android:text="Brasileira"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox23" />
+        app:layout_constraintTop_toBottomOf="@+id/aaaa" />
 
     <CheckBox
         android:id="@+id/checkBox14"
@@ -139,7 +139,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <CheckBox
-        android:id="@+id/checkBox23"
+        android:id="@+id/aaaa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
