@@ -34,18 +34,35 @@ public class EspecialidadeDAO extends AbstractDAO{
     public int cadastrar(Categoria categoria){
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(DBHelper.CAMPO_BRASILEIRA_ESP, categoria.getBrasileira());
-        values.put(DBHelper.CAMPO_MEXICANA_ESP, categoria.getMexicana());
-        values.put(DBHelper.CAMPO_JAPONESA_ESP, categoria.getJaponesa());
-        values.put(DBHelper.CAMPO_ITALIANA_ESP, categoria.getItaliana());
-        values.put(DBHelper.CAMPO_FRANCESA_ESP, categoria.getFrancesa());
+        values.put(DBHelper.CAMPO_ACAI_ESP, booleanToInt(categoria.getAcai()));
+        values.put(DBHelper.CAMPO_BRASILEIRA_ESP, booleanToInt(categoria.getBrasileira()));
+        values.put(DBHelper.CAMPO_CARNES_ESP, booleanToInt(categoria.getCarnes()));
+        values.put(DBHelper.CAMPO_CONTEMPORANEA_ESP, booleanToInt(categoria.getContemporanea()));
+        values.put(DBHelper.CAMPO_ITALIANA_ESP, booleanToInt(categoria.getItaliana()));
+        values.put(DBHelper.CAMPO_JAPONESA_ESP, booleanToInt(categoria.getJaponesa()));
+        values.put(DBHelper.CAMPO_LANCHES_ESP, booleanToInt(categoria.getLanches()));
+        values.put(DBHelper.CAMPO_MARMITA_ESP, booleanToInt(categoria.getMarmita()));
+        values.put(DBHelper.CAMPO_PIZZA_ESP, booleanToInt(categoria.getPizza()));
+        values.put(DBHelper.CAMPO_SAUDAVEL_ESP, booleanToInt(categoria.getSaudavel()));
+        values.put(DBHelper.CAMPO_ALACARTE_ESP, booleanToInt(categoria.getAlacarte()));
+        values.put(DBHelper.CAMPO_RODIZIO_ESP, booleanToInt(categoria.getRodizio()));
+        values.put(DBHelper.CAMPO_DELIVERY_ESP, booleanToInt(categoria.getDelivery()));
+        values.put(DBHelper.CAMPO_SELFSERVICE_ESP, booleanToInt(categoria.getSelfservice()));
 
         long retorno = db.insert(DBHelper.TABELA_ESPECIALIDADES, null, values);
         super.close(db);
         return (int) retorno;
     }
 
-    private Boolean convert(int valor){
+    private int booleanToInt(boolean valor){
+        if (valor == true){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    private Boolean intToBoolean(int valor){
         if (valor == 1){
             return true;
         }else{
@@ -57,21 +74,34 @@ public class EspecialidadeDAO extends AbstractDAO{
         Categoria result = new Categoria();
         int columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ID_ESPECIALIDADES);
         result.setId(Integer.parseInt(cursor.getString(columnIndex)));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ACAI_ESP);
+        result.setAcai(intToBoolean(columnIndex));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_BRASILEIRA_ESP);
-        columnIndex = Integer.parseInt(cursor.getString(columnIndex));
-        result.setBrasileira(convert(columnIndex));
-        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_MEXICANA_ESP);
-        columnIndex = Integer.parseInt(cursor.getString(columnIndex));
-        result.setMexicana(convert(columnIndex));
-        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_JAPONESA_ESP);
-        columnIndex = Integer.parseInt(cursor.getString(columnIndex));
-        result.setJaponesa(convert(columnIndex));
+        result.setBrasileira(intToBoolean(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_CARNES_ESP);
+        result.setCarnes(intToBoolean(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_CONTEMPORANEA_ESP);
+        result.setContemporanea(intToBoolean(columnIndex));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ITALIANA_ESP);
-        columnIndex = Integer.parseInt(cursor.getString(columnIndex));
-        result.setItaliana(convert(columnIndex));
-        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FRANCESA_ESP);
-        columnIndex = Integer.parseInt(cursor.getString(columnIndex));
-        result.setFrancesa(convert(columnIndex));
+        result.setItaliana(intToBoolean(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_JAPONESA_ESP);
+        result.setJaponesa(intToBoolean(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_LANCHES_ESP);
+        result.setLanches(intToBoolean(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_MARMITA_ESP);
+        result.setMarmita(intToBoolean(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_PIZZA_ESP);
+        result.setSaudavel(intToBoolean(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_SAUDAVEL_ESP);
+        result.setSaudavel(intToBoolean(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ALACARTE_ESP);
+        result.setAlacarte(intToBoolean(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_RODIZIO_ESP);
+        result.setRodizio(intToBoolean(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_DELIVERY_ESP);
+        result.setDelivery(intToBoolean(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_SELFSERVICE_ESP);
+        result.setSelfservice(intToBoolean(columnIndex));
         return result;
     }
 }

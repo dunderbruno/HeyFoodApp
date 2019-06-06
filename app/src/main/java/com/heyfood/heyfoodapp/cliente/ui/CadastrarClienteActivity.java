@@ -13,14 +13,11 @@ import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 import com.heyfood.heyfoodapp.contato.dominio.Contato;
 import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
-import com.heyfood.heyfoodapp.usuario.negocio.UsuarioServices;
 import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
 import com.heyfood.heyfoodapp.util.MaskEditUtil;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 
-
-import org.json.JSONException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,12 +46,12 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_cliente);
 
         //Inicializando objetos dos componentes de Layout
-        nome = findViewById(R.id.textNomeId);
+        nome = findViewById(R.id.campoNomeId);
         login = findViewById(R.id.campoLoginId);
         senha = findViewById(R.id.campoSenhaId);
         dataNascimento = findViewById(R.id.campoDataId);
         cpf = findViewById(R.id.campoCpfId);
-        telefone = findViewById(R.id.campoTelefoneId);
+        telefone = findViewById(R.id.campoNomeId);
         cep = findViewById(R.id.campoCepId);
         rua = findViewById(R.id.campoRuaId);
         numero = findViewById(R.id.campoNumeroId);
@@ -111,9 +108,16 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         if (!((soma*10)%11 == Integer.parseInt(campoCpf.substring(10)))){
             return false;
         }
+        if (campoCpf.equals("00000000000") || campoCpf.equals("11111111111") ||
+                campoCpf.equals("22222222222") || campoCpf.equals("33333333333") ||
+                campoCpf.equals("44444444444") || campoCpf.equals("55555555555") ||
+                campoCpf.equals("66666666666") || campoCpf.equals("77777777777") ||
+                campoCpf.equals("88888888888") || campoCpf.equals("99999999999")){
+            return false;}
         return true;
 
     }
+
     private boolean validarEmail(){
         String email = login.getText().toString(); // Transforma para String
         // Verifica se tem '@' e '.com'

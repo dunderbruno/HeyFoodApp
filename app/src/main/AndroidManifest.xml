@@ -26,7 +26,8 @@
         <activity android:name=".restaurante.ui.EspecialidadeRestauranteActivity" />
         <activity android:name=".restaurante.ui.InformacoesRestauranteActivity" />
         <activity android:name=".cliente.ui.HomeClienteActivity" />
-        <activity android:name=".proprietario.ui.HomeProprietarioActivity"></activity>
+        <activity android:name=".proprietario.ui.HomeProprietarioActivity" />
+        <activity android:name=".restaurante.ui.ContatoRestauranteActivity"></activity>
     </application>
 
 </manifest>

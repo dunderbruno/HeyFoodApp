@@ -10,7 +10,10 @@ import android.widget.Toast;
 import java.util.InputMismatchException;
 
 import com.heyfood.heyfoodapp.R;
-import com.heyfood.heyfoodapp.proprietario.ui.CadastrarProprietarioActivity;
+import com.heyfood.heyfoodapp.contato.dominio.Contato;
+import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
+import com.heyfood.heyfoodapp.infra.Sessao;
+import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.util.MaskEditUtil;
 
 public class CadastrarRestauranteActivity extends AppCompatActivity {
@@ -29,7 +32,7 @@ public class CadastrarRestauranteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_restaurante);
 
         cnpj = findViewById(R.id.campoCnpjId);
-        nome = findViewById(R.id.textNomeId);
+        nome = findViewById(R.id.campoNomeId);
         cep = findViewById(R.id.campoCepId);
         rua = findViewById(R.id.campoRuaId);
         numero = findViewById(R.id.campoNumeroId);
@@ -107,6 +110,26 @@ public class CadastrarRestauranteActivity extends AppCompatActivity {
                 CNPJ.substring(5, 8) + "." + CNPJ.substring(8, 12) + "-" +
                 CNPJ.substring(12, 14));
     }
+
+    private Endereco createEndereco(){
+        Endereco endereco = new Endereco();
+        endereco.setCep(cep.getText().toString());
+        endereco.setRua(rua.getText().toString());
+        endereco.setBairro(bairro.getText().toString());
+        endereco.setCidade(cidade.getText().toString());
+        endereco.setNumero(numero.getText().toString());
+
+        return endereco;
+    }
+
+    private Restaurante createRestaurante(){
+        Restaurante restaurante = new Restaurante();
+        restaurante.setEndereco(createEndereco());
+        restaurante.setNome(nome.getText().toString());
+        restaurante.setCnpj(cnpj.getText().toString());
+
+        return restaurante;
+    }
     private boolean validarCampos() {
         return
                 nome.getText().toString().length() != 0 &&
@@ -126,9 +149,9 @@ public class CadastrarRestauranteActivity extends AppCompatActivity {
             return;
         }
 
+        Sessao.instance.setRestaurante(createRestaurante());
 
-        //### OBS Falta salvar os dados(sessão) para continuar p/ proxima tela ###
-        Intent novaTela = new Intent(this, EspecialidadeRestauranteActivity.class);
+        Intent novaTela = new Intent(this, ContatoRestauranteActivity.class);
         startActivity(novaTela);
 
 

@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                 Intent novaTela = new Intent(this, HomeProprietarioActivity.class);
                 startActivity(novaTela);
             }else{
+
                 clienteServices.login(login.getText().toString(), senha.getText().toString());
                 Intent novaTela = new Intent(this, HomeClienteActivity.class);
                 startActivity(novaTela);

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 
 import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
+import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 
 import java.text.SimpleDateFormat;
@@ -54,5 +55,9 @@ public class Sessao {
     public void reset() {
         this.values.clear();
     }
+
+    public Restaurante getRestaurante(){ return (Restaurante) values.get("sessao.Restaurante");}
+
+    public void setRestaurante(Restaurante restaurante) { setValue("sessao.Restaurante", restaurante);}
 
 }
