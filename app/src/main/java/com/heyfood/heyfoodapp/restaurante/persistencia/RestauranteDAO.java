@@ -10,6 +10,7 @@ import com.heyfood.heyfoodapp.endereco.persistencia.EnderecoDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
+import com.heyfood.heyfoodapp.proprietario.persistencia.ProprietarioDAO;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 
 public class RestauranteDAO extends AbstractDAO{
@@ -44,6 +45,10 @@ public class RestauranteDAO extends AbstractDAO{
         values.put(DBHelper.CAMPO_FK_CONTATO_RESTAURANTE, restaurante.getContato().getId());
 
         long retorno = db.insert(DBHelper.TABELA_RESTAURANTE, null, values);
+
+        ProprietarioDAO proprietarioDAO = new ProprietarioDAO(context);
+        proprietarioDAO.setRestaurante(retorno);
+
         super.close(db);
 
         return (int) retorno;

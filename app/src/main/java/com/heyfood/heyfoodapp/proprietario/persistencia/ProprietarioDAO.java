@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 
+import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.usuario.persistencia.UsuarioDAO;
 import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
 import com.heyfood.heyfoodapp.restaurante.persistencia.RestauranteDAO;
@@ -46,7 +47,20 @@ public class ProprietarioDAO extends AbstractDAO {
         return (int) retorno;
     }
 
+    public void setRestaurante(long idRestaurante){
+        db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.CAMPO_FK_RESTAURANTE, idRestaurante);
 
+        //String idProprietario = Integer.toString(Sessao.instance.getProprietario().getId());
+        String[] idProprietario = new String[]{Integer.toString(Sessao.instance.getProprietario().getId())};
+
+        //String sql = "SELECT * FROM " + DBHelper.TABELA_PROPRIETARIO + " WHERE " + DBHelper.CAMPO_FK_USUARIO_PROPRIETARIO + " LIKE ?;";
+        //Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(fk_usuario)});
+
+        db.update(DBHelper.TABELA_PROPRIETARIO, values, DBHelper.CAMPO_ID_PROPRIETARIO+"=?", idProprietario);
+        super.close();
+    }
 
     private Proprietario createProprietario(Cursor cursor){
         Proprietario result = new Proprietario();

@@ -67,21 +67,39 @@ public class DBHelper extends SQLiteOpenHelper {
     //Tabela Especialidades
     public static final String TABELA_ESPECIALIDADES = "tb_especialidades";
     public static final String CAMPO_ID_ESPECIALIDADES = "id";
+    public static final String CAMPO_ACAI_ESP = "acai";
     public static final String CAMPO_BRASILEIRA_ESP = "brasileira";
-    public static final String CAMPO_MEXICANA_ESP = "mexicana";
-    public static final String CAMPO_JAPONESA_ESP = "japonesa";
+    public static final String CAMPO_CARNES_ESP = "carnes";
+    public static final String CAMPO_CONTEMPORANEA_ESP = "contemporanea";
     public static final String CAMPO_ITALIANA_ESP = "italiana";
-    public static final String CAMPO_FRANCESA_ESP = "francesa";
+    public static final String CAMPO_JAPONESA_ESP = "japonesa";
+    public static final String CAMPO_LANCHES_ESP = "lanches";
+    public static final String CAMPO_MARMITA_ESP = "marmita";
+    public static final String CAMPO_PIZZA_ESP = "pizza";
+    public static final String CAMPO_SAUDAVEL_ESP = "saudavel";
+    public static final String CAMPO_ALACARTE_ESP = "alacarte";
+    public static final String CAMPO_RODIZIO_ESP = "rodizio";
+    public static final String CAMPO_DELIVERY_ESP = "delivery";
+    public static final String CAMPO_SELFSERVICE_ESP = "selfservice";
 
 
     //Tabela Preferências
-    public static final String TABELA_PREFERENCIAS = "tb_preferencias";
+    public static final String TABELA_PREFERENCIAS = "tb_especialidades";
     public static final String CAMPO_ID_PREFERENCIAS = "id";
+    public static final String CAMPO_ACAI_PREF = "acai";
     public static final String CAMPO_BRASILEIRA_PREF = "brasileira";
-    public static final String CAMPO_MEXICANA_PREF = "mexicana";
-    public static final String CAMPO_JAPONESA_PREF = "japonesa";
+    public static final String CAMPO_CARNES_PREF = "carnes";
+    public static final String CAMPO_CONTEMPORANEA_PREF = "contemporanea";
     public static final String CAMPO_ITALIANA_PREF = "italiana";
-    public static final String CAMPO_FRANCESA_PREF = "francesa";
+    public static final String CAMPO_JAPONESA_PREF = "japonesa";
+    public static final String CAMPO_LANCHES_PREF = "lanches";
+    public static final String CAMPO_MARMITA_PREF = "marmita";
+    public static final String CAMPO_PIZZA_PREF = "pizza";
+    public static final String CAMPO_SAUDAVEL_PREF = "saudavel";
+    public static final String CAMPO_ALACARTE_PREF = "alacarte";
+    public static final String CAMPO_RODIZIO_PREF = "rodizio";
+    public static final String CAMPO_DELIVERY_PREF = "delivery";
+    public static final String CAMPO_SELFSERVICE_PREF = "selfservice";
 
     private static final String[] TABELAS = {
             TABELA_CLIENTE, TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE, TABELA_PROPRIETARIO, TABELA_ESPECIALIDADES, TABELA_PREFERENCIAS
@@ -214,9 +232,20 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %5$s INTEGER NOT NULL, " +
                         "  %6$s INTEGER NOT NULL, " +
                         "  %7$s INTEGER NOT NULL " +
+                        "  %8$s INTEGER NOT NULL " +
+                        "  %9$s INTEGER NOT NULL " +
+                        "  %10$s INTEGER NOT NULL " +
+                        "  %11$s INTEGER NOT NULL " +
+                        "  %12$s INTEGER NOT NULL " +
+                        "  %13$s INTEGER NOT NULL " +
+                        "  %14$s INTEGER NOT NULL " +
+                        "  %15$s INTEGER NOT NULL " +
+                        "  %16$s INTEGER NOT NULL " +
                         ");";
         sqlTbEspecialidades = String.format(sqlTbEspecialidades,
-                TABELA_ESPECIALIDADES, CAMPO_ID_ESPECIALIDADES, CAMPO_BRASILEIRA_ESP, CAMPO_MEXICANA_ESP, CAMPO_JAPONESA_ESP, CAMPO_ITALIANA_ESP, CAMPO_FRANCESA_ESP);
+                TABELA_ESPECIALIDADES, CAMPO_ID_ESPECIALIDADES, CAMPO_ACAI_ESP, CAMPO_BRASILEIRA_ESP, CAMPO_CARNES_ESP,
+                CAMPO_CONTEMPORANEA_ESP, CAMPO_ITALIANA_ESP, CAMPO_JAPONESA_ESP, CAMPO_LANCHES_ESP, CAMPO_MARMITA_ESP,
+                CAMPO_PIZZA_ESP, CAMPO_SAUDAVEL_ESP, CAMPO_ALACARTE_ESP, CAMPO_RODIZIO_ESP, CAMPO_DELIVERY_ESP, CAMPO_SELFSERVICE_ESP);
         db.execSQL(sqlTbEspecialidades);
     }
 
@@ -229,9 +258,20 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %5$s INTEGER NOT NULL, " +
                         "  %6$s INTEGER NOT NULL, " +
                         "  %7$s INTEGER NOT NULL " +
+                        "  %8$s INTEGER NOT NULL " +
+                        "  %9$s INTEGER NOT NULL " +
+                        "  %10$s INTEGER NOT NULL " +
+                        "  %11$s INTEGER NOT NULL " +
+                        "  %12$s INTEGER NOT NULL " +
+                        "  %13$s INTEGER NOT NULL " +
+                        "  %14$s INTEGER NOT NULL " +
+                        "  %15$s INTEGER NOT NULL " +
+                        "  %16$s INTEGER NOT NULL " +
                         ");";
         sqlTbPreferencias = String.format(sqlTbPreferencias,
-                TABELA_PREFERENCIAS, CAMPO_ID_PREFERENCIAS, CAMPO_BRASILEIRA_PREF, CAMPO_MEXICANA_PREF, CAMPO_JAPONESA_PREF, CAMPO_ITALIANA_PREF, CAMPO_FRANCESA_PREF);
+                TABELA_PREFERENCIAS, CAMPO_ID_PREFERENCIAS, CAMPO_ACAI_PREF, CAMPO_BRASILEIRA_PREF, CAMPO_CARNES_PREF,
+                CAMPO_CONTEMPORANEA_PREF, CAMPO_ITALIANA_PREF, CAMPO_JAPONESA_PREF, CAMPO_LANCHES_PREF, CAMPO_MARMITA_PREF,
+                CAMPO_PIZZA_PREF, CAMPO_SAUDAVEL_PREF, CAMPO_ALACARTE_PREF, CAMPO_RODIZIO_PREF, CAMPO_DELIVERY_PREF, CAMPO_SELFSERVICE_PREF);
         db.execSQL(sqlTbPreferencias);
     }
 

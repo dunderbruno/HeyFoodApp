@@ -73,88 +73,88 @@
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <CheckBox
-            android:id="@+id/checkBox13"
+            android:id="@+id/restauranteBrasileiraId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:text="Brasileira"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/aaaa" />
+            app:layout_constraintTop_toBottomOf="@+id/restauranteAcaiId" />
 
         <CheckBox
-            android:id="@+id/checkBox14"
+            android:id="@+id/restauranteSaudavelId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:text="Saudável"
             app:layout_constraintEnd_toEndOf="@+id/barrier"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox21" />
+            app:layout_constraintTop_toBottomOf="@+id/restaurantePizzaId" />
 
         <CheckBox
-            android:id="@+id/checkBox15"
+            android:id="@+id/restauranteMarmitaId"
             android:layout_width="130dp"
             android:layout_height="28dp"
             android:text="Marmita"
             app:layout_constraintEnd_toEndOf="@+id/barrier"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox16" />
+            app:layout_constraintTop_toBottomOf="@+id/restauranteLanchesId" />
 
         <CheckBox
-            android:id="@+id/checkBox16"
+            android:id="@+id/restauranteLanchesId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:text="Lanches"
             app:layout_constraintEnd_toEndOf="@+id/barrier"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox22" />
+            app:layout_constraintTop_toBottomOf="@+id/restauranteJaponesaId" />
 
         <CheckBox
-            android:id="@+id/checkBox17"
+            android:id="@+id/restauranteChinesaId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:text="Chinesa"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox18" />
+            app:layout_constraintTop_toBottomOf="@+id/restauranteCarnesId" />
 
         <CheckBox
-            android:id="@+id/checkBox18"
+            android:id="@+id/restauranteCarnesId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:text="Carnes"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox13" />
+            app:layout_constraintTop_toBottomOf="@+id/restauranteBrasileiraId" />
 
         <CheckBox
-            android:id="@+id/checkBox19"
+            android:id="@+id/restauranteItalianaId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:text="Italiana"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox20" />
+            app:layout_constraintTop_toBottomOf="@+id/restauranteConteporanea" />
 
         <CheckBox
-            android:id="@+id/checkBox20"
+            android:id="@+id/restauranteConteporanea"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:text="Conteporânea"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox17" />
+            app:layout_constraintTop_toBottomOf="@+id/restauranteChinesaId" />
 
         <CheckBox
-            android:id="@+id/checkBox21"
+            android:id="@+id/restaurantePizzaId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:text="Pizza"
             app:layout_constraintEnd_toEndOf="@+id/barrier"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox15" />
+            app:layout_constraintTop_toBottomOf="@+id/restauranteMarmitaId" />
 
         <CheckBox
-            android:id="@+id/checkBox22"
+            android:id="@+id/restauranteJaponesaId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -164,7 +164,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <CheckBox
-            android:id="@+id/aaaa"
+            android:id="@+id/restauranteAcaiId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -190,10 +190,10 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox19" />
+            app:layout_constraintTop_toBottomOf="@+id/restauranteItalianaId" />
 
         <CheckBox
-            android:id="@+id/checkBox28"
+            android:id="@+id/restauranteAlacarteId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -203,16 +203,16 @@
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <CheckBox
-            android:id="@+id/checkBox29"
+            android:id="@+id/restauranteRodizioId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:text="Rodízio"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox28" />
+            app:layout_constraintTop_toBottomOf="@+id/restauranteAlacarteId" />
 
         <CheckBox
-            android:id="@+id/checkBox30"
+            android:id="@+id/restauranteSelfserviceId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -222,13 +222,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <CheckBox
-            android:id="@+id/checkBox8"
+            android:id="@+id/restauranteDeliveryId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:text="Delivery"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox30" />
+            app:layout_constraintTop_toBottomOf="@+id/restauranteSelfserviceId" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline2"
