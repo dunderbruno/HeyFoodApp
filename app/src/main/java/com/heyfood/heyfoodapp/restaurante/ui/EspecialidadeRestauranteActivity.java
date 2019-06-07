@@ -171,15 +171,6 @@ public class EspecialidadeRestauranteActivity extends AppCompatActivity {
             startActivity(novaTela);
             Toast.makeText(this, "Restaurante cadastrado com sucesso", Toast.LENGTH_LONG).show();
         }
-        catch (NullPointerException exec) {
-            Toast.makeText(this, "Null Pointer Exception", Toast.LENGTH_LONG).show();
-        }
-        catch (ArrayIndexOutOfBoundsException exec) {
-            Toast.makeText(this, "Array Index Out of Bounds", Toast.LENGTH_LONG).show();
-        }
-        catch (RuntimeException exec) {
-            Toast.makeText(this, "Run Time Exception", Toast.LENGTH_LONG).show();
-        }
         catch (Exception e){
             Toast.makeText(this, "Erro ao cadastrar restaurante", Toast.LENGTH_LONG).show();
         }

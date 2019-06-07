@@ -229,15 +229,6 @@ public class CadastrarClienteActivity extends AppCompatActivity {
             startActivity(novaTela);
             Toast.makeText(this, "Cadastro realizado", Toast.LENGTH_LONG).show();
         }
-        catch (NullPointerException exec) {
-            Toast.makeText(this, "Null Pointer Exception", Toast.LENGTH_LONG).show();
-        }
-        catch (ArrayIndexOutOfBoundsException exec) {
-            Toast.makeText(this, "Array Index Out of Bounds", Toast.LENGTH_LONG).show();
-        }
-        catch (RuntimeException exec) {
-            Toast.makeText(this, "Run Time Exception", Toast.LENGTH_LONG).show();
-        }
         catch (Exception e){
             Toast.makeText(this, "Este login já existe", Toast.LENGTH_LONG).show();
         }

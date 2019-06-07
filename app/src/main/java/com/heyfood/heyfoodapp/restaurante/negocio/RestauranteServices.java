@@ -26,11 +26,7 @@ public class RestauranteServices {
     }
 
     public void cadastrar(Restaurante restaurante) {
-        /* Validação se já existe pelo cnpj
-        if (usuarioDAO.getUsuario(cliente.getUsuario().getLogin()) != null) {
-            throw new Exception();
-        }
-        */
+
         int idContato = contatoDAO.cadastrar(restaurante.getContato());
         restaurante.getContato().setId(idContato);
 
