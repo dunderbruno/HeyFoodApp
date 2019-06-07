@@ -47,8 +47,7 @@ public class ContatoRestauranteActivity extends AppCompatActivity {
     private boolean validarCampos(){
         return
                 telefone.getText().toString().length() != 0 &&
-                        email.getText().toString().length() != 0 &&
-                        site.getText().toString().length() != 0;
+                        email.getText().toString().length() != 0;
 
     }
 

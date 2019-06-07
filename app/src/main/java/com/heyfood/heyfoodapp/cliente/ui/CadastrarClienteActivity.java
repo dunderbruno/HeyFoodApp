@@ -51,7 +51,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         senha = findViewById(R.id.campoSenhaId);
         dataNascimento = findViewById(R.id.campoDataId);
         cpf = findViewById(R.id.campoCpfId);
-        telefone = findViewById(R.id.campoNomeId);
+        telefone = findViewById(R.id.campoTelefoneId);
         cep = findViewById(R.id.campoCepId);
         rua = findViewById(R.id.campoRuaId);
         numero = findViewById(R.id.campoNumeroId);
@@ -189,11 +189,19 @@ public class CadastrarClienteActivity extends AppCompatActivity {
 
     private boolean validarCampos(){
         return
-                nome.getText().toString().length() != 0 &&
-        login.getText().toString().length() != 0 &&
-        senha.getText().toString().length() != 0 &&
-        dataNascimento.getText().toString().length() != 0 &&
-        cpf.getText().toString().length() !=0;
+            nome.getText().toString().length() != 0 &&
+            login.getText().toString().length() != 0 &&
+            senha.getText().toString().length() != 0 &&
+            dataNascimento.getText().toString().length() != 0 &&
+            cpf.getText().toString().length() !=0 &&
+            telefone.getText().toString().length() != 0 &&
+            cep.getText().toString().length() != 0 &&
+            rua.getText().toString().length() != 0 &&
+            numero.getText().toString().length() != 0 &&
+            bairro.getText().toString().length() != 0 &&
+            cidade.getText().toString().length() != 0;
+
+
 
     }
 

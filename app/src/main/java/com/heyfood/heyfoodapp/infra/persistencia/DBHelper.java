@@ -84,7 +84,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     //Tabela Preferências
-    public static final String TABELA_PREFERENCIAS = "tb_especialidades";
+    public static final String TABELA_PREFERENCIAS = "tb_preferencias";
     public static final String CAMPO_ID_PREFERENCIAS = "id";
     public static final String CAMPO_ACAI_PREF = "acai";
     public static final String CAMPO_BRASILEIRA_PREF = "brasileira";

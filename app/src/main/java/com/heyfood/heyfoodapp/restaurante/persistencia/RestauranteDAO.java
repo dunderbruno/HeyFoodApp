@@ -43,6 +43,7 @@ public class RestauranteDAO extends AbstractDAO{
         //values.put(DBHelper.CAMPO_NOTA_MEDIA, restaurante.getNotaMedia());
         values.put(DBHelper.CAMPO_FK_ENDERECO_RESTAURANTE, restaurante.getEndereco().getId());
         values.put(DBHelper.CAMPO_FK_CONTATO_RESTAURANTE, restaurante.getContato().getId());
+        values.put(DBHelper.CAMPO_FK_ESPECIALIDADES, restaurante.getEspecialidades().getId());
 
         long retorno = db.insert(DBHelper.TABELA_RESTAURANTE, null, values);
 
