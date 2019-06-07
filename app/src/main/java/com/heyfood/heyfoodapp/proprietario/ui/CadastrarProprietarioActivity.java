@@ -28,6 +28,12 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
     private EditText senha;
     private EditText dataNascimento;
     private EditText cpf;
+    private EditText telefone;
+    private EditText cep;
+    private EditText rua;
+    private EditText numero;
+    private EditText bairro;
+    private EditText cidade;
 
     private final ProprietarioServices services = new ProprietarioServices(this);
 
@@ -41,9 +47,17 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
         senha = findViewById(R.id.campoSenhaId);
         dataNascimento = findViewById(R.id.campoDataId);
         cpf = findViewById(R.id.campoCpfId);
+        telefone = findViewById(R.id.campoTelefoneId);
+        cep = findViewById(R.id.campoCepId);
+        rua = findViewById(R.id.campoRuaId);
+        numero = findViewById(R.id.campoNumeroId);
+        bairro = findViewById(R.id.campoBairroId);
+        cidade = findViewById(R.id.campoCidadeId);
 
         dataNascimento.addTextChangedListener(MaskEditUtil.mask(dataNascimento, MaskEditUtil.FORMAT_DATE));
         cpf.addTextChangedListener(MaskEditUtil.mask(cpf, MaskEditUtil.FORMAT_CPF));
+        telefone.addTextChangedListener(MaskEditUtil.mask(telefone, MaskEditUtil.FORMAT_FONE));
+        cep.addTextChangedListener(MaskEditUtil.mask(cep, MaskEditUtil.FORMAT_CEP));
     }
     private boolean validarCpf(){
         // Verifica se o campo está preenchido com 14 digitos
@@ -150,31 +164,35 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
 
     private Contato createContato(){
         Contato contato = new Contato();
-        //contato.setTelefone(telefone.getText().toString());
-        //contato.setEmail(login.getText().toString());
-        //contato.setSite("");
+        contato.setTelefone(telefone.getText().toString());
+        contato.setEmail(login.getText().toString());
+        contato.setSite("");
         return contato;
     }
 
     private Endereco createEndereco(){
         Endereco endereco = new Endereco();
-        /*
         endereco.setCep(cep.getText().toString());
         endereco.setRua(rua.getText().toString());
         endereco.setNumero(numero.getText().toString());
         endereco.setBairro(bairro.getText().toString());
         endereco.setCidade(cidade.getText().toString());
-        */
         return endereco;
     }
 
     private boolean validarCampos(){
         return
-                nome.getText().toString().length() != 0 &&
-                        login.getText().toString().length() != 0 &&
-                        senha.getText().toString().length() != 0 &&
-                        dataNascimento.getText().toString().length() != 0 &&
-                        cpf.getText().toString().length() !=0;
+            nome.getText().toString().length() != 0 &&
+            login.getText().toString().length() != 0 &&
+            senha.getText().toString().length() != 0 &&
+            dataNascimento.getText().toString().length() != 0 &&
+            cpf.getText().toString().length() !=0 &&
+            telefone.getText().toString().length() != 0 &&
+            cep.getText().toString().length() != 0 &&
+            rua.getText().toString().length() != 0 &&
+            numero.getText().toString().length() != 0 &&
+            bairro.getText().toString().length() != 0 &&
+            cidade.getText().toString().length() != 0;
 
     }
 

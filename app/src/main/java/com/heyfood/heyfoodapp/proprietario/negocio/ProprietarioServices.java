@@ -15,19 +15,27 @@ public class ProprietarioServices {
     private ProprietarioDAO proprietarioDAO;
     private UsuarioDAO usuarioDAO;
     private PessoaDAO pessoaDAO;
-    //private ContatoDAO contatoDAO;
-    //private EnderecoDAO enderecoDAO;
+    private ContatoDAO contatoDAO;
+    private EnderecoDAO enderecoDAO;
 
     public ProprietarioServices(Context context){
         proprietarioDAO = new ProprietarioDAO(context);
         usuarioDAO = new UsuarioDAO(context);
         pessoaDAO = new PessoaDAO(context);
+        contatoDAO = new ContatoDAO(context);
+        enderecoDAO = new EnderecoDAO(context);
     }
 
     public void cadastrar(Proprietario proprietario) throws Exception {
         if (usuarioDAO.getUsuario(proprietario.getUsuario().getLogin()) != null){
             throw new Exception();
         }
+        int idContato = contatoDAO.cadastrar(proprietario.getUsuario().getPessoa().getContato());
+        proprietario.getUsuario().getPessoa().getContato().setId(idContato);
+
+        int idEndereco = enderecoDAO.cadastrar(proprietario.getUsuario().getPessoa().getEndereco());
+        proprietario.getUsuario().getPessoa().getEndereco().setId(idEndereco);
+
         int idPessoa = pessoaDAO.cadastrar(proprietario.getUsuario().getPessoa());
         proprietario.getUsuario().getPessoa().setId(idPessoa);
 
