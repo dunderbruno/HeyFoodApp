@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.usuario.persistencia.UsuarioDAO;
 import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
@@ -49,6 +50,17 @@ public class ClienteDAO extends AbstractDAO {
         super.close(db);
 
         return (int) retorno;
+    }
+
+    public void setPreferencias(long idPreferencias){
+        db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.CAMPO_FK_PREFERENCIAS, idPreferencias);
+
+        String[] idCliente = new String[]{Integer.toString(Sessao.instance.getCliente().getId())};
+
+        db.update(DBHelper.TABELA_CLIENTE, values, DBHelper.CAMPO_ID_CLIENTE+"=?", idCliente);
+        super.close();
     }
 
     private Cliente createCliente(Cursor cursor){

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.heyfood.heyfoodapp.categoria.dominio.Categoria;
+import com.heyfood.heyfoodapp.cliente.persistencia.ClienteDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 
@@ -51,6 +52,10 @@ public class PreferenciaDAO extends AbstractDAO {
         values.put(DBHelper.CAMPO_SELFSERVICE_PREF, booleanToInt(categoria.getSelfservice()));
 
         long retorno = db.insert(DBHelper.TABELA_PREFERENCIAS, null, values);
+
+        ClienteDAO clienteDAO = new ClienteDAO(context);
+        clienteDAO.setPreferencias(retorno);
+
         super.close(db);
         return (int) retorno;
     }

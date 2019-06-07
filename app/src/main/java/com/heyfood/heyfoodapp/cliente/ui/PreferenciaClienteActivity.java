@@ -16,7 +16,6 @@ import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 
 
 public class PreferenciaClienteActivity extends AppCompatActivity {
-    Cliente cliente;
 
     CheckBox acai;
     CheckBox brasileira;
@@ -57,7 +56,6 @@ public class PreferenciaClienteActivity extends AppCompatActivity {
         selfservice = findViewById(R.id.clienteSelfserviceId);
         delivery = findViewById(R.id.clienteDeliveryId);
 
-        cliente = Sessao.instance.getCliente();
     }
 
     public Categoria createCategoria(){
@@ -160,15 +158,14 @@ public class PreferenciaClienteActivity extends AppCompatActivity {
     }
 
 
-    public void finalizarCadastroRestaurante(View view){
+    public void finalizarCadastroPreferencias(View view){
         try{
-            cliente.setPreferencias(createCategoria());
-            Sessao.instance.setCliente(cliente);
-            services.cadastrar(cliente);
+            Categoria preferencias = createCategoria();
+            services.cadastrarPreferencias(preferencias);
 
-            Intent novaTela = new Intent(this, HomeProprietarioActivity.class);
+            Intent novaTela = new Intent(this, HomeClienteActivity.class);
             startActivity(novaTela);
-            Toast.makeText(this, "Restaurante cadastrado com sucesso", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Preferencias cadastrado com sucesso", Toast.LENGTH_LONG).show();
         }
         catch (NullPointerException exec) {
             Toast.makeText(this, "Null Pointer Exception", Toast.LENGTH_LONG).show();
@@ -180,7 +177,7 @@ public class PreferenciaClienteActivity extends AppCompatActivity {
             Toast.makeText(this, "Run Time Exception", Toast.LENGTH_LONG).show();
         }
         catch (Exception e){
-            Toast.makeText(this, "Erro ao cadastrar restaurante", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Erro ao cadastrar preferencias", Toast.LENGTH_LONG).show();
         }
 
     }

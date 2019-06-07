@@ -2,6 +2,7 @@ package com.heyfood.heyfoodapp.cliente.negocio;
 
 import android.content.Context;
 
+import com.heyfood.heyfoodapp.categoria.dominio.Categoria;
 import com.heyfood.heyfoodapp.categoria.persistencia.PreferenciaDAO;
 import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.cliente.persistencia.ClienteDAO;
@@ -49,11 +50,13 @@ public class ClienteServices {
         int idUsuario = usuarioDAO.cadastrar(cliente.getUsuario());
         cliente.getUsuario().setId(idUsuario);
 
-        int idPreferencias = preferenciaDAO.cadastrar(cliente.getPreferencias());
-        cliente.getPreferencias().setId(idPreferencias);
-
         int idCliente = clienteDAO.cadastrar(cliente);
         cliente.setId(idCliente);
+    }
+
+    public void cadastrarPreferencias(Categoria preferencias){
+        int idPreferencias = preferenciaDAO.cadastrar(preferencias);
+        preferencias.setId(idPreferencias);
     }
 
     public void login(String email, String password) throws Exception {
