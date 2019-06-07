@@ -2,6 +2,7 @@ package com.heyfood.heyfoodapp.cliente.negocio;
 
 import android.content.Context;
 
+import com.heyfood.heyfoodapp.categoria.persistencia.PreferenciaDAO;
 import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.cliente.persistencia.ClienteDAO;
 import com.heyfood.heyfoodapp.contato.persistencia.ContatoDAO;
@@ -21,6 +22,7 @@ public class ClienteServices {
     private PessoaDAO pessoaDAO;
     private ContatoDAO contatoDAO;
     private EnderecoDAO enderecoDAO;
+    private PreferenciaDAO preferenciaDAO;
 
     public ClienteServices(Context context){
         clienteDAO = new ClienteDAO(context);
@@ -28,6 +30,7 @@ public class ClienteServices {
         pessoaDAO = new PessoaDAO(context);
         contatoDAO = new ContatoDAO(context);
         enderecoDAO = new EnderecoDAO(context);
+        preferenciaDAO = new PreferenciaDAO(context);
     }
 
     public void cadastrar(Cliente cliente) throws Exception {
@@ -45,6 +48,9 @@ public class ClienteServices {
 
         int idUsuario = usuarioDAO.cadastrar(cliente.getUsuario());
         cliente.getUsuario().setId(idUsuario);
+
+        int idPreferencias = preferenciaDAO.cadastrar(cliente.getPreferencias());
+        cliente.getPreferencias().setId(idPreferencias);
 
         int idCliente = clienteDAO.cadastrar(cliente);
         cliente.setId(idCliente);
