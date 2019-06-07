@@ -20,13 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".infra.ui.MainActivity" />
         <activity android:name=".cliente.ui.CadastrarClienteActivity" />
         <activity android:name=".restaurante.ui.CadastrarRestauranteActivity" />
         <activity android:name=".restaurante.ui.EspecialidadeRestauranteActivity" />
         <activity android:name=".restaurante.ui.InformacoesRestauranteActivity" />
         <activity android:name=".cliente.ui.HomeClienteActivity" />
         <activity android:name=".proprietario.ui.HomeProprietarioActivity" />
+        <activity android:name=".cliente.ui.PreferenciaClienteActivity" />
         <activity android:name=".restaurante.ui.ContatoRestauranteActivity"></activity>
     </application>
 
