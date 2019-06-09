@@ -9,7 +9,6 @@ import com.heyfood.heyfoodapp.contato.persistencia.ContatoDAO;
 import com.heyfood.heyfoodapp.endereco.persistencia.EnderecoDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
-import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
 import com.heyfood.heyfoodapp.proprietario.persistencia.ProprietarioDAO;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 
@@ -23,11 +22,11 @@ public class RestauranteDAO extends AbstractDAO{
         helper = new DBHelper(context);
     }
 
-    public Restaurante getRestaurante(int id) {
+    public Restaurante getRestaurante(long id) {
         Restaurante result = null;
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_RESTAURANTE + " WHERE " + DBHelper.CAMPO_ID_RESTAURANTE + " LIKE ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(id)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
         if (cursor.moveToFirst()) {
             result = createRestaurante(cursor);
         }

@@ -1,7 +1,7 @@
 package com.heyfood.heyfoodapp.categoria.dominio;
 
 public class Categoria {
-    private int id;
+    private long id;
     private Boolean acai;
     private Boolean brasileira;
     private Boolean carnes;
@@ -19,7 +19,7 @@ public class Categoria {
     private Boolean selfservice;
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -84,7 +84,7 @@ public class Categoria {
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = new Long(id);
     }
 
     public void setAcai(Boolean acai) {

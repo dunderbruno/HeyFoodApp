@@ -21,11 +21,11 @@ public class UsuarioDAO extends AbstractDAO {
         helper = new DBHelper(context);
     }
 
-    public Usuario getUsuarioById(int id){
+    public Usuario getUsuarioById(long id){
         Usuario result = null;
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_USUARIO+ " WHERE " + DBHelper.CAMPO_ID_USUARIO + " LIKE ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(id)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
         if (cursor.moveToFirst()) {
             result = createUsuario(cursor);
         }

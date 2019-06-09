@@ -4,11 +4,11 @@ import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 
 public class Proprietario {
-    private int id;
+    private long id;
     private Restaurante restaurante;
     private Usuario usuario;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -21,7 +21,7 @@ public class Proprietario {
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = new Long(id);
     }
 
     public void setRestaurante(Restaurante restaurante) {

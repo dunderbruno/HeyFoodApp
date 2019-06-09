@@ -5,7 +5,7 @@ import com.heyfood.heyfoodapp.contato.dominio.Contato;
 import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
 
 public class Restaurante {
-    private int id;
+    private long id;
     private String nome;
     private float notaMedia;
     private String cnpj;
@@ -13,7 +13,7 @@ public class Restaurante {
     private Contato contato;
     private Categoria especialidades;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -42,7 +42,7 @@ public class Restaurante {
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = new Long(id);
     }
 
     public void setNome(String nome) {

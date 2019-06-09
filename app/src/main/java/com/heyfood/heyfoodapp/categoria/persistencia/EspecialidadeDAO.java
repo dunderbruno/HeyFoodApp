@@ -19,11 +19,11 @@ public class EspecialidadeDAO extends AbstractDAO{
         helper = new DBHelper(context);
     }
 
-    public Categoria getEspecialidade(int id){
+    public Categoria getEspecialidade(long id){
         Categoria result = null;
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_ESPECIALIDADES+ " WHERE " + DBHelper.CAMPO_ID_ESPECIALIDADES + " LIKE ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(id)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
         if (cursor.moveToFirst()) {
             result = createPreferencia(cursor);
         }

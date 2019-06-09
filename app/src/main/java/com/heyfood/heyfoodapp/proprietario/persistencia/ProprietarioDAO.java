@@ -23,11 +23,11 @@ public class ProprietarioDAO extends AbstractDAO {
         helper = new DBHelper(context);
     }
 
-    public Proprietario getProprietario(int fk_usuario) {
+    public Proprietario getProprietario(long fk_usuario) {
         Proprietario result = null;
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_PROPRIETARIO + " WHERE " + DBHelper.CAMPO_FK_USUARIO_PROPRIETARIO + " LIKE ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(fk_usuario)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(fk_usuario)});
         if (cursor.moveToFirst()) {
             result = createProprietario(cursor);
         }
@@ -52,7 +52,7 @@ public class ProprietarioDAO extends AbstractDAO {
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_FK_RESTAURANTE, idRestaurante);
 
-        String[] idProprietario = new String[]{Integer.toString(Sessao.instance.getProprietario().getId())};
+        String[] idProprietario = new String[]{Long.toString(Sessao.instance.getProprietario().getId())};
 
         db.update(DBHelper.TABELA_PROPRIETARIO, values, DBHelper.CAMPO_ID_PROPRIETARIO+"=?", idProprietario);
         super.close();

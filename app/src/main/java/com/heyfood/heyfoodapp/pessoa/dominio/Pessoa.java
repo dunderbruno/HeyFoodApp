@@ -8,7 +8,7 @@ import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
  */
 
 public class Pessoa {
-    private int id;
+    private long id;
     private String nome;
     private String cpf;
     private String dataNascimento;
@@ -16,12 +16,12 @@ public class Pessoa {
     private Contato contato;
     //private TipoGenero genero;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = new Long(id);
     }
 
     public String getNome() {

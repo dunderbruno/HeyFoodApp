@@ -7,17 +7,17 @@ import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
  */
 
 public class Usuario {
-    private int id;
+    private long id;
     private Pessoa pessoa;
     private String login;
     private String senha;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = new Long(id);
     }
 
     public Pessoa getPessoa() { return pessoa; }

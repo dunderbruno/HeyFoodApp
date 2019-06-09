@@ -2,7 +2,7 @@ package com.heyfood.heyfoodapp.endereco.dominio;
 
 public class Endereco {
 
-    private int id;
+    private long id;
     private String rua;
     private String bairro;
     private String cidade;
@@ -10,7 +10,7 @@ public class Endereco {
     private String numero;
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -35,7 +35,7 @@ public class Endereco {
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = new Long(id);
     }
 
     public void setRua(String rua) {

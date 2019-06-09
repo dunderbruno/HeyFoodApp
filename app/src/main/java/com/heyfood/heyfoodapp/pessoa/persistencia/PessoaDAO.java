@@ -21,11 +21,11 @@ public class PessoaDAO extends AbstractDAO{
         helper = new DBHelper(context);
     }
 
-    public Pessoa getPessoa(int id) {
+    public Pessoa getPessoa(long id) {
         Pessoa result = null;
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_PESSOA+ " WHERE " + DBHelper.CAMPO_ID_PESSOA + " LIKE ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(id)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
         if (cursor.moveToFirst()) {
             result = createPessoa(cursor);
         }

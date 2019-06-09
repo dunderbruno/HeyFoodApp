@@ -8,16 +8,16 @@ import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
  */
 
 public class Cliente {
-    private int id;
+    private long id;
     private Usuario usuario;
     private Categoria preferencias;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = new Long(id);
     }
 
     public Usuario getUsuario() {

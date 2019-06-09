@@ -10,10 +10,6 @@ import com.heyfood.heyfoodapp.usuario.persistencia.UsuarioDAO;
 import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
-import com.heyfood.heyfoodapp.contato.persistencia.ContatoDAO;
-import com.heyfood.heyfoodapp.endereco.persistencia.EnderecoDAO;
-import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
-import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 
 /**
  * Created by GABRIEL.CABOCLO on 29/05/2019.
@@ -29,11 +25,11 @@ public class ClienteDAO extends AbstractDAO {
         helper = new DBHelper(context);
     }
 
-    public Cliente getCliente(int fk_usuario) {
+    public Cliente getCliente(long fk_usuario) {
         Cliente result = null;
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_CLIENTE+ " WHERE " + DBHelper.CAMPO_FK_USUARIO_CLIENTE + " LIKE ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(fk_usuario)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(fk_usuario)});
         if (cursor.moveToFirst()) {
             result = createCliente(cursor);
         }
@@ -57,7 +53,7 @@ public class ClienteDAO extends AbstractDAO {
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_FK_PREFERENCIAS, idPreferencias);
 
-        String[] idCliente = new String[]{Integer.toString(Sessao.instance.getCliente().getId())};
+        String[] idCliente = new String[]{Long.toString(Sessao.instance.getCliente().getId())};
 
         db.update(DBHelper.TABELA_CLIENTE, values, DBHelper.CAMPO_ID_CLIENTE+"=?", idCliente);
         super.close();

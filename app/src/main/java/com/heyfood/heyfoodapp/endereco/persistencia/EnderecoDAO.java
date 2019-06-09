@@ -19,11 +19,11 @@ public class EnderecoDAO extends AbstractDAO{
         helper = new DBHelper(context);
     }
 
-    public Endereco getEndereco(int id) {
+    public Endereco getEndereco(long id) {
         Endereco result = null;
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_ENDERECO+ " WHERE " + DBHelper.CAMPO_ID_ENDERECO + " LIKE ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(id)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
         if (cursor.moveToFirst()) {
             result = createEndereco(cursor);
         }

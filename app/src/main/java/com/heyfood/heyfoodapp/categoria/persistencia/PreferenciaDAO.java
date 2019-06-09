@@ -20,11 +20,11 @@ public class PreferenciaDAO extends AbstractDAO {
         helper = new DBHelper(context);
     }
 
-    public Categoria getPreferencia(int id){
+    public Categoria getPreferencia(long id){
         Categoria result = null;
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_PREFERENCIAS+ " WHERE " + DBHelper.CAMPO_ID_PREFERENCIAS + " LIKE ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Integer.toString(id)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
         if (cursor.moveToFirst()) {
             result = createPreferencia(cursor);
         }
