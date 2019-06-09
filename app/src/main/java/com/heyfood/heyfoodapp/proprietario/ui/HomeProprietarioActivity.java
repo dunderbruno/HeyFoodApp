@@ -29,7 +29,15 @@ public class HomeProprietarioActivity extends AppCompatActivity {
     public void abrirTelaCadastroRestaurante(View view){
         Intent novaTela = new Intent(this, CadastrarRestauranteActivity.class);
         startActivity(novaTela);
+    }
 
+    public void verPerfil(View view) {
+        Intent novaTela = new Intent(this, PerfilProprietarioActivity.class);
+        startActivity(novaTela);
+    }
 
+    public void listarRestaurantes(View view) {
+        Intent novaTela = new Intent (this, ListarRestaurantesProprietario.class);
+        startActivity(novaTela);
     }
 }

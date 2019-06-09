@@ -33,4 +33,14 @@ public class HomeClienteActivity extends AppCompatActivity {
         Intent novaTela = new Intent(this, PreferenciaClienteActivity.class);
         startActivity(novaTela);
     }
+
+    public void verPerfil(View view) {
+        Intent novaTela = new Intent(this, PerfilClienteActivity.class);
+        startActivity(novaTela);
+    }
+
+    public void listarRestaurantes(View view) {
+        Intent novaTela = new Intent (this, ListarRestaurantes.class);
+        startActivity(novaTela);
+    }
 }
