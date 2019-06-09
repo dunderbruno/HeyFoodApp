@@ -50,8 +50,6 @@ public class PerfilClienteActivity extends AppCompatActivity {
         numero.setText(String.format("numero: %s",cliente.getUsuario().getPessoa().getEndereco().getNumero()));
         bairro.setText(String.format("bairro: %s",cliente.getUsuario().getPessoa().getEndereco().getBairro()));
         cidade.setText(String.format("cidade: %s",cliente.getUsuario().getPessoa().getEndereco().getCidade()));
-
     }
-
 
 }
