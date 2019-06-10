@@ -8,6 +8,8 @@ import com.heyfood.heyfoodapp.endereco.persistencia.EnderecoDAO;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.restaurante.persistencia.RestauranteDAO;
 
+import java.util.List;
+
 /**
  * Created by andre.csassis on 05/06/2019.
  */
@@ -40,6 +42,10 @@ public class RestauranteServices {
         restaurante.setId(idRestaurante);
 
 
+    }
+
+    public List<Restaurante> getRestaurantes() {
+        return restauranteDAO.getListaRestaurantes();
     }
 
 }

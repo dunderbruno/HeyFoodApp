@@ -12,6 +12,9 @@ import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 import com.heyfood.heyfoodapp.proprietario.persistencia.ProprietarioDAO;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RestauranteDAO extends AbstractDAO{
     private SQLiteDatabase db;
     private DBHelper helper;
@@ -29,6 +32,18 @@ public class RestauranteDAO extends AbstractDAO{
         Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
         if (cursor.moveToFirst()) {
             result = createRestaurante(cursor);
+        }
+        super.close(cursor, db);
+        return result;
+    }
+
+    public List<Restaurante> getListaRestaurantes() {
+        List<Restaurante> result = new ArrayList<Restaurante>();
+        db = helper.getReadableDatabase();
+        String sql = "SELECT * FROM " + DBHelper.TABELA_RESTAURANTE;
+        Cursor cursor = db.rawQuery(sql, new String[]{});
+        if (cursor.moveToFirst()) {
+            result.add(createRestaurante(cursor));
         }
         super.close(cursor, db);
         return result;
