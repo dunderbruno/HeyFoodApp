@@ -164,6 +164,7 @@ public class EspecialidadeRestauranteActivity extends AppCompatActivity {
     public void finalizarCadastroRestaurante(View view){
         try{
             restaurante.setEspecialidades(createCategoria());
+            restaurante.setProprietario(Sessao.instance.getProprietario());
             Sessao.instance.setRestaurante(restaurante);
             services.cadastrar(restaurante);
 

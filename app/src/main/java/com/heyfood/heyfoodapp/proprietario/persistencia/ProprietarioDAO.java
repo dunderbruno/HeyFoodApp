@@ -6,10 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 
-import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.usuario.persistencia.UsuarioDAO;
 import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
-import com.heyfood.heyfoodapp.restaurante.persistencia.RestauranteDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 
@@ -39,7 +37,6 @@ public class ProprietarioDAO extends AbstractDAO {
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_FK_USUARIO_PROPRIETARIO, proprietario.getUsuario().getId());
-        //values.put(DBHelper.CAMPO_FK_RESTAURANTE, proprietario.getRestaurante().getId());
 
         long retorno = db.insert(DBHelper.TABELA_PROPRIETARIO, null, values);
         super.close(db);
@@ -47,27 +44,13 @@ public class ProprietarioDAO extends AbstractDAO {
         return (int) retorno;
     }
 
-    public void setRestaurante(long idRestaurante){
-        db = helper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(DBHelper.CAMPO_FK_RESTAURANTE, idRestaurante);
-
-        String[] idProprietario = new String[]{Long.toString(Sessao.instance.getProprietario().getId())};
-
-        db.update(DBHelper.TABELA_PROPRIETARIO, values, DBHelper.CAMPO_ID_PROPRIETARIO+"=?", idProprietario);
-        super.close();
-    }
-
     private Proprietario createProprietario(Cursor cursor){
         Proprietario result = new Proprietario();
         UsuarioDAO usuarioDAO = new UsuarioDAO((context));
-        //RestauranteDAO restauranteDAO = new RestauranteDAO(context);
         int columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ID_PROPRIETARIO);
         result.setId(Integer.parseInt(cursor.getString(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_USUARIO_PROPRIETARIO);
         result.setUsuario(usuarioDAO.getUsuarioById(cursor.getInt(columnIndex)));
-        //columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_RESTAURANTE);
-        //result.setRestaurante(restauranteDAO.getRestaurante(cursor.getInt(columnIndex)));
         return result;
     }
 }

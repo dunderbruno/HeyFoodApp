@@ -57,12 +57,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_FK_ENDERECO_RESTAURANTE = "fk_endereco";
     public static final String CAMPO_FK_CONTATO_RESTAURANTE = "fk_contato";
     public static final String CAMPO_FK_ESPECIALIDADES = "fk_especialidades";
+    public static final String CAMPO_FK_PROPRIETARIO = "fk_proprietario";
 
     //Tabela Proprietario
     public static final String TABELA_PROPRIETARIO = "tb_proprietario";
     public static final String CAMPO_ID_PROPRIETARIO = "id";
     public static final String CAMPO_FK_USUARIO_PROPRIETARIO = "fk_usuario";
-    public static final String CAMPO_FK_RESTAURANTE = "fk_restaurante";
 
     //Tabela Especialidades
     public static final String TABELA_ESPECIALIDADES = "tb_especialidades";
@@ -206,9 +206,10 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %6$s TEXT NOT NULL, " +
                         "  %7$s TEXT NOT NULL, " +
                         "  %8$s TEXT " +
+                        "  %9$s TEXT " +
                         ");";
         sqlTbRestaurante = String.format(sqlTbRestaurante,
-                TABELA_RESTAURANTE, CAMPO_ID_RESTAURANTE, CAMPO_NOME_RESTAURANTE, CAMPO_CNPJ, CAMPO_NOTA_MEDIA, CAMPO_FK_ENDERECO_RESTAURANTE, CAMPO_FK_CONTATO_RESTAURANTE, CAMPO_FK_ESPECIALIDADES);
+                TABELA_RESTAURANTE, CAMPO_ID_RESTAURANTE, CAMPO_NOME_RESTAURANTE, CAMPO_CNPJ, CAMPO_NOTA_MEDIA, CAMPO_FK_ENDERECO_RESTAURANTE, CAMPO_FK_CONTATO_RESTAURANTE, CAMPO_FK_ESPECIALIDADES, CAMPO_FK_PROPRIETARIO);
 
         db.execSQL(sqlTbRestaurante);
     }
@@ -218,10 +219,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 "CREATE TABLE %1$s ( "  +
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "  %3$s TEXT NOT NULL, " +
-                        "  %4$s TEXT " +
                         ");";
         sqlTbProprietario = String.format(sqlTbProprietario,
-                TABELA_PROPRIETARIO, CAMPO_ID_PROPRIETARIO, CAMPO_FK_USUARIO_PROPRIETARIO, CAMPO_FK_RESTAURANTE);
+                TABELA_PROPRIETARIO, CAMPO_ID_PROPRIETARIO, CAMPO_FK_USUARIO_PROPRIETARIO);
         db.execSQL(sqlTbProprietario);
     }
 

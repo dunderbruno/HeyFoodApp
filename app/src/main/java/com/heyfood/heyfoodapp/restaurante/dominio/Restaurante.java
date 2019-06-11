@@ -3,6 +3,7 @@ package com.heyfood.heyfoodapp.restaurante.dominio;
 import com.heyfood.heyfoodapp.categoria.dominio.Categoria;
 import com.heyfood.heyfoodapp.contato.dominio.Contato;
 import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
+import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
 
 public class Restaurante {
     private long id;
@@ -12,6 +13,15 @@ public class Restaurante {
     private Endereco endereco;
     private Contato contato;
     private Categoria especialidades;
+    private Proprietario proprietario;
+
+    public Proprietario getProprietario() {
+        return proprietario;
+    }
+
+    public void setProprietario(Proprietario proprietario) {
+        this.proprietario = proprietario;
+    }
 
     public long getId() {
         return id;
