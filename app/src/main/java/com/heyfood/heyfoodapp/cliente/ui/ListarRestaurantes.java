@@ -26,15 +26,12 @@ public class ListarRestaurantes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_restaurantes);
         recyclerView = (RecyclerView) findViewById(R.id.listaDeRestaurantesId);
-
         recyclerView.setHasFixedSize(true);
 
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-
         List<Restaurante> myDataset = services.getRestaurantes();
-
         mAdapter = new RestauranteAdapter(myDataset);
         recyclerView.setAdapter(mAdapter);
     }
