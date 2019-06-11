@@ -44,6 +44,9 @@ public class RestauranteDAO extends AbstractDAO{
         Cursor cursor = db.rawQuery(sql, new String[]{});
         if (cursor.moveToFirst()) {
             result.add(createRestaurante(cursor));
+            while(cursor.moveToNext()){
+                result.add(createRestaurante(cursor));
+            }
         }
         super.close(cursor, db);
         return result;

@@ -40,7 +40,7 @@ public class HomeClienteActivity extends AppCompatActivity {
     }
 
     public void listarRestaurantes(View view) {
-        Intent novaTela = new Intent (this, ListarRestaurantes.class);
+        Intent novaTela = new Intent (this, ListarRestaurantesActivity.class);
         startActivity(novaTela);
     }
 }

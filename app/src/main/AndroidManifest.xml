@@ -10,9 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".proprietario.ui.ListarRestaurantesProprietario"></activity>
+        <activity android:name=".proprietario.ui.ListarRestaurantesProprietario" />
         <activity android:name=".proprietario.ui.PerfilProprietarioActivity" />
-        <activity android:name=".cliente.ui.ListarRestaurantes" />
         <activity android:name=".cliente.ui.PerfilClienteActivity" />
         <activity android:name=".proprietario.ui.CadastrarProprietarioActivity" />
         <activity
@@ -32,6 +31,7 @@
         <activity android:name=".proprietario.ui.HomeProprietarioActivity" />
         <activity android:name=".cliente.ui.PreferenciaClienteActivity" />
         <activity android:name=".restaurante.ui.ContatoRestauranteActivity" />
+        <activity android:name=".cliente.ui.ListarRestaurantesActivity"></activity>
     </application>
 
 </manifest>
