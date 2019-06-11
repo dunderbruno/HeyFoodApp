@@ -1,7 +1,9 @@
 package com.heyfood.heyfoodapp.cliente.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.heyfood.heyfoodapp.R;
@@ -50,6 +52,11 @@ public class PerfilClienteActivity extends AppCompatActivity {
         numero.setText(String.format("numero: %s",cliente.getUsuario().getPessoa().getEndereco().getNumero()));
         bairro.setText(String.format("bairro: %s",cliente.getUsuario().getPessoa().getEndereco().getBairro()));
         cidade.setText(String.format("cidade: %s",cliente.getUsuario().getPessoa().getEndereco().getCidade()));
+    }
+
+    public void voltarHome(View view){
+        Intent novaTela = new Intent(this, HomeClienteActivity.class);
+        startActivity(novaTela);
     }
 
 }

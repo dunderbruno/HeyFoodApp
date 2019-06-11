@@ -1,10 +1,13 @@
 package com.heyfood.heyfoodapp.proprietario.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.heyfood.heyfoodapp.R;
+import com.heyfood.heyfoodapp.cliente.ui.HomeClienteActivity;
 import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
 
@@ -50,5 +53,10 @@ public class PerfilProprietarioActivity extends AppCompatActivity {
         numero.setText(String.format("numero: %s",proprietario.getUsuario().getPessoa().getEndereco().getNumero()));
         bairro.setText(String.format("bairro: %s",proprietario.getUsuario().getPessoa().getEndereco().getBairro()));
         cidade.setText(String.format("cidade: %s",proprietario.getUsuario().getPessoa().getEndereco().getCidade()));
+    }
+
+    public void voltarHome(View view){
+        Intent novaTela = new Intent(this, HomeProprietarioActivity.class);
+        startActivity(novaTela);
     }
 }
