@@ -35,6 +35,7 @@ public class EspecialidadeDAO extends AbstractDAO{
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_ACAI_ESP, booleanToInt(categoria.getAcai()));
+        values.put(DBHelper.CAMPO_CHINESA_ESP, booleanToInt(categoria.getChinesa()));
         values.put(DBHelper.CAMPO_BRASILEIRA_ESP, booleanToInt(categoria.getBrasileira()));
         values.put(DBHelper.CAMPO_CARNES_ESP, booleanToInt(categoria.getCarnes()));
         values.put(DBHelper.CAMPO_CONTEMPORANEA_ESP, booleanToInt(categoria.getContemporanea()));
@@ -76,6 +77,8 @@ public class EspecialidadeDAO extends AbstractDAO{
         result.setId(Integer.parseInt(cursor.getString(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ACAI_ESP);
         result.setAcai(intToBoolean(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_CHINESA_ESP);
+        result.setChinesa(intToBoolean(columnIndex));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_BRASILEIRA_ESP);
         result.setBrasileira(intToBoolean(columnIndex));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_CARNES_ESP);

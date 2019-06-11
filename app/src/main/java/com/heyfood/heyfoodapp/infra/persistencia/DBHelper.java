@@ -68,6 +68,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABELA_ESPECIALIDADES = "tb_especialidades";
     public static final String CAMPO_ID_ESPECIALIDADES = "id";
     public static final String CAMPO_ACAI_ESP = "acai";
+    public static final String CAMPO_CHINESA_ESP = "chinesa";
     public static final String CAMPO_BRASILEIRA_ESP = "brasileira";
     public static final String CAMPO_CARNES_ESP = "carnes";
     public static final String CAMPO_CONTEMPORANEA_ESP = "contemporanea";
@@ -87,6 +88,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABELA_PREFERENCIAS = "tb_preferencias";
     public static final String CAMPO_ID_PREFERENCIAS = "id";
     public static final String CAMPO_ACAI_PREF = "acai";
+    public static final String CAMPO_CHINESA_PREF = "chinesa";
     public static final String CAMPO_BRASILEIRA_PREF = "brasileira";
     public static final String CAMPO_CARNES_PREF = "carnes";
     public static final String CAMPO_CONTEMPORANEA_PREF = "contemporanea";

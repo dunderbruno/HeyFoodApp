@@ -37,6 +37,7 @@ public class PreferenciaDAO extends AbstractDAO {
         ContentValues values = new ContentValues();
 
         values.put(DBHelper.CAMPO_ACAI_PREF, booleanToInt(categoria.getAcai()));
+        values.put(DBHelper.CAMPO_CHINESA_PREF, booleanToInt(categoria.getChinesa()));
         values.put(DBHelper.CAMPO_BRASILEIRA_PREF, booleanToInt(categoria.getBrasileira()));
         values.put(DBHelper.CAMPO_CARNES_PREF, booleanToInt(categoria.getCarnes()));
         values.put(DBHelper.CAMPO_CONTEMPORANEA_PREF, booleanToInt(categoria.getContemporanea()));
@@ -82,6 +83,8 @@ public class PreferenciaDAO extends AbstractDAO {
         result.setId(Integer.parseInt(cursor.getString(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ACAI_PREF);
         result.setAcai(intToBoolean(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_CHINESA_PREF);
+        result.setChinesa(intToBoolean(columnIndex));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_BRASILEIRA_PREF);
         result.setBrasileira(intToBoolean(columnIndex));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_CARNES_PREF);
