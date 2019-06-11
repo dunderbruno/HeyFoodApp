@@ -242,10 +242,11 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %13$s INTEGER NOT NULL, " +
                         "  %14$s INTEGER NOT NULL, " +
                         "  %15$s INTEGER NOT NULL, " +
-                        "  %16$s INTEGER NOT NULL " +
+                        "  %16$s INTEGER NOT NULL, " +
+                        "  %17$s INTEGER NOT NULL " +
                         ");";
         sqlTbEspecialidades = String.format(sqlTbEspecialidades,
-                TABELA_ESPECIALIDADES, CAMPO_ID_ESPECIALIDADES, CAMPO_ACAI_ESP, CAMPO_BRASILEIRA_ESP, CAMPO_CARNES_ESP,
+                TABELA_ESPECIALIDADES, CAMPO_ID_ESPECIALIDADES, CAMPO_ACAI_ESP, CAMPO_CHINESA_ESP, CAMPO_BRASILEIRA_ESP, CAMPO_CARNES_ESP,
                 CAMPO_CONTEMPORANEA_ESP, CAMPO_ITALIANA_ESP, CAMPO_JAPONESA_ESP, CAMPO_LANCHES_ESP, CAMPO_MARMITA_ESP,
                 CAMPO_PIZZA_ESP, CAMPO_SAUDAVEL_ESP, CAMPO_ALACARTE_ESP, CAMPO_RODIZIO_ESP, CAMPO_DELIVERY_ESP, CAMPO_SELFSERVICE_ESP);
         db.execSQL(sqlTbEspecialidades);
@@ -268,10 +269,11 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %13$s INTEGER NOT NULL, " +
                         "  %14$s INTEGER NOT NULL, " +
                         "  %15$s INTEGER NOT NULL, " +
-                        "  %16$s INTEGER NOT NULL " +
+                        "  %16$s INTEGER NOT NULL, " +
+                        "  %17$s INTEGER NOT NULL " +
                         ");";
         sqlTbPreferencias = String.format(sqlTbPreferencias,
-                TABELA_PREFERENCIAS, CAMPO_ID_PREFERENCIAS, CAMPO_ACAI_PREF, CAMPO_BRASILEIRA_PREF, CAMPO_CARNES_PREF,
+                TABELA_PREFERENCIAS, CAMPO_ID_PREFERENCIAS, CAMPO_ACAI_PREF, CAMPO_CHINESA_PREF, CAMPO_BRASILEIRA_PREF, CAMPO_CARNES_PREF,
                 CAMPO_CONTEMPORANEA_PREF, CAMPO_ITALIANA_PREF, CAMPO_JAPONESA_PREF, CAMPO_LANCHES_PREF, CAMPO_MARMITA_PREF,
                 CAMPO_PIZZA_PREF, CAMPO_SAUDAVEL_PREF, CAMPO_ALACARTE_PREF, CAMPO_RODIZIO_PREF, CAMPO_DELIVERY_PREF, CAMPO_SELFSERVICE_PREF);
         db.execSQL(sqlTbPreferencias);
