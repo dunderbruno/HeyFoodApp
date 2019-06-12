@@ -41,7 +41,6 @@ public class RestauranteServices {
         int idRestaurante = restauranteDAO.cadastrar(restaurante);
         restaurante.setId(idRestaurante);
 
-
     }
 
     public List<Restaurante> getRestaurantes() {

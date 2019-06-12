@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.heyfood.heyfoodapp.contato.persistencia.ContatoDAO;
 import com.heyfood.heyfoodapp.endereco.persistencia.EnderecoDAO;
+import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 import com.heyfood.heyfoodapp.proprietario.persistencia.ProprietarioDAO;
@@ -61,11 +62,9 @@ public class RestauranteDAO extends AbstractDAO{
         values.put(DBHelper.CAMPO_FK_ENDERECO_RESTAURANTE, restaurante.getEndereco().getId());
         values.put(DBHelper.CAMPO_FK_CONTATO_RESTAURANTE, restaurante.getContato().getId());
         values.put(DBHelper.CAMPO_FK_ESPECIALIDADES, restaurante.getEspecialidades().getId());
+        values.put(DBHelper.CAMPO_FK_PROPRIETARIO, restaurante.getProprietario().getId());
 
         long retorno = db.insert(DBHelper.TABELA_RESTAURANTE, null, values);
-
-        ProprietarioDAO proprietarioDAO = new ProprietarioDAO(context);
-        proprietarioDAO.setRestaurante(retorno);
 
         super.close(db);
 

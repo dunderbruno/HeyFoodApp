@@ -205,7 +205,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %5$s TEXT, " +
                         "  %6$s TEXT NOT NULL, " +
                         "  %7$s TEXT NOT NULL, " +
-                        "  %8$s TEXT " +
+                        "  %8$s TEXT, " +
                         "  %9$s TEXT " +
                         ");";
         sqlTbRestaurante = String.format(sqlTbRestaurante,
@@ -218,7 +218,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String sqlTbProprietario =
                 "CREATE TABLE %1$s ( "  +
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "  %3$s TEXT NOT NULL, " +
+                        "  %3$s TEXT NOT NULL " +
                         ");";
         sqlTbProprietario = String.format(sqlTbProprietario,
                 TABELA_PROPRIETARIO, CAMPO_ID_PROPRIETARIO, CAMPO_FK_USUARIO_PROPRIETARIO);
