@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 
 
 import com.heyfood.heyfoodapp.R;
+import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.restaurante.persistencia.RestauranteDAO;
 import com.heyfood.heyfoodapp.util.RecyclerItemClickListener;
@@ -33,7 +34,7 @@ public class ListarRestaurantesProprietario extends AppCompatActivity {
         recyclerRestauranteProprietario = findViewById(R.id.recyclerRestauranteProprietario);
 
         //Configurar adapter
-        final List<Restaurante> listaRestaurante = restauranteDAO.getListaRestaurantes();
+        final List<Restaurante> listaRestaurante = restauranteDAO.getListaMeusRestaurantes(Sessao.instance.getProprietario().getId());
         AdapterRestauranteProprietario adapter = new AdapterRestauranteProprietario( listaRestaurante );
 
         //Configurar Recyclerview

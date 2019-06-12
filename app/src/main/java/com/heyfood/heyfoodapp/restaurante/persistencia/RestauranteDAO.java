@@ -53,6 +53,21 @@ public class RestauranteDAO extends AbstractDAO{
         return result;
     }
 
+    public List<Restaurante> getListaMeusRestaurantes(long id) {
+        List<Restaurante> result = new ArrayList<Restaurante>();
+        db = helper.getReadableDatabase();
+        String sql = "SELECT * FROM " + DBHelper.TABELA_RESTAURANTE + " WHERE " + DBHelper.CAMPO_FK_PROPRIETARIO + " LIKE ?;";
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
+        if (cursor.moveToFirst()) {
+            result.add(createRestaurante(cursor));
+            while(cursor.moveToNext()){
+                result.add(createRestaurante(cursor));
+            }
+        }
+        super.close(cursor, db);
+        return result;
+    }
+
     public int cadastrar(Restaurante restaurante) {
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
