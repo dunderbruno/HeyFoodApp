@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
+import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.restaurante.ui.ContatoRestauranteActivity;
 import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
@@ -43,4 +44,12 @@ public class HomeClienteActivity extends AppCompatActivity {
         Intent novaTela = new Intent (this, ListarRestaurantesActivity.class);
         startActivity(novaTela);
     }
+
+    public void logout(View view){
+        ClienteServices clienteServices = new ClienteServices(this);
+        clienteServices.logout();
+        Intent novaTela = new Intent(this, LoginActivity.class);
+        startActivity(novaTela);
+    }
+
 }
