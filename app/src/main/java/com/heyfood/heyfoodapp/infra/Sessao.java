@@ -3,6 +3,8 @@ package com.heyfood.heyfoodapp.infra;
 import android.annotation.SuppressLint;
 
 import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
+import com.heyfood.heyfoodapp.contato.dominio.Contato;
+import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
 import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
@@ -22,6 +24,7 @@ public class Sessao {
     }
 
     public Usuario getUsuario() {
+
         return (Usuario)values.get("sessao.Usuario");
     }
 
@@ -56,8 +59,27 @@ public class Sessao {
         this.values.clear();
     }
 
-    public Restaurante getRestaurante(){ return (Restaurante) values.get("sessao.Restaurante");}
+    public Restaurante getRestaurante(){
+        return (Restaurante) values.get("sessao.Restaurante");
+    }
 
-    public void setRestaurante(Restaurante restaurante) { setValue("sessao.Restaurante", restaurante);}
+    public Contato getContato(){
+        return (Contato) values.get("sessao.Contato");
+    }
+
+    public void setContato(Contato contato){
+        setValue("sessao.Contato", contato);
+    }
+
+    public void setRestaurante(Restaurante restaurante) {
+        setValue("sessao.Restaurante", restaurante);
+    }
+    public Pessoa getPessoa(){
+        return (Pessoa) values.get("sessao.Pessoa");
+    }
+
+    public void setPessoa(Pessoa pessoa){
+        setValue("sessao.Pessoa", pessoa);
+    }
 
 }

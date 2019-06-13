@@ -9,8 +9,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
+import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.contato.dominio.Contato;
 import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
+import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
 import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
@@ -58,6 +60,27 @@ public class CadastrarProprietarioActivity extends AppCompatActivity {
         cpf.addTextChangedListener(MaskEditUtil.mask(cpf, MaskEditUtil.FORMAT_CPF));
         telefone.addTextChangedListener(MaskEditUtil.mask(telefone, MaskEditUtil.FORMAT_FONE));
         cep.addTextChangedListener(MaskEditUtil.mask(cep, MaskEditUtil.FORMAT_CEP));
+
+        if (Sessao.instance.getProprietario() != null){
+            Proprietario proprietarioRestaura = Sessao.instance.getProprietario();
+            nome.setText(proprietarioRestaura.getUsuario().getPessoa().getNome());
+            dataNascimento.setText(proprietarioRestaura.getUsuario().getPessoa().getDataNascimento());
+            cpf.setText(proprietarioRestaura.getUsuario().getPessoa().getCpf());
+            login.setText(proprietarioRestaura.getUsuario().getLogin());
+            senha.setText(proprietarioRestaura.getUsuario().getSenha());
+            telefone.setText(proprietarioRestaura.getUsuario().getPessoa().getContato().getTelefone());
+            cep.setText(proprietarioRestaura.getUsuario().getPessoa().getEndereco().getCep());
+            rua.setText(proprietarioRestaura.getUsuario().getPessoa().getEndereco().getRua());
+            numero.setText(proprietarioRestaura.getUsuario().getPessoa().getEndereco().getNumero());
+            bairro.setText(proprietarioRestaura.getUsuario().getPessoa().getEndereco().getBairro());
+            cidade.setText(proprietarioRestaura.getUsuario().getPessoa().getEndereco().getCidade());
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Sessao.instance.setProprietario(createProprietario());
+        super.onBackPressed();
     }
     private boolean validarCpf(){
         // Verifica se o campo está preenchido com 14 digitos

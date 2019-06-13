@@ -1,6 +1,7 @@
 package com.heyfood.heyfoodapp.restaurante.ui;
 
 import android.content.Intent;
+import android.icu.util.BuddhistCalendar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -33,6 +34,19 @@ public class ContatoRestauranteActivity extends AppCompatActivity {
         telefone.addTextChangedListener(MaskEditUtil.mask(telefone, MaskEditUtil.FORMAT_FONE));
 
         restaurante = Sessao.instance.getRestaurante();
+
+        if (Sessao.instance.getContato() != null){
+            Contato restaura = Sessao.instance.getContato();
+            telefone.setText(restaura.getTelefone());
+            email.setText(restaura.getEmail());
+            site.setText(restaura.getSite());
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Sessao.instance.setContato(createContato());
+        super.onBackPressed();
     }
 
     public Contato createContato(){

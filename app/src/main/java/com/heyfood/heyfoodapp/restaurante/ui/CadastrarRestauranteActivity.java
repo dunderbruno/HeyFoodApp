@@ -41,7 +41,26 @@ public class CadastrarRestauranteActivity extends AppCompatActivity {
 
         cnpj.addTextChangedListener(MaskEditUtil.mask(cnpj, MaskEditUtil.FORMAT_CNPJ));
         cep.addTextChangedListener(MaskEditUtil.mask(cep, MaskEditUtil.FORMAT_CEP));
+
+        if (Sessao.instance.getRestaurante() != null){
+            Restaurante restaura = Sessao.instance.getRestaurante();
+            nome.setText(restaura.getNome());
+            cnpj.setText(restaura.getCnpj());
+            cep.setText(restaura.getEndereco().getCep());
+            rua.setText(restaura.getEndereco().getRua());
+            numero.setText(restaura.getEndereco().getNumero());
+            bairro.setText(restaura.getEndereco().getBairro());
+            cidade.setText(restaura.getEndereco().getCidade());
+        }
+
     }
+
+    @Override
+    public void onBackPressed() {
+        Sessao.instance.setRestaurante(createRestaurante());
+        super.onBackPressed();
+    }
+
     private boolean validarCnpj() {
         String CNPJ = this.cnpj.getText().toString().replace(".", "");
         CNPJ = CNPJ.replace("-","");

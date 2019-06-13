@@ -13,6 +13,7 @@ import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 import com.heyfood.heyfoodapp.contato.dominio.Contato;
 import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
+import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
 import com.heyfood.heyfoodapp.util.MaskEditUtil;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
@@ -64,7 +65,29 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         telefone.addTextChangedListener(MaskEditUtil.mask(telefone, MaskEditUtil.FORMAT_FONE));
         cep.addTextChangedListener(MaskEditUtil.mask(cep, MaskEditUtil.FORMAT_CEP));
 
+        if (Sessao.instance.getCliente() != null){
+            Cliente clienteRestaura = Sessao.instance.getCliente();
+            nome.setText(clienteRestaura.getUsuario().getPessoa().getNome());
+            dataNascimento.setText(clienteRestaura.getUsuario().getPessoa().getDataNascimento());
+            cpf.setText(clienteRestaura.getUsuario().getPessoa().getCpf());
+            login.setText(clienteRestaura.getUsuario().getLogin());
+            senha.setText(clienteRestaura.getUsuario().getSenha());
+            telefone.setText(clienteRestaura.getUsuario().getPessoa().getContato().getTelefone());
+            cep.setText(clienteRestaura.getUsuario().getPessoa().getEndereco().getCep());
+            rua.setText(clienteRestaura.getUsuario().getPessoa().getEndereco().getRua());
+            numero.setText(clienteRestaura.getUsuario().getPessoa().getEndereco().getNumero());
+            bairro.setText(clienteRestaura.getUsuario().getPessoa().getEndereco().getBairro());
+            cidade.setText(clienteRestaura.getUsuario().getPessoa().getEndereco().getCidade());
+        }
+
     }
+
+    @Override
+    public void onBackPressed() {
+        Sessao.instance.setCliente(createCliente());
+        super.onBackPressed();
+    }
+
     private boolean validarCpf(){
         // Verifica se o campo está preenchido com 14 digitos
         //incluindo pontos e o ífem
