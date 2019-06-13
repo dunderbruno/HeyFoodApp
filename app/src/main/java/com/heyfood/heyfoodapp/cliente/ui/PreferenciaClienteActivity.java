@@ -8,9 +8,6 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
-import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
-import com.heyfood.heyfoodapp.infra.Sessao;
-import com.heyfood.heyfoodapp.proprietario.ui.HomeProprietarioActivity;
 import com.heyfood.heyfoodapp.categoria.dominio.Categoria;
 import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 
