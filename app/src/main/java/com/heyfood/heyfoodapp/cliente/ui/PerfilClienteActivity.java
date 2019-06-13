@@ -58,5 +58,9 @@ public class PerfilClienteActivity extends AppCompatActivity {
         Intent novaTela = new Intent(this, HomeClienteActivity.class);
         startActivity(novaTela);
     }
+    public void alterarPerfil(View view){
+        Intent novaTela = new Intent(this,CadastrarClienteActivity.class);
+        startActivity(novaTela);
+    }
 
 }
