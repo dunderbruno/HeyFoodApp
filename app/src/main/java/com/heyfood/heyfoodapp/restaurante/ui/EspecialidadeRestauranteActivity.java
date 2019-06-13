@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
@@ -18,21 +19,21 @@ import com.heyfood.heyfoodapp.restaurante.negocio.RestauranteServices;
 public class EspecialidadeRestauranteActivity extends AppCompatActivity {
     Restaurante restaurante;
 
-    CheckBox acai;
-    CheckBox brasileira;
-    CheckBox carnes;
-    CheckBox chinesa;
-    CheckBox conteporanea;
-    CheckBox italiana;
-    CheckBox japonesa;
-    CheckBox lanches;
-    CheckBox marmita;
-    CheckBox pizza;
-    CheckBox saudavel;
-    CheckBox alacarte;
-    CheckBox rodizio;
-    CheckBox selfservice;
-    CheckBox delivery;
+    Switch acai;
+    Switch brasileira;
+    Switch carnes;
+    Switch chinesa;
+    Switch conteporanea;
+    Switch italiana;
+    Switch japonesa;
+    Switch lanches;
+    Switch marmita;
+    Switch pizza;
+    Switch saudavel;
+    Switch alacarte;
+    Switch rodizio;
+    Switch selfservice;
+    Switch delivery;
 
     private final RestauranteServices services = new RestauranteServices(this);
 

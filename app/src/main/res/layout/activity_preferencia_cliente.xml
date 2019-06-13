@@ -48,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clienteBrasileiraId"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clienteAcaiId" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clienteSaudavelId"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/clientePizzaId" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clienteMarmitaId"
         android:layout_width="130dp"
         android:layout_height="28dp"
@@ -75,7 +75,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/clienteLanchesId" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clienteLanchesId"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/clienteJaponesaId" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clienteChinesaId"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clienteCarnesId" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clienteCarnesId"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -106,18 +106,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clienteBrasileiraId" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clienteItalianaId"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:text="Italiana"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clienteContemporaneaId" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clienteContemporaneaId"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -128,7 +129,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clienteChinesaId" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clientePizzaId"
         android:layout_width="130dp"
         android:layout_height="33dp"
@@ -137,7 +138,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/clienteMarmitaId" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clienteJaponesaId"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -147,7 +148,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clienteAcaiId"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -183,7 +184,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clienteItalianaId" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clienteAlacarteId"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -195,7 +196,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clienteRodizioId"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -206,7 +207,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clienteAlacarteId" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clienteSelfserviceId"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -219,7 +220,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/clienteDeliveryId"
         android:layout_width="130dp"
         android:layout_height="wrap_content"

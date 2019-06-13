@@ -72,7 +72,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restauranteBrasileiraId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/restauranteAcaiId" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restauranteSaudavelId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/restaurantePizzaId" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restauranteMarmitaId"
             android:layout_width="130dp"
             android:layout_height="28dp"
@@ -99,7 +99,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/restauranteLanchesId" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restauranteLanchesId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/restauranteJaponesaId" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restauranteChinesaId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/restauranteCarnesId" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restauranteCarnesId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/restauranteBrasileiraId" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restauranteItalianaId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/restauranteConteporanea" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restauranteConteporanea"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/restauranteChinesaId" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restaurantePizzaId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
@@ -153,7 +153,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/restauranteMarmitaId" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restauranteJaponesaId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restauranteAcaiId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
@@ -192,7 +192,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/restauranteItalianaId" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restauranteAlacarteId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
@@ -202,7 +202,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restauranteRodizioId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
@@ -211,7 +211,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/restauranteAlacarteId" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restauranteSelfserviceId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
@@ -221,7 +221,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-        <CheckBox
+        <Switch
             android:id="@+id/restauranteDeliveryId"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
