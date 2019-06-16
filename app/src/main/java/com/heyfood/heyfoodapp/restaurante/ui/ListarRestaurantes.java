@@ -28,9 +28,12 @@ public class ListarRestaurantes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar_restaurantes_cliente);
-        recyclerRestaurante = findViewById(R.id.recyclerRestaurante);
+        setContentView(R.layout.activity_listar_restaurantes);
+
+        restauranteDAO = new RestauranteDAO(this);
         List<Restaurante> listaRestaurante;
+
+        recyclerRestaurante = findViewById(R.id.recyclerRestaurante);
 
         if (Sessao.instance.getCliente() != null){
             listaRestaurante = restauranteDAO.getListaRestaurantes();
@@ -40,6 +43,7 @@ public class ListarRestaurantes extends AppCompatActivity {
         }
 
         AdapterRestaurante adapter = new AdapterRestaurante(listaRestaurante);
+        final List<Restaurante> finalListaRestaurante = listaRestaurante;
 
         //Configurar Recyclerview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -48,7 +52,6 @@ public class ListarRestaurantes extends AppCompatActivity {
         recyclerRestaurante.addItemDecoration( new DividerItemDecoration(this, LinearLayout.VERTICAL));
         recyclerRestaurante.setAdapter( adapter );
 
-        final List<Restaurante> finalListaRestaurante = listaRestaurante;
         recyclerRestaurante.addOnItemTouchListener(
                 new RecyclerItemClickListener(
                         getApplicationContext(),
