@@ -6,17 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".restaurante.ui.ListarRestaurantes">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerRestaurante"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarListaRestaurantes"
+        android:layout_width="411dp"
+        android:layout_height="49dp"
+        android:background="?attr/colorPrimary"
+        android:backgroundTint="@color/corBarraSuperior"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <TextView
+        android:id="@+id/tituloRestaurantesId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Restaurantes"
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="23dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerRestaurante"
+        android:layout_width="391dp"
+        android:layout_height="587dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloRestaurantesId"
+        app:layout_constraintVertical_bias="0.122" />
 
 </android.support.constraint.ConstraintLayout>
