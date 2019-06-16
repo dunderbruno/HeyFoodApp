@@ -3,27 +3,22 @@ package com.heyfood.heyfoodapp.proprietario.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
-import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
+import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
+import com.heyfood.heyfoodapp.proprietario.negocio.ProprietarioServices;
 import com.heyfood.heyfoodapp.contato.dominio.Contato;
 import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
-import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
-import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
 import com.heyfood.heyfoodapp.util.MaskEditUtil;
-import com.heyfood.heyfoodapp.proprietario.negocio.ProprietarioServices;
+import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.infra.negocio.Valida;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class CadastrarProprietarioActivity extends AppCompatActivity {
     private EditText nome;

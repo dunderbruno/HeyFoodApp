@@ -3,7 +3,6 @@ package com.heyfood.heyfoodapp.cliente.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,17 +12,12 @@ import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 import com.heyfood.heyfoodapp.contato.dominio.Contato;
 import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
-import com.heyfood.heyfoodapp.infra.Sessao;
-import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
-import com.heyfood.heyfoodapp.util.MaskEditUtil;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
+import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
+import com.heyfood.heyfoodapp.util.MaskEditUtil;
+import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.infra.negocio.Valida;
-
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class CadastrarClienteActivity extends AppCompatActivity {
@@ -161,7 +155,6 @@ public class CadastrarClienteActivity extends AppCompatActivity {
             Toast.makeText(this, "Data inválida.", Toast.LENGTH_LONG).show();
             return;
         }
-        //
         if (!Valida.validarCpf(cpf.getText().toString())){
             Toast.makeText(this, "CPF inválido.", Toast.LENGTH_LONG).show();
             return;
