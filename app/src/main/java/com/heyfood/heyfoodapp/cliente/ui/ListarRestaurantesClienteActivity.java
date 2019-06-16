@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
@@ -19,18 +18,18 @@ import com.heyfood.heyfoodapp.util.RecyclerItemClickListener;
 
 import java.util.List;
 
-public class ListarRestaurantesActivity extends AppCompatActivity {
-    private RecyclerView recyclerRestaurante;
+public class ListarRestaurantesClienteActivity extends AppCompatActivity {
+    private RecyclerView recyclerRestauranteCliente;
     private RestauranteDAO restauranteDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar_restaurantes);
+        setContentView(R.layout.activity_listar_restaurantes_cliente);
 
         restauranteDAO = new RestauranteDAO(this);
 
-        recyclerRestaurante = findViewById(R.id.recyclerRestaurante);
+        recyclerRestauranteCliente = findViewById(R.id.recyclerRestaurante);
 
         //Configurar adapter
         final List<Restaurante> listaRestaurante = restauranteDAO.getListaRestaurantes();
@@ -38,15 +37,15 @@ public class ListarRestaurantesActivity extends AppCompatActivity {
 
         //Configurar Recyclerview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerRestaurante.setLayoutManager(layoutManager);
-        recyclerRestaurante.setHasFixedSize(true);
-        recyclerRestaurante.addItemDecoration( new DividerItemDecoration(this, LinearLayout.VERTICAL));
-        recyclerRestaurante.setAdapter( adapter );
+        recyclerRestauranteCliente.setLayoutManager(layoutManager);
+        recyclerRestauranteCliente.setHasFixedSize(true);
+        recyclerRestauranteCliente.addItemDecoration( new DividerItemDecoration(this, LinearLayout.VERTICAL));
+        recyclerRestauranteCliente.setAdapter( adapter );
 
-        recyclerRestaurante.addOnItemTouchListener(
+        recyclerRestauranteCliente.addOnItemTouchListener(
                 new RecyclerItemClickListener(
                         getApplicationContext(),
-                        recyclerRestaurante,
+                        recyclerRestauranteCliente,
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
@@ -60,7 +59,7 @@ public class ListarRestaurantesActivity extends AppCompatActivity {
                                 mensagem.append("Email: " + restaurante.getContato().getEmail() + "\n");
                                 mensagem.append(restaurante.getContato().getSite());
 
-                                AlertDialog.Builder dialog = new AlertDialog.Builder(ListarRestaurantesActivity.this);
+                                AlertDialog.Builder dialog = new AlertDialog.Builder(ListarRestaurantesClienteActivity.this);
                                 //Configura titulo e mensagem
                                 dialog.setTitle(restaurante.getNome());
                                 dialog.setMessage(mensagem.toString());

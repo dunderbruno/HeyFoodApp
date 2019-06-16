@@ -11,6 +11,7 @@ import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
 import com.heyfood.heyfoodapp.proprietario.negocio.ProprietarioServices;
 import com.heyfood.heyfoodapp.restaurante.ui.CadastrarRestauranteActivity;
+import com.heyfood.heyfoodapp.restaurante.ui.ListarRestaurantes;
 import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
 
 public class HomeProprietarioActivity extends AppCompatActivity {
@@ -39,7 +40,7 @@ public class HomeProprietarioActivity extends AppCompatActivity {
     }
 
     public void listarRestaurantes(View view) {
-        Intent novaTela = new Intent (this, ListarRestaurantesProprietario.class);
+        Intent novaTela = new Intent (this, ListarRestaurantes.class);
         startActivity(novaTela);
     }
 

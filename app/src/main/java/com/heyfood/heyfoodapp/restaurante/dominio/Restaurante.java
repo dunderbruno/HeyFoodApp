@@ -1,11 +1,11 @@
 package com.heyfood.heyfoodapp.restaurante.dominio;
-
 import com.heyfood.heyfoodapp.categoria.dominio.Categoria;
 import com.heyfood.heyfoodapp.contato.dominio.Contato;
 import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
 import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
 
-public class Restaurante {
+
+public class Restaurante{
     private long id;
     private String nome;
     private float notaMedia;
