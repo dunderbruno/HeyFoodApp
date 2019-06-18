@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 import com.heyfood.heyfoodapp.pessoa.persistencia.PessoaDAO;
@@ -52,6 +51,17 @@ public class UsuarioDAO extends AbstractDAO {
             result = null;
         }
         return result;
+    }
+
+    public void updateUsuario(Usuario usuario){
+        db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.CAMPO_LOGIN, usuario.getLogin());
+        values.put(DBHelper.CAMPO_SENHA, usuario.getSenha());
+        values.put(DBHelper.CAMPO_FK_PESSOA, usuario.getPessoa().getId());
+        String[] id = new String[]{Long.toString(usuario.getId())};
+        db.update(DBHelper.TABELA_USUARIO, values, DBHelper.CAMPO_ID_USUARIO+"=?", id);
+        super.close();
     }
 
     public int cadastrar(Usuario usuario) {

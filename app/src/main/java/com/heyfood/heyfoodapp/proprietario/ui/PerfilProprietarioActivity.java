@@ -11,6 +11,7 @@ import com.heyfood.heyfoodapp.contato.ui.AtualizarContatoActivity;
 import com.heyfood.heyfoodapp.endereco.ui.AtualizarEnderecoActivity;
 import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
+import com.heyfood.heyfoodapp.usuario.ui.TrocarSenhaActivity;
 
 public class PerfilProprietarioActivity extends AppCompatActivity {
 
@@ -62,7 +63,8 @@ public class PerfilProprietarioActivity extends AppCompatActivity {
     }
 
     public void trocarSenha(View view){
-
+        Intent novaTela = new Intent(this, TrocarSenhaActivity.class);
+        startActivity(novaTela);
     }
 
     public void atualizarEndereco(View view){

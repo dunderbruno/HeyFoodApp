@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.heyfood.heyfoodapp.contato.dominio.Contato;
-import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 

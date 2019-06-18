@@ -8,10 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import com.heyfood.heyfoodapp.categoria.persistencia.EspecialidadeDAO;
 import com.heyfood.heyfoodapp.contato.persistencia.ContatoDAO;
 import com.heyfood.heyfoodapp.endereco.persistencia.EnderecoDAO;
-import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
-import com.heyfood.heyfoodapp.proprietario.persistencia.ProprietarioDAO;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 
 import java.util.ArrayList;

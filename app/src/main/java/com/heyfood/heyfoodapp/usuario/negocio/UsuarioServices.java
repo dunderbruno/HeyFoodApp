@@ -39,6 +39,14 @@ public class UsuarioServices {
         usuario.setId(idUsuario);
     }
 
+    public void trocarSenha(Usuario usuario, String senhaAtual, String senhaNova) throws Exception{
+        if(!usuario.getSenha().equals(senhaAtual)){
+            throw new Exception();
+        }
+        usuario.setSenha(senhaNova);
+        usuarioDAO.updateUsuario(usuario);
+    }
+
     public void login(String email, String password) throws Exception {
         Usuario usuario = usuarioDAO.getUsuario(email, password);
         if (usuario == null) {
