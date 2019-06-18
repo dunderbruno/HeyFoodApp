@@ -30,6 +30,12 @@ public class HomeClienteActivity extends AppCompatActivity {
         nome.setText(String.format("Bem vindo, %s!", cliente.getUsuario().getPessoa().getNome()));
     }
 
+    @Override
+    public void onBackPressed(){
+        Sessao.instance.reset();
+        super.onBackPressed();
+    }
+
     public void cadastrarPreferencias(View view){
         Intent novaTela = new Intent(this, PreferenciaClienteActivity.class);
         startActivity(novaTela);

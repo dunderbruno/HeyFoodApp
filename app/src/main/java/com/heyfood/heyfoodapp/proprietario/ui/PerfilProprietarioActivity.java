@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.heyfood.heyfoodapp.R;
-import com.heyfood.heyfoodapp.cliente.ui.HomeClienteActivity;
+import com.heyfood.heyfoodapp.contato.ui.AtualizarContatoActivity;
+import com.heyfood.heyfoodapp.endereco.ui.AtualizarEnderecoActivity;
 import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
 
@@ -59,4 +60,19 @@ public class PerfilProprietarioActivity extends AppCompatActivity {
         Intent novaTela = new Intent(this, HomeProprietarioActivity.class);
         startActivity(novaTela);
     }
+
+    public void trocarSenha(View view){
+
+    }
+
+    public void atualizarEndereco(View view){
+        Intent novaTela = new Intent(this, AtualizarEnderecoActivity.class);
+        startActivity(novaTela);
+    }
+
+    public void atualizarContato(View view){
+        Intent novaTela = new Intent(this, AtualizarContatoActivity.class);
+        startActivity(novaTela);
+    }
+
 }

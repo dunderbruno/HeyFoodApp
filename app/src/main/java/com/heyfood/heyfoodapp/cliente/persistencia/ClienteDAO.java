@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.heyfood.heyfoodapp.categoria.persistencia.PreferenciaDAO;
 import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.usuario.persistencia.UsuarioDAO;
 import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
@@ -52,9 +53,7 @@ public class ClienteDAO extends AbstractDAO {
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_FK_PREFERENCIAS, idPreferencias);
-
         String[] idCliente = new String[]{Long.toString(Sessao.instance.getCliente().getId())};
-
         db.update(DBHelper.TABELA_CLIENTE, values, DBHelper.CAMPO_ID_CLIENTE+"=?", idCliente);
         super.close();
     }
@@ -62,11 +61,13 @@ public class ClienteDAO extends AbstractDAO {
     private Cliente createCliente(Cursor cursor){
         Cliente result = new Cliente();
         UsuarioDAO usuarioDAO = new UsuarioDAO(context);
+        PreferenciaDAO preferenciasDAO = new PreferenciaDAO(context);
         int columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ID_CLIENTE);
         result.setId(Integer.parseInt(cursor.getString(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_USUARIO_CLIENTE);
         result.setUsuario(usuarioDAO.getUsuarioById(cursor.getInt(columnIndex)));
-
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_PREFERENCIAS);
+        result.setPreferencias(preferenciasDAO.getPreferencia(cursor.getInt(columnIndex)));
         return result;
     }
 

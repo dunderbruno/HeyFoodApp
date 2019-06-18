@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
+import com.heyfood.heyfoodapp.contato.ui.AtualizarContatoActivity;
+import com.heyfood.heyfoodapp.endereco.ui.AtualizarEnderecoActivity;
 import com.heyfood.heyfoodapp.infra.Sessao;
 
 public class PerfilClienteActivity extends AppCompatActivity {
@@ -58,8 +60,18 @@ public class PerfilClienteActivity extends AppCompatActivity {
         Intent novaTela = new Intent(this, HomeClienteActivity.class);
         startActivity(novaTela);
     }
-    public void alterarPerfil(View view){
-        Intent novaTela = new Intent(this,CadastrarClienteActivity.class);
+
+    public void trocarSenha(View view){
+
+    }
+
+    public void atualizarEndereco(View view){
+        Intent novaTela = new Intent(this, AtualizarEnderecoActivity.class);
+        startActivity(novaTela);
+    }
+
+    public void atualizarContato(View view){
+        Intent novaTela = new Intent(this, AtualizarContatoActivity.class);
         startActivity(novaTela);
     }
 

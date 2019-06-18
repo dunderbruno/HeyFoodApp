@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.heyfood.heyfoodapp.contato.dominio.Contato;
+import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 
@@ -29,6 +30,17 @@ public class ContatoDAO extends AbstractDAO{
         }
         super.close(cursor, db);
         return result;
+    }
+
+    public void updateContato(Contato contato){
+        db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.CAMPO_TELEFONE, contato.getTelefone());
+        values.put(DBHelper.CAMPO_EMAIL, contato.getEmail());
+        values.put(DBHelper.CAMPO_SITE, contato.getSite());
+        String[] id = new String[]{Long.toString(contato.getId())};
+        db.update(DBHelper.TABELA_CONTATO, values, DBHelper.CAMPO_ID_CONTATO+"=?", id);
+        super.close();
     }
 
     public int cadastrar(Contato contato) {

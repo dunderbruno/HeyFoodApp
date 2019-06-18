@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.heyfood.heyfoodapp.categoria.persistencia.EspecialidadeDAO;
 import com.heyfood.heyfoodapp.contato.persistencia.ContatoDAO;
 import com.heyfood.heyfoodapp.endereco.persistencia.EnderecoDAO;
 import com.heyfood.heyfoodapp.infra.Sessao;
@@ -90,6 +91,7 @@ public class RestauranteDAO extends AbstractDAO{
         Restaurante result = new Restaurante();
         EnderecoDAO enderecoDAO = new EnderecoDAO(context);
         ContatoDAO contatoDAO = new ContatoDAO(context);
+        EspecialidadeDAO especialidadesDAO = new EspecialidadeDAO(context);
         int columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ID_RESTAURANTE);
         result.setId(Integer.parseInt(cursor.getString(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_NOME_RESTAURANTE);
@@ -102,6 +104,8 @@ public class RestauranteDAO extends AbstractDAO{
         result.setEndereco(enderecoDAO.getEndereco(cursor.getInt(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_CONTATO_RESTAURANTE);
         result.setContato(contatoDAO.getContato(cursor.getInt(columnIndex)));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_ESPECIALIDADES);
+        result.setEspecialidades(especialidadesDAO.getEspecialidade(cursor.getInt(columnIndex)));
         return result;
     }
 }

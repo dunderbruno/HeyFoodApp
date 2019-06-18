@@ -33,6 +33,7 @@
             android:layout_weight="1"
             android:text="Telefone"
             android:textAlignment="textEnd"
+            android:textIsSelectable="true"
             android:textSize="16dp" />
     </LinearLayout>
 </LinearLayout>

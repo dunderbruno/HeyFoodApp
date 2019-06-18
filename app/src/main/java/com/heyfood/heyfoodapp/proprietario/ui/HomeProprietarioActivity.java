@@ -29,6 +29,12 @@ public class HomeProprietarioActivity extends AppCompatActivity {
         nome.setText(String.format("Bem vindo, %s!", proprietario.getUsuario().getPessoa().getNome()));
     }
 
+    @Override
+    public void onBackPressed(){
+        Sessao.instance.reset();
+        super.onBackPressed();
+    }
+
     public void abrirTelaCadastroRestaurante(View view){
         Intent novaTela = new Intent(this, CadastrarRestauranteActivity.class);
         startActivity(novaTela);
