@@ -67,7 +67,7 @@ public class RestauranteDAO extends AbstractDAO{
         return result;
     }
 
-    public int cadastrar(Restaurante restaurante) {
+    public long cadastrar(Restaurante restaurante) {
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_NOME_RESTAURANTE, restaurante.getNome());
@@ -77,12 +77,9 @@ public class RestauranteDAO extends AbstractDAO{
         values.put(DBHelper.CAMPO_FK_CONTATO_RESTAURANTE, restaurante.getContato().getId());
         values.put(DBHelper.CAMPO_FK_ESPECIALIDADES, restaurante.getEspecialidades().getId());
         values.put(DBHelper.CAMPO_FK_PROPRIETARIO, restaurante.getProprietario().getId());
-
-        long retorno = db.insert(DBHelper.TABELA_RESTAURANTE, null, values);
-
+        long id = db.insert(DBHelper.TABELA_RESTAURANTE, null, values);
         super.close(db);
-
-        return (int) retorno;
+        return id;
     }
 
     private Restaurante createRestaurante(Cursor cursor){

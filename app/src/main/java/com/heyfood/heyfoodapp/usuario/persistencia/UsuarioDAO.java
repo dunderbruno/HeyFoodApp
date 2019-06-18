@@ -64,17 +64,17 @@ public class UsuarioDAO extends AbstractDAO {
         super.close();
     }
 
-    public int cadastrar(Usuario usuario) {
+    public long cadastrar(Usuario usuario) {
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_FK_PESSOA, usuario.getPessoa().getId());
         values.put(DBHelper.CAMPO_LOGIN, usuario.getLogin());
         values.put(DBHelper.CAMPO_SENHA, usuario.getSenha());
 
-        long retorno = db.insert(DBHelper.TABELA_USUARIO, null, values);
+        long id = db.insert(DBHelper.TABELA_USUARIO, null, values);
         super.close(db);
 
-        return (int) retorno;
+        return id;
     }
 
     private Usuario createUsuario(Cursor cursor) {

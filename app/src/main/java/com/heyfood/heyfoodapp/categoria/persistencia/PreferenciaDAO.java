@@ -32,7 +32,7 @@ public class PreferenciaDAO extends AbstractDAO {
         return result;
     }
 
-    public int cadastrar(Categoria categoria){
+    public long cadastrar(Categoria categoria){
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -51,14 +51,11 @@ public class PreferenciaDAO extends AbstractDAO {
         values.put(DBHelper.CAMPO_RODIZIO_PREF, booleanToInt(categoria.getRodizio()));
         values.put(DBHelper.CAMPO_DELIVERY_PREF, booleanToInt(categoria.getDelivery()));
         values.put(DBHelper.CAMPO_SELFSERVICE_PREF, booleanToInt(categoria.getSelfservice()));
-
-        long retorno = db.insert(DBHelper.TABELA_PREFERENCIAS, null, values);
-
+        long id = db.insert(DBHelper.TABELA_PREFERENCIAS, null, values);
         ClienteDAO clienteDAO = new ClienteDAO(context);
-        clienteDAO.setPreferencias(retorno);
-
+        clienteDAO.setPreferencias(id);
         super.close(db);
-        return (int) retorno;
+        return id;
     }
 
     private int booleanToInt(boolean valor){

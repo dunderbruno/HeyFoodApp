@@ -42,17 +42,15 @@ public class ContatoDAO extends AbstractDAO{
         super.close();
     }
 
-    public int cadastrar(Contato contato) {
+    public long cadastrar(Contato contato) {
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_EMAIL, contato.getEmail());
         values.put(DBHelper.CAMPO_TELEFONE, contato.getTelefone());
         values.put(DBHelper.CAMPO_SITE, contato.getSite());
-
-        long retorno = db.insert(DBHelper.TABELA_CONTATO, null, values);
+        long id = db.insert(DBHelper.TABELA_CONTATO, null, values);
         super.close(db);
-
-        return (int) retorno;
+        return id;
     }
 
     private Contato createContato(Cursor cursor){

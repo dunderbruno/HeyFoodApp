@@ -44,7 +44,7 @@ public class EnderecoDAO extends AbstractDAO{
         super.close();
     }
 
-    public int cadastrar(Endereco endereco) {
+    public long cadastrar(Endereco endereco) {
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_CEP, endereco.getCep());
@@ -52,11 +52,9 @@ public class EnderecoDAO extends AbstractDAO{
         values.put(DBHelper.CAMPO_BAIRRO, endereco.getBairro());
         values.put(DBHelper.CAMPO_CIDADE, endereco.getCidade());
         values.put(DBHelper.CAMPO_NUMERO, endereco.getNumero());
-
-        long retorno = db.insert(DBHelper.TABELA_ENDERECO, null, values);
+        long id = db.insert(DBHelper.TABELA_ENDERECO, null, values);
         super.close(db);
-
-        return (int) retorno;
+        return id;
     }
 
     private Endereco createEndereco(Cursor cursor){

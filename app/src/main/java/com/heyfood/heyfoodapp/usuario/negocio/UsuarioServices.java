@@ -26,16 +26,16 @@ public class UsuarioServices {
         if (usuarioDAO.getUsuario(usuario.getLogin()) != null) {
             throw new Exception();
         }
-        int idContato = contatoDAO.cadastrar(usuario.getPessoa().getContato());
+        long idContato = contatoDAO.cadastrar(usuario.getPessoa().getContato());
         usuario.getPessoa().getContato().setId(idContato);
 
-        int idEndereco = enderecoDAO.cadastrar(usuario.getPessoa().getEndereco());
+        long idEndereco = enderecoDAO.cadastrar(usuario.getPessoa().getEndereco());
         usuario.getPessoa().getEndereco().setId(idEndereco);
 
-        int idPessoa = pessoaDAO.cadastrar(usuario.getPessoa());
+        long idPessoa = pessoaDAO.cadastrar(usuario.getPessoa());
         usuario.getPessoa().setId(idPessoa);
 
-        int idUsuario = usuarioDAO.cadastrar(usuario);
+        long idUsuario = usuarioDAO.cadastrar(usuario);
         usuario.setId(idUsuario);
     }
 

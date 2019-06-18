@@ -33,7 +33,7 @@ public class PessoaDAO extends AbstractDAO{
         return result;
     }
 
-    public int cadastrar(Pessoa pessoa) {
+    public long cadastrar(Pessoa pessoa) {
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_NOME, pessoa.getNome());
@@ -41,11 +41,9 @@ public class PessoaDAO extends AbstractDAO{
         values.put(DBHelper.CAMPO_DATA_NASCIMENTO, pessoa.getDataNascimento());
         values.put(DBHelper.CAMPO_FK_ENDERECO, pessoa.getEndereco().getId());
         values.put(DBHelper.CAMPO_FK_CONTATO, pessoa.getContato().getId());
-
-        long retorno = db.insert(DBHelper.TABELA_PESSOA, null, values);
+        long id = db.insert(DBHelper.TABELA_PESSOA, null, values);
         super.close(db);
-
-        return (int) retorno;
+        return id;
     }
 
     private Pessoa createPessoa(Cursor cursor){

@@ -33,15 +33,13 @@ public class ProprietarioDAO extends AbstractDAO {
         return result;
     }
 
-    public int cadastrar(Proprietario proprietario) {
+    public long cadastrar(Proprietario proprietario) {
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_FK_USUARIO_PROPRIETARIO, proprietario.getUsuario().getId());
-
-        long retorno = db.insert(DBHelper.TABELA_PROPRIETARIO, null, values);
+        long id = db.insert(DBHelper.TABELA_PROPRIETARIO, null, values);
         super.close(db);
-
-        return (int) retorno;
+        return id;
     }
 
     private Proprietario createProprietario(Cursor cursor){

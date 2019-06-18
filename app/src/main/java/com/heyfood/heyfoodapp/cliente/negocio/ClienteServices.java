@@ -38,24 +38,24 @@ public class ClienteServices {
         if (usuarioDAO.getUsuario(cliente.getUsuario().getLogin()) != null) {
             throw new Exception();
         }
-        int idContato = contatoDAO.cadastrar(cliente.getUsuario().getPessoa().getContato());
+        long idContato = contatoDAO.cadastrar(cliente.getUsuario().getPessoa().getContato());
         cliente.getUsuario().getPessoa().getContato().setId(idContato);
 
-        int idEndereco = enderecoDAO.cadastrar(cliente.getUsuario().getPessoa().getEndereco());
+        long idEndereco = enderecoDAO.cadastrar(cliente.getUsuario().getPessoa().getEndereco());
         cliente.getUsuario().getPessoa().getEndereco().setId(idEndereco);
 
-        int idPessoa = pessoaDAO.cadastrar(cliente.getUsuario().getPessoa());
+        long idPessoa = pessoaDAO.cadastrar(cliente.getUsuario().getPessoa());
         cliente.getUsuario().getPessoa().setId(idPessoa);
 
-        int idUsuario = usuarioDAO.cadastrar(cliente.getUsuario());
+        long idUsuario = usuarioDAO.cadastrar(cliente.getUsuario());
         cliente.getUsuario().setId(idUsuario);
 
-        int idCliente = clienteDAO.cadastrar(cliente);
+        long idCliente = clienteDAO.cadastrar(cliente);
         cliente.setId(idCliente);
     }
 
     public void cadastrarPreferencias(Categoria preferencias){
-        int idPreferencias = preferenciaDAO.cadastrar(preferencias);
+        long idPreferencias = preferenciaDAO.cadastrar(preferencias);
         preferencias.setId(idPreferencias);
     }
 

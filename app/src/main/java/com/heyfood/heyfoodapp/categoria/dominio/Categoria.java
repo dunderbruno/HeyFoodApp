@@ -83,8 +83,8 @@ public class Categoria {
         return selfservice;
     }
 
-    public void setId(int id) {
-        this.id = new Long(id);
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setAcai(Boolean acai) {

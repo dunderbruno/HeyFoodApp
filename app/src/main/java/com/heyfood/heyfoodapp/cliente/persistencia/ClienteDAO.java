@@ -38,15 +38,13 @@ public class ClienteDAO extends AbstractDAO {
         return result;
     }
 
-    public int cadastrar(Cliente cliente) {
+    public long cadastrar(Cliente cliente) {
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_FK_USUARIO_CLIENTE, cliente.getUsuario().getId());
-
-        long retorno = db.insert(DBHelper.TABELA_CLIENTE, null, values);
+        long id = db.insert(DBHelper.TABELA_CLIENTE, null, values);
         super.close(db);
-
-        return (int) retorno;
+        return id;
     }
 
     public void setPreferencias(long idPreferencias){

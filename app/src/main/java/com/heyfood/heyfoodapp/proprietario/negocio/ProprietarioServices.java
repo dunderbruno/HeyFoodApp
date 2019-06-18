@@ -30,19 +30,19 @@ public class ProprietarioServices {
         if (usuarioDAO.getUsuario(proprietario.getUsuario().getLogin()) != null){
             throw new Exception();
         }
-        int idContato = contatoDAO.cadastrar(proprietario.getUsuario().getPessoa().getContato());
+        long idContato = contatoDAO.cadastrar(proprietario.getUsuario().getPessoa().getContato());
         proprietario.getUsuario().getPessoa().getContato().setId(idContato);
 
-        int idEndereco = enderecoDAO.cadastrar(proprietario.getUsuario().getPessoa().getEndereco());
+        long idEndereco = enderecoDAO.cadastrar(proprietario.getUsuario().getPessoa().getEndereco());
         proprietario.getUsuario().getPessoa().getEndereco().setId(idEndereco);
 
-        int idPessoa = pessoaDAO.cadastrar(proprietario.getUsuario().getPessoa());
+        long idPessoa = pessoaDAO.cadastrar(proprietario.getUsuario().getPessoa());
         proprietario.getUsuario().getPessoa().setId(idPessoa);
 
-        int idUsuario = usuarioDAO.cadastrar(proprietario.getUsuario());
+        long idUsuario = usuarioDAO.cadastrar(proprietario.getUsuario());
         proprietario.getUsuario().setId(idUsuario);
 
-        int idProprietario = proprietarioDAO.cadastrar(proprietario);
+        long idProprietario = proprietarioDAO.cadastrar(proprietario);
         proprietario.setId(idProprietario);
     }
 

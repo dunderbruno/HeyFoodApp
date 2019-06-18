@@ -53,113 +53,133 @@
 
         <TextView
             android:id="@+id/nomeClienteId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:text="TextView"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbarPerfilCliente" />
 
         <TextView
             android:id="@+id/emailClienteId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="66dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:text="TextView"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarPerfilCliente" />
+            app:layout_constraintTop_toBottomOf="@+id/nomeClienteId" />
 
         <TextView
             android:id="@+id/cpfClienteId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:text="TextView"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarPerfilCliente" />
+            app:layout_constraintTop_toBottomOf="@+id/emailClienteId" />
 
         <TextView
             android:id="@+id/nascimentoClienteId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="126dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:text="TextView"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarPerfilCliente" />
+            app:layout_constraintTop_toBottomOf="@+id/cpfClienteId" />
 
         <TextView
             android:id="@+id/telefoneClienteId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="156dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:text="TextView"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarPerfilCliente" />
+            app:layout_constraintTop_toBottomOf="@+id/nascimentoClienteId" />
 
         <TextView
             android:id="@+id/cepClienteId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="186dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:text="TextView"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarPerfilCliente" />
+            app:layout_constraintTop_toBottomOf="@+id/telefoneClienteId" />
 
         <TextView
             android:id="@+id/ruaClienteId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="216dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:text="TextView"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarPerfilCliente" />
+            app:layout_constraintTop_toBottomOf="@+id/cepClienteId" />
 
         <TextView
             android:id="@+id/numeroClienteId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="246dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:text="TextView"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarPerfilCliente" />
+            app:layout_constraintTop_toBottomOf="@+id/ruaClienteId" />
 
         <TextView
             android:id="@+id/bairroClienteId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="276dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:text="TextView"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarPerfilCliente" />
+            app:layout_constraintTop_toBottomOf="@+id/numeroClienteId" />
 
         <TextView
             android:id="@+id/cidadeClienteId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="306dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:text="TextView"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarPerfilCliente" />
+            app:layout_constraintTop_toBottomOf="@+id/bairroClienteId" />
 
         <Button
             android:id="@+id/botaoVoltarHomeId"

@@ -46,15 +46,15 @@ public class PerfilProprietarioActivity extends AppCompatActivity {
         cidade = findViewById(R.id.cidadeProprietarioId);
 
         nome.setText(String.format("Nome: %s",proprietario.getUsuario().getPessoa().getNome()));
-        email.setText(String.format("email: %s",proprietario.getUsuario().getLogin()));
+        email.setText(String.format("Email: %s",proprietario.getUsuario().getLogin()));
         cpf.setText(String.format("CPF: %s",proprietario.getUsuario().getPessoa().getCpf()));
         nascimento.setText(String.format("Dada de nascimento: %s",proprietario.getUsuario().getPessoa().getDataNascimento()));
         telefone.setText(String.format("Telefone: %s",proprietario.getUsuario().getPessoa().getContato().getTelefone()));
-        cep.setText(String.format("cep: %s",proprietario.getUsuario().getPessoa().getEndereco().getCep()));
-        rua.setText(String.format("rua: %s",proprietario.getUsuario().getPessoa().getEndereco().getRua()));
-        numero.setText(String.format("numero: %s",proprietario.getUsuario().getPessoa().getEndereco().getNumero()));
-        bairro.setText(String.format("bairro: %s",proprietario.getUsuario().getPessoa().getEndereco().getBairro()));
-        cidade.setText(String.format("cidade: %s",proprietario.getUsuario().getPessoa().getEndereco().getCidade()));
+        cep.setText(String.format("CEP: %s",proprietario.getUsuario().getPessoa().getEndereco().getCep()));
+        rua.setText(String.format("Rua: %s",proprietario.getUsuario().getPessoa().getEndereco().getRua()));
+        numero.setText(String.format("Numero: %s",proprietario.getUsuario().getPessoa().getEndereco().getNumero()));
+        bairro.setText(String.format("Bairro: %s",proprietario.getUsuario().getPessoa().getEndereco().getBairro()));
+        cidade.setText(String.format("Cidade: %s",proprietario.getUsuario().getPessoa().getEndereco().getCidade()));
     }
 
     public void voltarHome(View view){

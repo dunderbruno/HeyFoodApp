@@ -29,16 +29,16 @@ public class RestauranteServices {
 
     public void cadastrar(Restaurante restaurante) {
 
-        int idContato = contatoDAO.cadastrar(restaurante.getContato());
+        long idContato = contatoDAO.cadastrar(restaurante.getContato());
         restaurante.getContato().setId(idContato);
 
-        int idEndereco = enderecoDAO.cadastrar(restaurante.getEndereco());
+        long idEndereco = enderecoDAO.cadastrar(restaurante.getEndereco());
         restaurante.getEndereco().setId(idEndereco);
 
-        int idEspecialidades = especialidadeDAO.cadastrar(restaurante.getEspecialidades());
+        long idEspecialidades = especialidadeDAO.cadastrar(restaurante.getEspecialidades());
         restaurante.getEspecialidades().setId(idEspecialidades);
 
-        int idRestaurante = restauranteDAO.cadastrar(restaurante);
+        long idRestaurante = restauranteDAO.cadastrar(restaurante);
         restaurante.setId(idRestaurante);
 
     }

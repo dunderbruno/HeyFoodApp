@@ -31,7 +31,7 @@ public class EspecialidadeDAO extends AbstractDAO{
         return result;
     }
 
-    public int cadastrar(Categoria categoria){
+    public long cadastrar(Categoria categoria){
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_ACAI_ESP, booleanToInt(categoria.getAcai()));
@@ -49,10 +49,9 @@ public class EspecialidadeDAO extends AbstractDAO{
         values.put(DBHelper.CAMPO_RODIZIO_ESP, booleanToInt(categoria.getRodizio()));
         values.put(DBHelper.CAMPO_DELIVERY_ESP, booleanToInt(categoria.getDelivery()));
         values.put(DBHelper.CAMPO_SELFSERVICE_ESP, booleanToInt(categoria.getSelfservice()));
-
-        long retorno = db.insert(DBHelper.TABELA_ESPECIALIDADES, null, values);
+        long id = db.insert(DBHelper.TABELA_ESPECIALIDADES, null, values);
         super.close(db);
-        return (int) retorno;
+        return id;
     }
 
     private int booleanToInt(boolean valor){

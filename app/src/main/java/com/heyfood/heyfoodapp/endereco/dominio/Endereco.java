@@ -34,8 +34,8 @@ public class Endereco {
         return numero;
     }
 
-    public void setId(int id) {
-        this.id = new Long(id);
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setRua(String rua) {

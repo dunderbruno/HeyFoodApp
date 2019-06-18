@@ -23,8 +23,8 @@ public class Contato {
         return site;
     }
 
-    public void setId(int id) {
-        this.id = new Long(id);
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setTelefone(String telefone) {
