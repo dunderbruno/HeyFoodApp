@@ -1,7 +1,9 @@
 package com.heyfood.heyfoodapp.restaurante.ui;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,12 +26,14 @@ import java.util.List;
 public class ListarRestaurantes extends AppCompatActivity {
     private RecyclerView recyclerRestaurante;
     RestauranteDAO restauranteDAO;
+    Context contexto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_restaurantes);
+        contexto = this;
 
         restauranteDAO = new RestauranteDAO(this);
         List<Restaurante> listaRestaurante;
@@ -87,7 +91,9 @@ public class ListarRestaurantes extends AppCompatActivity {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             Sessao.instance.setRestaurante(restaurante);
-                                            
+                                            Intent novaTela = new Intent(contexto, AtualizarRestauranteActivity.class);
+                                            startActivity(novaTela);
+
                                         }
                                     });
                                 }
