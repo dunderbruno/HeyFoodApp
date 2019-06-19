@@ -12,6 +12,7 @@ import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 import com.heyfood.heyfoodapp.cliente.ui.CadastrarClienteActivity;
 import com.heyfood.heyfoodapp.cliente.ui.HomeClienteActivity;
+import com.heyfood.heyfoodapp.cliente.ui.HomeClienteActivity2;
 import com.heyfood.heyfoodapp.proprietario.negocio.ProprietarioServices;
 import com.heyfood.heyfoodapp.proprietario.ui.CadastrarProprietarioActivity;
 import com.heyfood.heyfoodapp.proprietario.ui.HomeProprietarioActivity;
@@ -60,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             }else{
 
                 clienteServices.login(login.getText().toString(), senha.getText().toString());
-                Intent novaTela = new Intent(this, HomeClienteActivity.class);
+                Intent novaTela = new Intent(this, HomeClienteActivity2.class);
                 startActivity(novaTela);
             }
         }
