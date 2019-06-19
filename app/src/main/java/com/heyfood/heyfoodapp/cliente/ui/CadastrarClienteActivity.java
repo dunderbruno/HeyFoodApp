@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.heyfood.heyfoodapp.R;
@@ -13,6 +14,7 @@ import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 import com.heyfood.heyfoodapp.contato.dominio.Contato;
 import com.heyfood.heyfoodapp.endereco.dominio.Endereco;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
+import com.heyfood.heyfoodapp.pessoa.dominio.TipoGenero;
 import com.heyfood.heyfoodapp.usuario.dominio.Usuario;
 import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
 import com.heyfood.heyfoodapp.util.MaskEditUtil;
@@ -25,6 +27,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
     private EditText nome;
     private EditText login;
     private EditText senha;
+    private RadioGroup genero;
     private EditText dataNascimento;
     private EditText cpf;
     private EditText telefone;
@@ -33,6 +36,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
     private EditText numero;
     private EditText bairro;
     private EditText cidade;
+    private TipoGenero tipoGenero = TipoGenero.FEMININO;
 
     private final ClienteServices services = new ClienteServices(this);
 
@@ -45,6 +49,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         nome = findViewById(R.id.campoNomeId);
         login = findViewById(R.id.campoLoginId);
         senha = findViewById(R.id.campoSenhaId);
+        genero = findViewById(R.id.groupGeneroId);
         dataNascimento = findViewById(R.id.campoDataId);
         cpf = findViewById(R.id.campoCpfId);
         telefone = findViewById(R.id.campoTelefoneId);
@@ -53,7 +58,21 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         numero = findViewById(R.id.campoNumeroId);
         bairro = findViewById(R.id.campoBairroId);
         cidade = findViewById(R.id.campoCidadeId);
-
+        genero.check(R.id.radioFemininoId);
+        genero.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(i == R.id.radioMasculinoId){
+                    tipoGenero = TipoGenero.MASCULINO;
+                }
+                else if(i == R.id.radioFemininoId){
+                    tipoGenero = TipoGenero.FEMININO;
+                }
+                else{
+                    tipoGenero = TipoGenero.OUTROS;
+                }
+            }
+        });
         //Configurando mascara dos campos de Data e CPF
         dataNascimento.addTextChangedListener(MaskEditUtil.mask(dataNascimento, MaskEditUtil.FORMAT_DATE));
         cpf.addTextChangedListener(MaskEditUtil.mask(cpf, MaskEditUtil.FORMAT_CPF));
@@ -90,6 +109,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         pessoa.setNome(nome.getText().toString());
         pessoa.setDataNAscimento(dataNascimento.getText().toString());
         pessoa.setCpf(cpf.getText().toString());
+        pessoa.setGenero(tipoGenero);
         return pessoa;
     }
 

@@ -17,6 +17,7 @@ public class PerfilProprietarioActivity extends AppCompatActivity {
 
     private TextView nome;
     private TextView email;
+    private TextView genero;
     private TextView cpf;
     private TextView nascimento;
     private TextView telefone;
@@ -36,6 +37,7 @@ public class PerfilProprietarioActivity extends AppCompatActivity {
 
         nome = findViewById(R.id.nomeProprietarioId);
         email = findViewById(R.id.emailProprietarioId);
+        genero = findViewById(R.id.generoProprietarioId);
         cpf = findViewById(R.id.cpfProprietarioId);
         nascimento = findViewById(R.id.nascimentoProprietarioId);
         telefone = findViewById(R.id.telefoneProprietarioId);
@@ -48,6 +50,7 @@ public class PerfilProprietarioActivity extends AppCompatActivity {
         nome.setText(String.format("Nome: %s",proprietario.getUsuario().getPessoa().getNome()));
         email.setText(String.format("Email: %s",proprietario.getUsuario().getLogin()));
         cpf.setText(String.format("CPF: %s",proprietario.getUsuario().getPessoa().getCpf()));
+        genero.setText(String.format("Gênero: %s",proprietario.getUsuario().getPessoa().getGenero().toString()));
         nascimento.setText(String.format("Dada de nascimento: %s",proprietario.getUsuario().getPessoa().getDataNascimento()));
         telefone.setText(String.format("Telefone: %s",proprietario.getUsuario().getPessoa().getContato().getTelefone()));
         cep.setText(String.format("CEP: %s",proprietario.getUsuario().getPessoa().getEndereco().getCep()));

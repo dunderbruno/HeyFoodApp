@@ -22,6 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_NOME = "nome";
     public static final String CAMPO_CPF = "cpf";
     public static final String CAMPO_DATA_NASCIMENTO = "data_nascimento";
+    public static final String CAMPO_GENERO = "genero";
     public static final String CAMPO_FK_ENDERECO = "fk_endereco";
     public static final String CAMPO_FK_CONTATO = "fk_contato";
 
@@ -146,10 +147,11 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %4$s TEXT NOT NULL, " +
                         "  %5$s TEXT NOT NULL, " +
                         "  %6$s TEXT NOT NULL, " +
-                        "  %7$s TEXT NOT NULL " +
+                        "  %7$s TEXT NOT NULL, " +
+                        "  %8$s TEXT NOT NULL " +
                         ");";
         sqlTbPessoa = String.format(sqlTbPessoa,
-                TABELA_PESSOA, CAMPO_ID_PESSOA, CAMPO_NOME, CAMPO_CPF, CAMPO_DATA_NASCIMENTO, CAMPO_FK_ENDERECO, CAMPO_FK_CONTATO);
+                TABELA_PESSOA, CAMPO_ID_PESSOA, CAMPO_NOME, CAMPO_CPF, CAMPO_DATA_NASCIMENTO, CAMPO_GENERO, CAMPO_FK_ENDERECO, CAMPO_FK_CONTATO);
 
         db.execSQL(sqlTbPessoa);
 

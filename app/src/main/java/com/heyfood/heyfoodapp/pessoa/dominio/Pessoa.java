@@ -14,7 +14,7 @@ public class Pessoa {
     private String dataNascimento;
     private Endereco endereco;
     private Contato contato;
-    //private TipoGenero genero;
+    private TipoGenero genero;
 
     public long getId() {
         return id;
@@ -60,5 +60,13 @@ public class Pessoa {
 
     public void setContato(Contato contato) {
         this.contato = contato;
+    }
+
+    public TipoGenero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(TipoGenero genero) {
+        this.genero = genero;
     }
 }

@@ -10,6 +10,7 @@ import com.heyfood.heyfoodapp.endereco.persistencia.EnderecoDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 import com.heyfood.heyfoodapp.pessoa.dominio.Pessoa;
+import com.heyfood.heyfoodapp.pessoa.dominio.TipoGenero;
 
 public class PessoaDAO extends AbstractDAO{
     private SQLiteDatabase db;
@@ -39,6 +40,7 @@ public class PessoaDAO extends AbstractDAO{
         values.put(DBHelper.CAMPO_NOME, pessoa.getNome());
         values.put(DBHelper.CAMPO_CPF, pessoa.getCpf());
         values.put(DBHelper.CAMPO_DATA_NASCIMENTO, pessoa.getDataNascimento());
+        values.put(DBHelper.CAMPO_GENERO, pessoa.getGenero().toString());
         values.put(DBHelper.CAMPO_FK_ENDERECO, pessoa.getEndereco().getId());
         values.put(DBHelper.CAMPO_FK_CONTATO, pessoa.getContato().getId());
         long id = db.insert(DBHelper.TABELA_PESSOA, null, values);
@@ -58,6 +60,8 @@ public class PessoaDAO extends AbstractDAO{
         result.setCpf(cursor.getString(columnIndex));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_DATA_NASCIMENTO);
         result.setDataNAscimento(cursor.getString(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_GENERO);
+        result.setGenero(TipoGenero.stringToEnum(cursor.getString(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_ENDERECO);
         result.setEndereco(enderecoDAO.getEndereco(cursor.getInt(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_CONTATO);

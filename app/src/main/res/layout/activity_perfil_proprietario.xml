@@ -47,17 +47,16 @@
             android:id="@+id/botaoVoltarHomeId2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
             android:background="@color/corBotaoLogin"
             android:onClick="trocarSenha"
             android:text="Trocar Senha"
             android:textColor="@android:color/background_light"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cidadeProprietarioId" />
+            app:layout_constraintTop_toBottomOf="@+id/generoProprietarioId" />
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbarPerfilCliente"
@@ -228,6 +227,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/botaoVoltarHomeId3" />
+
+        <TextView
+            android:id="@+id/generoProprietarioId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cidadeProprietarioId" />
 
     </android.support.constraint.ConstraintLayout>
 

@@ -100,16 +100,16 @@
             android:id="@+id/campoCpfId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="CPF"
             android:inputType="number"
             android:text="708.714.364-69"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/campoSenhaId" />
+            app:layout_constraintTop_toBottomOf="@+id/groupGeneroId" />
 
         <Button
             android:id="@+id/botaoCadastrarId"
@@ -215,6 +215,40 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/campoNumeroId" />
+
+        <RadioGroup
+            android:id="@+id/groupGeneroId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/campoSenhaId">
+
+            <RadioButton
+                android:id="@+id/radioFemininoId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Feminino" />
+
+            <RadioButton
+                android:id="@+id/radioMasculinoId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Masculino" />
+
+            <RadioButton
+                android:id="@+id/radioOutrosId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Outros" />
+        </RadioGroup>
 
     </android.support.constraint.ConstraintLayout>
 

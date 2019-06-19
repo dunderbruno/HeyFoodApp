@@ -17,6 +17,7 @@ public class PerfilClienteActivity extends AppCompatActivity {
 
     private TextView nome;
     private TextView email;
+    private TextView genero;
     private TextView cpf;
     private TextView nascimento;
     private TextView telefone;
@@ -36,6 +37,7 @@ public class PerfilClienteActivity extends AppCompatActivity {
 
         nome = findViewById(R.id.nomeClienteId);
         email = findViewById(R.id.emailClienteId);
+        genero = findViewById(R.id.generoClienteId);
         cpf = findViewById(R.id.cpfClienteId);
         nascimento = findViewById(R.id.nascimentoClienteId);
         telefone = findViewById(R.id.telefoneClienteId);
@@ -48,6 +50,7 @@ public class PerfilClienteActivity extends AppCompatActivity {
         nome.setText(String.format("Nome: %s",cliente.getUsuario().getPessoa().getNome()));
         email.setText(String.format("Email: %s",cliente.getUsuario().getLogin()));
         cpf.setText(String.format("CPF: %s",cliente.getUsuario().getPessoa().getCpf()));
+        genero.setText(String.format("Gênero: %s",cliente.getUsuario().getPessoa().getGenero().toString()));
         nascimento.setText(String.format("Dada de nascimento: %s",cliente.getUsuario().getPessoa().getDataNascimento()));
         telefone.setText(String.format("Telefone: %s",cliente.getUsuario().getPessoa().getContato().getTelefone()));
         cep.setText(String.format("CEP: %s",cliente.getUsuario().getPessoa().getEndereco().getCep()));
