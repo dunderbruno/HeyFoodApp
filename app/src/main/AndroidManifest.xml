@@ -35,6 +35,7 @@
         <activity android:name=".cliente.ui.PreferenciaClienteActivity" />
         <activity android:name=".restaurante.ui.ContatoRestauranteActivity" />
         <activity android:name=".restaurante.ui.AtualizarRestauranteActivity"></activity>
+
     </application>
 
 </manifest>
