@@ -61,7 +61,7 @@ public class PerfilClienteActivity extends AppCompatActivity {
     }
 
     public void voltarHome(View view){
-        Intent novaTela = new Intent(this, HomeClienteActivity2.class);
+        Intent novaTela = new Intent(this, HomeClienteActivity.class);
         startActivity(novaTela);
     }
 

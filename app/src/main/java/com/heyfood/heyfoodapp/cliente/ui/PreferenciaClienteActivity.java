@@ -161,7 +161,7 @@ public class PreferenciaClienteActivity extends AppCompatActivity {
             Categoria preferencias = createCategoria();
             services.cadastrarPreferencias(preferencias);
 
-            Intent novaTela = new Intent(this, HomeClienteActivity2.class);
+            Intent novaTela = new Intent(this, HomeClienteActivity.class);
             startActivity(novaTela);
             Toast.makeText(this, "Preferencias cadastrado com sucesso", Toast.LENGTH_LONG).show();
         }

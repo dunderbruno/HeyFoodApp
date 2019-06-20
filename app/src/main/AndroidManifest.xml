@@ -34,14 +34,7 @@
         <activity android:name=".proprietario.ui.HomeProprietarioActivity" />
         <activity android:name=".cliente.ui.PreferenciaClienteActivity" />
         <activity android:name=".restaurante.ui.ContatoRestauranteActivity" />
-        <activity
-            android:name=".cliente.ui.HomeClienteActivity2"
-            android:label="@string/title_activity_home_cliente2"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".proprietario.ui.HomeProprietarioActivity2"
-            android:label="@string/title_activity_home_proprietario2"
-            android:theme="@style/AppTheme"></activity>
+
     </application>
 
 </manifest>

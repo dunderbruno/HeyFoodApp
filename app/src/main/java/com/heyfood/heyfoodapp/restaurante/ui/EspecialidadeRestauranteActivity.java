@@ -11,7 +11,6 @@ import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.categoria.dominio.Categoria;
 import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.proprietario.ui.HomeProprietarioActivity;
-import com.heyfood.heyfoodapp.proprietario.ui.HomeProprietarioActivity2;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.restaurante.negocio.RestauranteServices;
 
@@ -169,7 +168,7 @@ public class EspecialidadeRestauranteActivity extends AppCompatActivity {
             Sessao.instance.setRestaurante(restaurante);
             services.cadastrar(restaurante);
 
-            Intent novaTela = new Intent(this, HomeProprietarioActivity2.class);
+            Intent novaTela = new Intent(this, HomeProprietarioActivity.class);
             startActivity(novaTela);
             Toast.makeText(this, "Restaurante cadastrado com sucesso", Toast.LENGTH_LONG).show();
         }
