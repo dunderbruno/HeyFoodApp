@@ -104,8 +104,15 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_DELIVERY_PREF = "delivery";
     public static final String CAMPO_SELFSERVICE_PREF = "selfservice";
 
+    //Tabela Avaliacao
+    public static final String TABELA_AVALIACAO = "tb_avaliacao";
+    public static final String CAMPO_ID_AVALIACAO = "id";
+    public static final String CAMPO_FK_RESTAURANTE = "fk_restaurante";
+    public static final String CAMPO_FK_CLIENTE = "fk_cliente";
+    public static final String CAMPO_NOTA = "nota";
+
     private static final String[] TABELAS = {
-            TABELA_CLIENTE, TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE, TABELA_PROPRIETARIO, TABELA_ESPECIALIDADES, TABELA_PREFERENCIAS
+            TABELA_CLIENTE, TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE, TABELA_PROPRIETARIO, TABELA_ESPECIALIDADES, TABELA_PREFERENCIAS, TABELA_AVALIACAO
     };
 
     public DBHelper(Context context) {
@@ -123,6 +130,7 @@ public class DBHelper extends SQLiteOpenHelper {
         createTabelaProprietario(db);
         createTabelaEspecialidades(db);
         createTabelaPreferencias(db);
+        createTabelaAvaliacao(db);
     }
 
     public void createTabelaCliente(SQLiteDatabase db){
@@ -279,6 +287,19 @@ public class DBHelper extends SQLiteOpenHelper {
                 CAMPO_CONTEMPORANEA_PREF, CAMPO_ITALIANA_PREF, CAMPO_JAPONESA_PREF, CAMPO_LANCHES_PREF, CAMPO_MARMITA_PREF,
                 CAMPO_PIZZA_PREF, CAMPO_SAUDAVEL_PREF, CAMPO_ALACARTE_PREF, CAMPO_RODIZIO_PREF, CAMPO_DELIVERY_PREF, CAMPO_SELFSERVICE_PREF);
         db.execSQL(sqlTbPreferencias);
+    }
+
+    public void createTabelaAvaliacao(SQLiteDatabase db){
+        String sqlTbAvaliacao =
+                "CREATE TABLE %1s ( " +
+                        "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "  %3$s TEXT, " +
+                        "  %4$s TEXT, " +
+                        "  %5$s TEXT, " +
+                        ");";
+        sqlTbAvaliacao = String.format(sqlTbAvaliacao,
+                TABELA_AVALIACAO, CAMPO_ID_AVALIACAO, CAMPO_FK_RESTAURANTE, CAMPO_FK_CLIENTE, CAMPO_NOTA);
+        db.execSQL(sqlTbAvaliacao);
     }
 
     @Override
