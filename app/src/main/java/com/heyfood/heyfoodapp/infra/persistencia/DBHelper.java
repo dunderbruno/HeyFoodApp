@@ -295,7 +295,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "  %3$s TEXT, " +
                         "  %4$s TEXT, " +
-                        "  %5$s TEXT, " +
+                        "  %5$s TEXT " +
                         ");";
         sqlTbAvaliacao = String.format(sqlTbAvaliacao,
                 TABELA_AVALIACAO, CAMPO_ID_AVALIACAO, CAMPO_FK_RESTAURANTE, CAMPO_FK_CLIENTE, CAMPO_NOTA);

@@ -81,6 +81,7 @@ public class RestauranteDAO extends AbstractDAO{
         super.close(db);
         return id;
     }
+    //http://www.sqlitetutorial.net/sqlite-inner-join/
 
     public List<Restaurante> getRestaurantesByCidade(String cidade) {
         List<Restaurante> result = new ArrayList<Restaurante>();
@@ -89,7 +90,7 @@ public class RestauranteDAO extends AbstractDAO{
         //Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
         String sql = "SELECT " + DBHelper.TABELA_RESTAURANTE + ".*, "
                 + DBHelper.TABELA_ENDERECO + "." + DBHelper.CAMPO_CIDADE
-                + " "  + DBHelper.CAMPO_CIDADE + " AS " + cidade
+                + ", "  + DBHelper.CAMPO_CIDADE + " AS " + cidade
                 + " FROM " + DBHelper.TABELA_RESTAURANTE + " INNER JOIN " + DBHelper.TABELA_ENDERECO
                 + " ON " + DBHelper.TABELA_RESTAURANTE +"."+ DBHelper.CAMPO_FK_ENDERECO_RESTAURANTE + " = "
                 + DBHelper.TABELA_ENDERECO +"."+ DBHelper.CAMPO_ID_ENDERECO;
