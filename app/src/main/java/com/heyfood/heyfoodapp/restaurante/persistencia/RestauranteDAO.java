@@ -88,13 +88,12 @@ public class RestauranteDAO extends AbstractDAO{
         db = helper.getReadableDatabase();
         //String sql = "SELECT * FROM " + DBHelper.TABELA_RESTAURANTE + " WHERE " + DBHelper.CAMPO_FK_PROPRIETARIO + " LIKE ?;";
         //Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
-        String sql = "SELECT " + DBHelper.TABELA_RESTAURANTE + ".*, "
-                + DBHelper.TABELA_ENDERECO + "." + DBHelper.CAMPO_CIDADE
-                + ", "  + DBHelper.CAMPO_CIDADE + " AS " + cidade
-                + " FROM " + DBHelper.TABELA_RESTAURANTE + " INNER JOIN " + DBHelper.TABELA_ENDERECO
-                + " ON " + DBHelper.TABELA_RESTAURANTE +"."+ DBHelper.CAMPO_FK_ENDERECO_RESTAURANTE + " = "
-                + DBHelper.TABELA_ENDERECO +"."+ DBHelper.CAMPO_ID_ENDERECO;
-        Cursor cursor = db.rawQuery(sql, new String[]{});
+        String sql = "SELECT * FROM " + DBHelper.TABELA_RESTAURANTE + " INNER JOIN "
+                + DBHelper.TABELA_ENDERECO
+                + " ON " + DBHelper.CAMPO_FK_ENDERECO_RESTAURANTE + " = "
+                +  DBHelper.TABELA_ENDERECO + "." +DBHelper.CAMPO_ID_ENDERECO
+                + " WHERE " + DBHelper.CAMPO_CIDADE + " LIKE ?;";
+        Cursor cursor = db.rawQuery(sql, new String[]{cidade});
         if (cursor.moveToFirst()) {
             result.add(createRestaurante(cursor));
             while(cursor.moveToNext()){
