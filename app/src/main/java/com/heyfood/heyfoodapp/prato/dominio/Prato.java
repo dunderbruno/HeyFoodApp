@@ -1,4 +1,4 @@
-package com.heyfood.heyfoodapp.prato;
+package com.heyfood.heyfoodapp.prato.dominio;
 
 public class Prato {
     private long id;
