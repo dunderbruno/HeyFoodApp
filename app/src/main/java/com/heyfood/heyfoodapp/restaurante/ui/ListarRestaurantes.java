@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 
 import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.infra.Sessao;
+import com.heyfood.heyfoodapp.recomendacao.Recomendacao;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.restaurante.persistencia.RestauranteDAO;
 import com.heyfood.heyfoodapp.util.RecyclerItemClickListener;
@@ -27,6 +28,7 @@ public class ListarRestaurantes extends AppCompatActivity {
     private RecyclerView recyclerRestaurante;
     RestauranteDAO restauranteDAO;
     Context contexto;
+    Recomendacao recomendacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,8 @@ public class ListarRestaurantes extends AppCompatActivity {
         recyclerRestaurante = findViewById(R.id.recyclerRestaurante);
 
         if (Sessao.instance.getCliente() != null){
-            listaRestaurante = restauranteDAO.getListaRestaurantes();
+            recomendacao = new Recomendacao(Sessao.instance.getCliente());
+            listaRestaurante = recomendacao.getRestaurantes(this);
         }
         else {
             listaRestaurante = restauranteDAO.getListaMeusRestaurantes(Sessao.instance.getProprietario().getId());
