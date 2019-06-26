@@ -104,8 +104,15 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_DELIVERY_PREF = "delivery";
     public static final String CAMPO_SELFSERVICE_PREF = "selfservice";
 
+    //Tabela Pratos
+    public static final String TABELA_PRATO = "tb_prato";
+    public static final String CAMPO_ID_PRATO = "id";
+    public static final String CAMPO_NOME_PRATO = "nome";
+    public static final String CAMPO_DESCRICAO = "descricao";
+    public static final String CAMPO_PRECO = "preco";
+
     private static final String[] TABELAS = {
-            TABELA_CLIENTE, TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE, TABELA_PROPRIETARIO, TABELA_ESPECIALIDADES, TABELA_PREFERENCIAS
+            TABELA_CLIENTE, TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE, TABELA_PROPRIETARIO, TABELA_ESPECIALIDADES, TABELA_PREFERENCIAS, TABELA_PRATO
     };
 
     public DBHelper(Context context) {
@@ -123,6 +130,7 @@ public class DBHelper extends SQLiteOpenHelper {
         createTabelaProprietario(db);
         createTabelaEspecialidades(db);
         createTabelaPreferencias(db);
+        createTabelaPrato(db);
     }
 
     public void createTabelaCliente(SQLiteDatabase db){
@@ -279,6 +287,19 @@ public class DBHelper extends SQLiteOpenHelper {
                 CAMPO_CONTEMPORANEA_PREF, CAMPO_ITALIANA_PREF, CAMPO_JAPONESA_PREF, CAMPO_LANCHES_PREF, CAMPO_MARMITA_PREF,
                 CAMPO_PIZZA_PREF, CAMPO_SAUDAVEL_PREF, CAMPO_ALACARTE_PREF, CAMPO_RODIZIO_PREF, CAMPO_DELIVERY_PREF, CAMPO_SELFSERVICE_PREF);
         db.execSQL(sqlTbPreferencias);
+    }
+
+    public void createTabelaPrato(SQLiteDatabase db){
+        String sqlTbPrato =
+                "CREATE TABLE %1$s ( "  +
+                        "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "  %3$s TEXT NOT NULL, " +
+                        "  %4$s TEXT NOT NULL, " +
+                        "  %5$s TEXT NOT NULL, " +
+                        ");";
+        sqlTbPrato = String.format(sqlTbPrato,
+                TABELA_PRATO, CAMPO_ID_PRATO, CAMPO_NOME_PRATO, CAMPO_DESCRICAO, CAMPO_PRECO);
+        db.execSQL(sqlTbPrato);
     }
 
     @Override
