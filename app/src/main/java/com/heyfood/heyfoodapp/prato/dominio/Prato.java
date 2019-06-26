@@ -1,5 +1,7 @@
 package com.heyfood.heyfoodapp.prato.dominio;
 
+import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
+
 import java.math.BigDecimal;
 
 public class Prato {
@@ -7,6 +9,8 @@ public class Prato {
     private String nome;
     private String descricao;
     private BigDecimal preco;
+    private Restaurante restaurante;
+    private Double notaMedia;
     //TODO: FOTO
 
     public long getId() {
@@ -25,6 +29,14 @@ public class Prato {
         return preco;
     }
 
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    public Double getNotaMedia() {
+        return notaMedia;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -39,6 +51,14 @@ public class Prato {
 
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
+    }
+
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
+    }
+
+    public void setNotaMedia(Double notaMedia) {
+        this.notaMedia = notaMedia;
     }
 }
 

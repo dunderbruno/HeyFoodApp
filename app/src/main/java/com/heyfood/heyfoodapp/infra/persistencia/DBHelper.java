@@ -110,6 +110,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_NOME_PRATO = "nome";
     public static final String CAMPO_DESCRICAO = "descricao";
     public static final String CAMPO_PRECO = "preco";
+    public static final String CAMPO_PRATO_RESTAURANTE = "restaurante";
+    public static final String CAMPO_PRATO_NOTA_MEDIA = "media";
 
     private static final String[] TABELAS = {
             TABELA_CLIENTE, TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE, TABELA_PROPRIETARIO, TABELA_ESPECIALIDADES, TABELA_PREFERENCIAS, TABELA_PRATO
@@ -296,9 +298,11 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %3$s TEXT NOT NULL, " +
                         "  %4$s TEXT NOT NULL, " +
                         "  %5$s TEXT NOT NULL, " +
+                        "  %6$s TEXT NOT NULL, " +
+                        "  %7$s TEXT NOT NULL, " +
                         ");";
         sqlTbPrato = String.format(sqlTbPrato,
-                TABELA_PRATO, CAMPO_ID_PRATO, CAMPO_NOME_PRATO, CAMPO_DESCRICAO, CAMPO_PRECO);
+                TABELA_PRATO, CAMPO_ID_PRATO, CAMPO_NOME_PRATO, CAMPO_DESCRICAO, CAMPO_PRECO, CAMPO_PRATO_RESTAURANTE, CAMPO_PRATO_NOTA_MEDIA);
         db.execSQL(sqlTbPrato);
     }
 
