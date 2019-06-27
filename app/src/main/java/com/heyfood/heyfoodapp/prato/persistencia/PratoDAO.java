@@ -39,7 +39,7 @@ public class PratoDAO extends AbstractDAO{
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_NOME_PRATO, prato.getNome());
         values.put(DBHelper.CAMPO_DESCRICAO, prato.getDescricao());
-        // values.put(DBHelper.CAMPO_PRECO, prato.getPreco()); //TODO: values.put não aceita BigDecimal
+        values.put(DBHelper.CAMPO_PRECO, prato.getPreco().doubleValue());
         values.put(DBHelper.CAMPO_FK_PRATO_RESTAURANTE, prato.getRestaurante().getId());
         long id = db.insert(DBHelper.TABELA_PRATO, null, values);
         super.close(db);
@@ -55,7 +55,9 @@ public class PratoDAO extends AbstractDAO{
         result.setNome(cursor.getString(columnIndex));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_DESCRICAO);
         result.setDescricao(cursor.getString(columnIndex));
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_PRECO);
         //TODO: setPreco
+        //result.setPreco(cursor.getFloat(columnIndex));
         //TODO: MÉTODO QUE CALCULE A NOTA MÉDIA PARA INCLUIR AQUI
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_PRATO_RESTAURANTE);
         result.setRestaurante(restauranteDAO.getRestaurante(cursor.getInt(columnIndex)));
