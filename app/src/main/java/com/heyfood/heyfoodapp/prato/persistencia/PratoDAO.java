@@ -10,6 +10,8 @@ import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 import com.heyfood.heyfoodapp.prato.dominio.Prato;
 import com.heyfood.heyfoodapp.restaurante.persistencia.RestauranteDAO;
 
+import java.math.BigDecimal;
+
 public class PratoDAO extends AbstractDAO{
     private SQLiteDatabase db;
     private DBHelper helper;
@@ -56,8 +58,7 @@ public class PratoDAO extends AbstractDAO{
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_DESCRICAO);
         result.setDescricao(cursor.getString(columnIndex));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_PRECO);
-        //TODO: setPreco
-        //result.setPreco(cursor.getFloat(columnIndex));
+        result.setPreco(BigDecimal.valueOf(cursor.getDouble(columnIndex)));
         //TODO: MÉTODO QUE CALCULE A NOTA MÉDIA PARA INCLUIR AQUI
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_PRATO_RESTAURANTE);
         result.setRestaurante(restauranteDAO.getRestaurante(cursor.getInt(columnIndex)));
