@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 
 import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.infra.Sessao;
+import com.heyfood.heyfoodapp.prato.ui.CadastrarPratoActivity;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.restaurante.persistencia.RestauranteDAO;
 import com.heyfood.heyfoodapp.util.RecyclerItemClickListener;
@@ -80,9 +81,12 @@ public class ListarRestaurantes extends AppCompatActivity {
                                 dialog.setMessage(mensagem.toString());
                                 dialog.setCancelable(true);
                                 //Configura acoes para o botao
-                                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                dialog.setPositiveButton("CADASTRAR PRATO", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
+                                        Sessao.instance.setRestaurante(restaurante);
+                                        Intent novaTela = new Intent(contexto, CadastrarPratoActivity.class);
+                                        startActivity(novaTela);
 
                                     }
                                 });
