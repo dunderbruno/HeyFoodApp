@@ -297,7 +297,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "  %3$s TEXT NOT NULL, " +
                         "  %4$s TEXT NOT NULL, " +
-                        "  %5$s REAL NOT NULL, " +
+                        "  %5$s REAL NOT NULL, " + //TODO: Real?
                         "  %6$s TEXT NOT NULL, " +
                         "  %7$s TEXT " +
                         ");";
