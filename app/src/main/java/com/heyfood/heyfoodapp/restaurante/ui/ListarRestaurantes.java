@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 
@@ -81,7 +82,10 @@ public class ListarRestaurantes extends AppCompatActivity {
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(ListarRestaurantes.this);
 
                                 //Configura botão
+                                LinearLayout linearLayout = new LinearLayout(contexto);
+                                linearLayout.setOrientation(LinearLayout.VERTICAL);
                                 Button botao = new Button(contexto);
+                                linearLayout.addView(botao);
                                 botao.setText("Listar pratos");
                                 botao.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -121,7 +125,8 @@ public class ListarRestaurantes extends AppCompatActivity {
                                     });
                                 } else{
                                     RatingBar ratingBar = new RatingBar(contexto);
-                                    dialog.setView(ratingBar);
+                                    linearLayout.addView(ratingBar);
+                                    dialog.setView(linearLayout);
                                 }
 
                                 //Criar e exbir o alertDialog
