@@ -35,7 +35,8 @@
         <activity android:name=".cliente.ui.PreferenciaClienteActivity" />
         <activity android:name=".restaurante.ui.ContatoRestauranteActivity" />
         <activity android:name=".restaurante.ui.AtualizarRestauranteActivity" />
-        <activity android:name=".prato.ui.CadastrarPratoActivity"></activity>
+        <activity android:name=".prato.ui.CadastrarPratoActivity" />
+        <activity android:name=".prato.ui.ListarPratosActivity"></activity>
     </application>
 
 </manifest>
