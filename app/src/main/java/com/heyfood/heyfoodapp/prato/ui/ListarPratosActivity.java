@@ -46,7 +46,6 @@ public class ListarPratosActivity extends AppCompatActivity {
 
         listaPrato = pratoDAO.getPratoByRestaurante(restaurante.getId());
 
-
         AdapterPratos adapter = new AdapterPratos(listaPrato);
         final List<Prato> finalListaPrato = listaPrato;
 

@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.prato.ui.CadastrarPratoActivity;
+import com.heyfood.heyfoodapp.prato.ui.ListarPratosActivity;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.restaurante.persistencia.RestauranteDAO;
 import com.heyfood.heyfoodapp.util.RecyclerItemClickListener;
@@ -84,7 +85,9 @@ public class ListarRestaurantes extends AppCompatActivity {
                                 botao.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        
+                                        Sessao.instance.setRestaurante(restaurante);
+                                        Intent novaTela = new Intent(contexto, ListarPratosActivity.class);
+                                        startActivity(novaTela);
                                     }
                                 });
 

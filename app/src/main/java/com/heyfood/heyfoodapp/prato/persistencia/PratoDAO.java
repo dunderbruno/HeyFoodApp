@@ -40,7 +40,7 @@ public class PratoDAO extends AbstractDAO{
     public List<Prato> getPratoByRestaurante(long id){
         List<Prato> result = new ArrayList<>();
         db = helper.getReadableDatabase();
-        String sql = "SELECT * FROM " + DBHelper.TABELA_PRATO + " WHERE " + DBHelper.CAMPO_FK_RESTAURANTE + " LIKE ?;";
+        String sql = "SELECT * FROM " + DBHelper.TABELA_PRATO + " WHERE " + DBHelper.CAMPO_FK_PRATO_RESTAURANTE + " LIKE ?;";
         Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
         if (cursor.moveToFirst()) {
             result.add(createPrato(cursor));
