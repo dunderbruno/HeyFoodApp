@@ -93,22 +93,24 @@ public class ListarRestaurantes extends AppCompatActivity {
                                 dialog.setMessage(mensagem.toString());
                                 dialog.setView(botao);
                                 dialog.setCancelable(true);
-                                //Configura acoes para o botao
-                                dialog.setPositiveButton("CADASTRAR PRATO", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        Sessao.instance.setRestaurante(restaurante);
-                                        Intent novaTela = new Intent(contexto, CadastrarPratoActivity.class);
-                                        startActivity(novaTela);
 
-                                    }
-                                });
                                 if (Sessao.instance.getProprietario() != null){
                                     dialog.setNegativeButton("EDITAR", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             Sessao.instance.setRestaurante(restaurante);
                                             Intent novaTela = new Intent(contexto, AtualizarRestauranteActivity.class);
+                                            startActivity(novaTela);
+
+                                        }
+                                    });
+
+                                    //Configura acoes para o botao
+                                    dialog.setPositiveButton("CADASTRAR PRATO", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            Sessao.instance.setRestaurante(restaurante);
+                                            Intent novaTela = new Intent(contexto, CadastrarPratoActivity.class);
                                             startActivity(novaTela);
 
                                         }
