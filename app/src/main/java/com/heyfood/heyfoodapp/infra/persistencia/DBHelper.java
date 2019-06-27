@@ -1,5 +1,4 @@
 package com.heyfood.heyfoodapp.infra.persistencia;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -104,15 +103,22 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_DELIVERY_PREF = "delivery";
     public static final String CAMPO_SELFSERVICE_PREF = "selfservice";
 
-    //Tabela Avaliacao
-    public static final String TABELA_AVALIACAO = "tb_avaliacao";
-    public static final String CAMPO_ID_AVALIACAO = "id";
+    //Tabela Avaliacao Restaurante
+    public static final String TABELA_AVALIACAO_RESTAURANTE = "tb_avaliacao_restaurante";
+    public static final String CAMPO_ID_AVALIACAO_RESTAURANTE = "id";
     public static final String CAMPO_FK_RESTAURANTE = "fk_restaurante";
-    public static final String CAMPO_FK_CLIENTE = "fk_cliente";
-    public static final String CAMPO_NOTA = "nota";
+    public static final String CAMPO_FK_CLIENTE_AVALIA_RESTAURANTE = "fk_cliente";
+    public static final String CAMPO_NOTA_RESTAURANTE = "nota";
+
+    //Tabela Avaliacao Prato
+    public static final String TABELA_AVALIACAO_PRATO = "tb_avaliacao_restaurante";
+    public static final String CAMPO_ID_AVALIACAO_PRATO = "id";
+    public static final String CAMPO_FK_PRATO = "fk_prato";
+    public static final String CAMPO_FK_CLIENTE_AVALIA_PRATO = "fk_cliente";
+    public static final String CAMPO_NOTA_PRATO = "nota";
 
     private static final String[] TABELAS = {
-            TABELA_CLIENTE, TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE, TABELA_PROPRIETARIO, TABELA_ESPECIALIDADES, TABELA_PREFERENCIAS, TABELA_AVALIACAO
+            TABELA_CLIENTE, TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE, TABELA_PROPRIETARIO, TABELA_ESPECIALIDADES, TABELA_PREFERENCIAS, TABELA_AVALIACAO_RESTAURANTE, TABELA_AVALIACAO_PRATO
     };
 
     public DBHelper(Context context) {
@@ -130,7 +136,8 @@ public class DBHelper extends SQLiteOpenHelper {
         createTabelaProprietario(db);
         createTabelaEspecialidades(db);
         createTabelaPreferencias(db);
-        createTabelaAvaliacao(db);
+        createTabelaAvaliacaoRestaurante(db);
+        createTabelaAvaliacaoPrato(db);
     }
 
     public void createTabelaCliente(SQLiteDatabase db){
@@ -289,7 +296,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(sqlTbPreferencias);
     }
 
-    public void createTabelaAvaliacao(SQLiteDatabase db){
+    public void createTabelaAvaliacaoRestaurante(SQLiteDatabase db){
         String sqlTbAvaliacao =
                 "CREATE TABLE %1s ( " +
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -298,7 +305,20 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %5$s TEXT, " +
                         ");";
         sqlTbAvaliacao = String.format(sqlTbAvaliacao,
-                TABELA_AVALIACAO, CAMPO_ID_AVALIACAO, CAMPO_FK_RESTAURANTE, CAMPO_FK_CLIENTE, CAMPO_NOTA);
+                TABELA_AVALIACAO_RESTAURANTE, CAMPO_ID_AVALIACAO_RESTAURANTE, CAMPO_FK_RESTAURANTE, CAMPO_FK_CLIENTE_AVALIA_RESTAURANTE, CAMPO_NOTA_RESTAURANTE);
+        db.execSQL(sqlTbAvaliacao);
+    }
+
+    public void createTabelaAvaliacaoPrato(SQLiteDatabase db){
+        String sqlTbAvaliacao =
+                "CREATE TABLE %1s ( " +
+                        "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "  %3$s TEXT, " +
+                        "  %4$s TEXT, " +
+                        "  %5$s TEXT, " +
+                        ");";
+        sqlTbAvaliacao = String.format(sqlTbAvaliacao,
+                TABELA_AVALIACAO_PRATO, CAMPO_ID_AVALIACAO_PRATO, CAMPO_FK_PRATO, CAMPO_FK_CLIENTE_AVALIA_PRATO, CAMPO_NOTA_PRATO);
         db.execSQL(sqlTbAvaliacao);
     }
 

@@ -5,26 +5,26 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.heyfood.heyfoodapp.avaliacao.dominio.Avaliacao;
+import com.heyfood.heyfoodapp.avaliacao.dominio.AvaliacaoRestaurante;
 import com.heyfood.heyfoodapp.cliente.persistencia.ClienteDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 import com.heyfood.heyfoodapp.restaurante.persistencia.RestauranteDAO;
 
-public class AvaliacaoDAO extends AbstractDAO {
+public class AvaliacaoRestauranteDAO extends AbstractDAO {
     private SQLiteDatabase db;
     private DBHelper helper;
     private Context context;
 
-    public AvaliacaoDAO(Context context){
+    public AvaliacaoRestauranteDAO(Context context){
         this.context = context;
         helper = new DBHelper(context);
     }
 
-    public Avaliacao getAvaliacao(long id) {
-        Avaliacao result = null;
+    public AvaliacaoRestaurante getAvaliacao(long id) {
+        AvaliacaoRestaurante result = null;
         db = helper.getReadableDatabase();
-        String sql = "SELECT * FROM " + DBHelper.TABELA_AVALIACAO + " WHERE " + DBHelper.CAMPO_ID_AVALIACAO + " LIKE ?;";
+        String sql = "SELECT * FROM " + DBHelper.TABELA_AVALIACAO_RESTAURANTE + " WHERE " + DBHelper.CAMPO_ID_AVALIACAO_RESTAURANTE + " LIKE ?;";
         Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
         if (cursor.moveToFirst()) {
             result = createAvaliacao(cursor);
@@ -33,28 +33,28 @@ public class AvaliacaoDAO extends AbstractDAO {
         return result;
     }
 
-    public long cadastrar(Avaliacao avaliacao) {
+    public long cadastrar(AvaliacaoRestaurante avaliacao) {
         db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_FK_RESTAURANTE, avaliacao.getRestaurante().getId());
-        values.put(DBHelper.CAMPO_FK_CLIENTE, avaliacao.getCliente().getId());
-        values.put(DBHelper.CAMPO_NOTA, avaliacao.getNota());
-        long id = db.insert(DBHelper.TABELA_AVALIACAO, null, values);
+        values.put(DBHelper.CAMPO_FK_CLIENTE_AVALIA_RESTAURANTE, avaliacao.getCliente().getId());
+        values.put(DBHelper.CAMPO_NOTA_RESTAURANTE, avaliacao.getNota());
+        long id = db.insert(DBHelper.TABELA_AVALIACAO_RESTAURANTE, null, values);
         super.close(db);
         return id;
     }
 
-    private Avaliacao createAvaliacao(Cursor cursor){
-        Avaliacao result = new Avaliacao();
+    private AvaliacaoRestaurante createAvaliacao(Cursor cursor){
+        AvaliacaoRestaurante result = new AvaliacaoRestaurante();
         RestauranteDAO restauranteDAO = new RestauranteDAO(context);
         ClienteDAO clienteDAO = new ClienteDAO(context);
-        int columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ID_AVALIACAO);
+        int columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_ID_AVALIACAO_RESTAURANTE);
         result.setId(Integer.parseInt(cursor.getString(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_RESTAURANTE);
         result.setRestaurante(restauranteDAO.getRestaurante(cursor.getInt(columnIndex)));
-        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_CLIENTE);
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_CLIENTE_AVALIA_RESTAURANTE);
         result.setCliente(clienteDAO.getCliente(cursor.getInt(columnIndex)));
-        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_NOTA);
+        columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_NOTA_RESTAURANTE);
         result.setNota(Integer.parseInt(cursor.getString(columnIndex)));
         return result;
     }

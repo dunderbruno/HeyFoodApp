@@ -3,7 +3,7 @@ package com.heyfood.heyfoodapp.avaliacao.dominio;
 import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 
-public class Avaliacao {
+public class AvaliacaoRestaurante {
     private long id;
     private Restaurante restaurante;
     private Cliente cliente;
