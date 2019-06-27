@@ -14,6 +14,15 @@ public class Restaurante{
     private Contato contato;
     private Categoria especialidades;
     private Proprietario proprietario;
+    private int peso;
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
 
     public Proprietario getProprietario() {
         return proprietario;
