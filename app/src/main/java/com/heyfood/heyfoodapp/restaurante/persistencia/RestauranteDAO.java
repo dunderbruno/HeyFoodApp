@@ -81,6 +81,28 @@ public class RestauranteDAO extends AbstractDAO{
         super.close(db);
         return id;
     }
+    //http://www.sqlitetutorial.net/sqlite-inner-join/
+
+    public List<Restaurante> getRestaurantesByCidade(String cidade) {
+        List<Restaurante> result = new ArrayList<Restaurante>();
+        db = helper.getReadableDatabase();
+        //String sql = "SELECT * FROM " + DBHelper.TABELA_RESTAURANTE + " WHERE " + DBHelper.CAMPO_FK_PROPRIETARIO + " LIKE ?;";
+        //Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
+        String sql = "SELECT * FROM " + DBHelper.TABELA_RESTAURANTE + " INNER JOIN "
+                + DBHelper.TABELA_ENDERECO
+                + " ON " + DBHelper.CAMPO_FK_ENDERECO_RESTAURANTE + " = "
+                +  DBHelper.TABELA_ENDERECO + "." +DBHelper.CAMPO_ID_ENDERECO
+                + " WHERE " + DBHelper.CAMPO_CIDADE + " LIKE ?;";
+        Cursor cursor = db.rawQuery(sql, new String[]{cidade});
+        if (cursor.moveToFirst()) {
+            result.add(createRestaurante(cursor));
+            while(cursor.moveToNext()){
+                result.add(createRestaurante(cursor));
+            }
+        }
+        super.close(cursor, db);
+        return result;
+    }
 
     private Restaurante createRestaurante(Cursor cursor){
         Restaurante result = new Restaurante();
