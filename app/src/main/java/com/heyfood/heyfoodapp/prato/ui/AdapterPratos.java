@@ -1,12 +1,13 @@
 package com.heyfood.heyfoodapp.prato.ui;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.heyfood.heyfoodapp.R;
-import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
+import com.heyfood.heyfoodapp.prato.dominio.Prato;
 
 import java.util.List;
 
@@ -15,37 +16,39 @@ import java.util.List;
  */
 
 public class AdapterPratos extends RecyclerView.Adapter<AdapterPratos.MyViewHolder> {
-    private List<Restaurante> listaPrato;
+    private List<Prato> listaPrato;
 
-    public AdapterPratos(List<Restaurante> listaPrato) {
+    public AdapterPratos(List<Prato> listaPrato) {
         this.listaPrato = listaPrato;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View itemLista = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.adapter_lista_prato, parent, false);
+        return new MyViewHolder(itemLista);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
+        Prato prato = listaPrato.get(position);
+        holder.nomePrato.setText(prato.getNome());
+        holder.preco.setText(prato.getPreco().toString());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listaPrato.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView nomeRestaurante;
-        TextView bairro;
-        TextView telefone;
+        TextView nomePrato;
+        TextView preco;
 
         public MyViewHolder(View itemView){
             super(itemView);
-            nomeRestaurante = itemView.findViewById(R.id.textNomeRestauranteId);
-            bairro = itemView.findViewById(R.id.textBairroRestauranteId);
-            telefone = itemView.findViewById(R.id.textTelefoneRestauranteId);
+            nomePrato = itemView.findViewById(R.id.textNomePratoId);
+            preco = itemView.findViewById(R.id.textPrecoId);
         }
     }
 }
