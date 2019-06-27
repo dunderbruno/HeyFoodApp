@@ -7,7 +7,7 @@ public class AvaliacaoRestaurante {
     private long id;
     private Restaurante restaurante;
     private Cliente cliente;
-    private int nota;
+    private float nota;
 
     public long getId() {
         return id;
@@ -33,11 +33,11 @@ public class AvaliacaoRestaurante {
         this.cliente = cliente;
     }
 
-    public int getNota() {
+    public float getNota() {
         return nota;
     }
 
-    public void setNota(int nota) {
+    public void setNota(float nota) {
         this.nota = nota;
     }
 }
