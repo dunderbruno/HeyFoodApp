@@ -9,6 +9,7 @@ import com.heyfood.heyfoodapp.avaliacao.dominio.AvaliacaoPrato;
 import com.heyfood.heyfoodapp.cliente.persistencia.ClienteDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
+import com.heyfood.heyfoodapp.prato.persistencia.PratoDAO;
 import com.heyfood.heyfoodapp.restaurante.persistencia.RestauranteDAO;
 
 public class AvaliacaoPratoDAO extends AbstractDAO {

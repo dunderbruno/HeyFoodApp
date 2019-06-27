@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.heyfood.heyfoodapp.R;
@@ -76,9 +77,21 @@ public class ListarRestaurantes extends AppCompatActivity {
                                 mensagem.append(restaurante.getContato().getSite());
 
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(ListarRestaurantes.this);
+
+                                //Configura botão
+                                Button botao = new Button(getApplicationContext());
+                                botao.setText("Listar pratos");
+                                botao.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        
+                                    }
+                                });
+
                                 //Configura titulo e mensagem
                                 dialog.setTitle(restaurante.getNome());
                                 dialog.setMessage(mensagem.toString());
+                                dialog.setView(botao);
                                 dialog.setCancelable(true);
                                 //Configura acoes para o botao
                                 dialog.setPositiveButton("CADASTRAR PRATO", new DialogInterface.OnClickListener() {

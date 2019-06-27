@@ -128,7 +128,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_NOTA_PRATO = "nota";
 
     private static final String[] TABELAS = {
-            TABELA_CLIENTE, TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE, TABELA_PROPRIETARIO, TABELA_ESPECIALIDADES, TABELA_PREFERENCIAS, TABELA_PRATO
+            TABELA_CLIENTE, TABELA_PESSOA, TABELA_USUARIO, TABELA_ENDERECO, TABELA_CONTATO, TABELA_RESTAURANTE, TABELA_PROPRIETARIO, TABELA_ESPECIALIDADES, TABELA_PREFERENCIAS, TABELA_PRATO, TABELA_AVALIACAO_RESTAURANTE, TABELA_AVALIACAO_PRATO
     };
 
     public DBHelper(Context context) {
@@ -326,7 +326,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "  %3$s TEXT, " +
                         "  %4$s TEXT, " +
-                        "  %5$s TEXT, " +
+                        "  %5$s TEXT " +
                         ");";
         sqlTbAvaliacao = String.format(sqlTbAvaliacao,
                 TABELA_AVALIACAO_PRATO, CAMPO_ID_AVALIACAO_PRATO, CAMPO_FK_PRATO, CAMPO_FK_CLIENTE_AVALIA_PRATO, CAMPO_NOTA_PRATO);
@@ -339,7 +339,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "  %3$s TEXT NOT NULL, " +
                         "  %4$s TEXT NOT NULL, " +
-                        "  %5$s REAL NOT NULL, " + //TODO: Real?
+                        "  %5$s REAL NOT NULL, " +
                         "  %6$s TEXT NOT NULL, " +
                         "  %7$s TEXT " +
                         ");";
