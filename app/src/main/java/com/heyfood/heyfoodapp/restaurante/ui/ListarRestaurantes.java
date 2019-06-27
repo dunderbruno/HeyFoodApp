@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 
@@ -79,20 +80,23 @@ public class ListarRestaurantes extends AppCompatActivity {
 
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(ListarRestaurantes.this);
 
+                                //Configura frame Layout
+                                FrameLayout frame = new FrameLayout(contexto);
+
                                 //Configura botão
                                 Button botao = new Button(contexto);
                                 botao.setText("Listar pratos");
+                                frame.addView(botao);
                                 botao.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         
                                     }
                                 });
-
                                 //Configura titulo e mensagem
                                 dialog.setTitle(restaurante.getNome());
                                 dialog.setMessage(mensagem.toString());
-                                dialog.setView(botao);
+                                dialog.setView(frame);
                                 dialog.setCancelable(true);
 
                                 if (Sessao.instance.getProprietario() != null){
@@ -118,7 +122,7 @@ public class ListarRestaurantes extends AppCompatActivity {
                                     });
                                 } else{
                                     RatingBar ratingBar = new RatingBar(contexto);
-                                    dialog.setView(ratingBar);
+                                    frame.addView(ratingBar);
                                 }
 
                                 //Criar e exbir o alertDialog
