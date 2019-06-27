@@ -8,9 +8,12 @@ import android.database.sqlite.SQLiteDatabase;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 import com.heyfood.heyfoodapp.prato.dominio.Prato;
+import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.restaurante.persistencia.RestauranteDAO;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PratoDAO extends AbstractDAO{
     private SQLiteDatabase db;
@@ -29,6 +32,21 @@ public class PratoDAO extends AbstractDAO{
         Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
         if (cursor.moveToFirst()) {
             result = createPrato(cursor);
+        }
+        super.close(cursor, db);
+        return result;
+    }
+
+    public List<Prato> getPratoByRestaurante(long id){
+        List<Prato> result = new ArrayList<>();
+        db = helper.getReadableDatabase();
+        String sql = "SELECT * FROM " + DBHelper.TABELA_PRATO + " WHERE " + DBHelper.CAMPO_FK_PRATO_RESTAURANTE + " LIKE ?;";
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
+        if (cursor.moveToFirst()) {
+            result.add(createPrato(cursor));
+            while(cursor.moveToNext()){
+                result.add(createPrato(cursor));
+            }
         }
         super.close(cursor, db);
         return result;
