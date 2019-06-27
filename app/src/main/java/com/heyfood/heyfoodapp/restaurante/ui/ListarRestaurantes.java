@@ -122,6 +122,11 @@ public class ListarRestaurantes extends AppCompatActivity {
                                     });
                                 } else{
                                     RatingBar ratingBar = new RatingBar(contexto);
+                                    ratingBar.setMax(5);
+                                    ratingBar.setRating(0.0f);
+                                    ratingBar.setNumStars(5);
+                                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT );
+                                    ratingBar.setLayoutParams(lp);
                                     linearLayout.addView(ratingBar);
                                 }
 
