@@ -80,13 +80,14 @@ public class ListarRestaurantes extends AppCompatActivity {
 
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(ListarRestaurantes.this);
 
-                                //Configura frame Layout
-                                FrameLayout frame = new FrameLayout(contexto);
+                                //Configura linear Layout
+                                LinearLayout linearLayout = new LinearLayout(contexto);
+                                linearLayout.setOrientation(LinearLayout.VERTICAL);
 
                                 //Configura botão
                                 Button botao = new Button(contexto);
                                 botao.setText("Listar pratos");
-                                frame.addView(botao);
+                                linearLayout.addView(botao);
                                 botao.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
@@ -96,7 +97,7 @@ public class ListarRestaurantes extends AppCompatActivity {
                                 //Configura titulo e mensagem
                                 dialog.setTitle(restaurante.getNome());
                                 dialog.setMessage(mensagem.toString());
-                                dialog.setView(frame);
+                                dialog.setView(linearLayout);
                                 dialog.setCancelable(true);
 
                                 if (Sessao.instance.getProprietario() != null){
@@ -117,12 +118,11 @@ public class ListarRestaurantes extends AppCompatActivity {
                                             Sessao.instance.setRestaurante(restaurante);
                                             Intent novaTela = new Intent(contexto, CadastrarPratoActivity.class);
                                             startActivity(novaTela);
-
                                         }
                                     });
                                 } else{
                                     RatingBar ratingBar = new RatingBar(contexto);
-                                    frame.addView(ratingBar);
+                                    linearLayout.addView(ratingBar);
                                 }
 
                                 //Criar e exbir o alertDialog
