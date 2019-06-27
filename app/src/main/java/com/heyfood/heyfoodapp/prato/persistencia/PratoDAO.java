@@ -20,7 +20,7 @@ public class PratoDAO extends AbstractDAO{
         helper = new DBHelper(context);
     }
 
-    public Prato getContato(long id) {
+    public Prato getPrato(long id) {
         Prato result = null;
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_PRATO+ " WHERE " + DBHelper.CAMPO_ID_PRATO + " LIKE ?;";

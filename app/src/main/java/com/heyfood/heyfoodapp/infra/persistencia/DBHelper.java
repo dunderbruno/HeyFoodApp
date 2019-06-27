@@ -299,7 +299,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         "  %4$s TEXT NOT NULL, " +
                         "  %5$s REAL NOT NULL, " +
                         "  %6$s TEXT NOT NULL, " +
-                        "  %7$s TEXT, " +
+                        "  %7$s TEXT " +
                         ");";
         sqlTbPrato = String.format(sqlTbPrato,
                 TABELA_PRATO, CAMPO_ID_PRATO, CAMPO_NOME_PRATO, CAMPO_DESCRICAO, CAMPO_PRECO, CAMPO_FK_PRATO_RESTAURANTE, CAMPO_PRATO_NOTA_MEDIA);
