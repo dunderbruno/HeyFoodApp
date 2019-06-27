@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 
 import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.infra.Sessao;
@@ -79,7 +80,7 @@ public class ListarRestaurantes extends AppCompatActivity {
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(ListarRestaurantes.this);
 
                                 //Configura botão
-                                Button botao = new Button(getApplicationContext());
+                                Button botao = new Button(contexto);
                                 botao.setText("Listar pratos");
                                 botao.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -115,6 +116,9 @@ public class ListarRestaurantes extends AppCompatActivity {
 
                                         }
                                     });
+                                } else{
+                                    RatingBar ratingBar = new RatingBar(contexto);
+                                    dialog.setView(ratingBar);
                                 }
 
                                 //Criar e exbir o alertDialog
