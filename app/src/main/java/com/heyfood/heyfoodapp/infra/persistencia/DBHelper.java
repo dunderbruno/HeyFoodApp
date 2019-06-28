@@ -121,7 +121,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_NOTA_RESTAURANTE = "nota";
 
     //Tabela Avaliacao Prato
-    public static final String TABELA_AVALIACAO_PRATO = "tb_avaliacao_restaurante";
+    public static final String TABELA_AVALIACAO_PRATO = "tb_avaliacao_prato";
     public static final String CAMPO_ID_AVALIACAO_PRATO = "id";
     public static final String CAMPO_FK_PRATO = "fk_prato";
     public static final String CAMPO_FK_CLIENTE_AVALIA_PRATO = "fk_cliente";
