@@ -30,8 +30,8 @@ import java.util.List;
 
 public class ListarRestaurantes extends AppCompatActivity {
     private RecyclerView recyclerRestaurante;
-    RestauranteDAO restauranteDAO;
-    Context contexto;
+    private RestauranteDAO restauranteDAO;
+    private Context contexto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +99,7 @@ public class ListarRestaurantes extends AppCompatActivity {
                                 //Configura titulo e mensagem
                                 dialog.setTitle(restaurante.getNome());
                                 dialog.setMessage(mensagem.toString());
-                                dialog.setView(botao);
+                                dialog.setView(linearLayout);
                                 dialog.setCancelable(true);
 
                                 if (Sessao.instance.getProprietario() != null){
@@ -126,7 +126,12 @@ public class ListarRestaurantes extends AppCompatActivity {
                                 } else{
                                     RatingBar ratingBar = new RatingBar(contexto);
                                     linearLayout.addView(ratingBar);
-                                    dialog.setView(linearLayout);
+                                    dialog.setPositiveButton("Avaliar", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    });
                                 }
 
                                 //Criar e exbir o alertDialog
