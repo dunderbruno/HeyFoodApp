@@ -308,16 +308,16 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void createTabelaAvaliacaoRestaurante(SQLiteDatabase db){
-        String sqlTbAvaliacao =
+        String sqlTbAvaliacaoRestaurante =
                 "CREATE TABLE %1s ( " +
                         "  %2$s INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "  %3$s TEXT, " +
                         "  %4$s TEXT, " +
                         "  %5$s TEXT " +
                         ");";
-        sqlTbAvaliacao = String.format(sqlTbAvaliacao,
+        sqlTbAvaliacaoRestaurante = String.format(sqlTbAvaliacaoRestaurante,
                 TABELA_AVALIACAO_RESTAURANTE, CAMPO_ID_AVALIACAO_RESTAURANTE, CAMPO_FK_RESTAURANTE, CAMPO_FK_CLIENTE_AVALIA_RESTAURANTE, CAMPO_NOTA_RESTAURANTE);
-        db.execSQL(sqlTbAvaliacao);
+        db.execSQL(sqlTbAvaliacaoRestaurante);
     }
 
     public void createTabelaAvaliacaoPrato(SQLiteDatabase db){

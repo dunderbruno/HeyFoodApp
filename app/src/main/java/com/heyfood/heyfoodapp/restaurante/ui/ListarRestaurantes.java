@@ -18,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 
 import com.heyfood.heyfoodapp.R;
+import com.heyfood.heyfoodapp.avaliacao.dominio.AvaliacaoRestaurante;
+import com.heyfood.heyfoodapp.avaliacao.persistencia.AvaliacaoRestauranteDAO;
 import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.prato.ui.CadastrarPratoActivity;
 import com.heyfood.heyfoodapp.prato.ui.ListarPratosActivity;
@@ -124,12 +126,29 @@ public class ListarRestaurantes extends AppCompatActivity {
                                         }
                                     });
                                 } else{
-                                    RatingBar ratingBar = new RatingBar(contexto);
-                                    linearLayout.addView(ratingBar);
                                     dialog.setPositiveButton("Avaliar", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
 
+                                        }
+                                    });
+                                    final RatingBar ratingBar = new RatingBar(contexto);
+                                    ratingBar.setMax(5);
+                                    ratingBar.setRating(0.0f);
+                                    ratingBar.setNumStars(5);
+                                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT );
+                                    ratingBar.setLayoutParams(lp);
+                                    linearLayout.addView(ratingBar);
+
+                                    dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            AvaliacaoRestaurante avaliacao = new AvaliacaoRestaurante();
+                                            avaliacao.setRestaurante(restaurante);
+                                            avaliacao.setCliente(Sessao.instance.getCliente());
+                                            avaliacao.setNota(ratingBar.getRating());
+                                            AvaliacaoRestauranteDAO avaliacaoRestauranteDAO = new AvaliacaoRestauranteDAO(contexto);
+                                            avaliacaoRestauranteDAO.cadastrar(avaliacao);
                                         }
                                     });
                                 }
