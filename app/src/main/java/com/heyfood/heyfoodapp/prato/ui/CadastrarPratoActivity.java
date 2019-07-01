@@ -13,10 +13,12 @@ import com.heyfood.heyfoodapp.prato.dominio.Prato;
 import com.heyfood.heyfoodapp.prato.persistencia.PratoDAO;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.restaurante.ui.ListarRestaurantes;
+import com.heyfood.heyfoodapp.util.MaskEditUtil;
 
 import java.math.BigDecimal;
 
-public class CadastrarPratoActivity extends AppCompatActivity {
+public class
+CadastrarPratoActivity extends AppCompatActivity {
 
     Restaurante restaurante = Sessao.instance.getRestaurante();
     EditText nomePrato, descricao, preco;
@@ -30,7 +32,7 @@ public class CadastrarPratoActivity extends AppCompatActivity {
         nomePrato = findViewById(R.id.nomePratoId);
         descricao = findViewById(R.id.descricaoId);
         preco = findViewById(R.id.precoId);
-
+        
 
     }
 

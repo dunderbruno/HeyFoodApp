@@ -33,7 +33,7 @@ public class AdapterPratos extends RecyclerView.Adapter<AdapterPratos.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Prato prato = listaPrato.get(position);
         holder.nomePrato.setText(prato.getNome());
-        holder.preco.setText(prato.getPreco().toString());
+        holder.preco.setText("R$ " + prato.getPreco().toString().replace(".",","));
     }
 
     @Override
