@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.heyfood.heyfoodapp.R;
@@ -23,6 +24,8 @@ import com.heyfood.heyfoodapp.usuario.ui.LoginActivity;
 public class HomeProprietarioActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView nome;
+    TextView nomeMenu;
+    TextView emailMenu;
     Proprietario proprietario;
 
     @Override
@@ -45,6 +48,11 @@ public class HomeProprietarioActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+        nomeMenu = headerView.findViewById(R.id.nomeMenuProprietarioId);
+        nomeMenu.setText(proprietario.getUsuario().getPessoa().getNome());
+        emailMenu = headerView.findViewById(R.id.emailMenuProprieatrioId);
+        emailMenu.setText(proprietario.getUsuario().getPessoa().getContato().getEmail());
     }
 
     @Override

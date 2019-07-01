@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.heyfood.heyfoodapp.R;
@@ -23,8 +24,8 @@ public class HomeClienteActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView nome;
-    TextView nome2;
-    TextView email;
+    TextView nomeMenu;
+    TextView emailMenu;
     Cliente cliente;
 
     @Override
@@ -35,10 +36,6 @@ public class HomeClienteActivity extends AppCompatActivity
         cliente = Sessao.instance.getCliente();
 
         //Bem vindo 'nome do usuario'
-        //nome2 = findViewById(R.id.nomeMenuId);
-        //nome2.setText(cliente.getUsuario().getPessoa().getNome());
-        //email = findViewById(R.id.emailMenuId);
-        //email.setText(cliente.getUsuario().getPessoa().getContato().getEmail());
         nome = findViewById(R.id.textBoasVindasClienteId);
         nome.setText(String.format("Bem vindo, %s!", cliente.getUsuario().getPessoa().getNome()));
 
@@ -54,6 +51,11 @@ public class HomeClienteActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+        nomeMenu = headerView.findViewById(R.id.nomeMenuId);
+        nomeMenu.setText(cliente.getUsuario().getPessoa().getNome());
+        emailMenu = headerView.findViewById(R.id.emailMenuId);
+        emailMenu.setText(cliente.getUsuario().getPessoa().getContato().getEmail());
     }
 
     @Override
