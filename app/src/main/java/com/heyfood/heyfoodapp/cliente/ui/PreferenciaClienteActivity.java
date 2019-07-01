@@ -10,10 +10,10 @@ import android.widget.Toast;
 import com.heyfood.heyfoodapp.R;
 import com.heyfood.heyfoodapp.categoria.dominio.Categoria;
 import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
+import com.heyfood.heyfoodapp.infra.Sessao;
 
 
 public class PreferenciaClienteActivity extends AppCompatActivity {
-
 
     Switch acai;
     Switch brasileira;
@@ -30,6 +30,7 @@ public class PreferenciaClienteActivity extends AppCompatActivity {
     Switch rodizio;
     Switch selfservice;
     Switch delivery;
+    Categoria preferencias;
 
     private final ClienteServices services = new ClienteServices(this);
 
@@ -53,105 +54,47 @@ public class PreferenciaClienteActivity extends AppCompatActivity {
         rodizio = findViewById(R.id.clienteRodizioId);
         selfservice = findViewById(R.id.clienteSelfserviceId);
         delivery = findViewById(R.id.clienteDeliveryId);
-
+        preferencias = Sessao.instance.getCliente().getPreferencias();
+        if(preferencias != null){
+            recuperarCategoria();
+        }
     }
 
-    public Categoria createCategoria(){
+    private void recuperarCategoria(){
+        acai.setChecked(preferencias.getAcai());
+        brasileira.setChecked(preferencias.getBrasileira());
+        carnes.setChecked(preferencias.getCarnes());
+        chinesa.setChecked(preferencias.getChinesa());
+        conteporanea.setChecked(preferencias.getContemporanea());
+        italiana.setChecked(preferencias.getItaliana());
+        japonesa.setChecked(preferencias.getJaponesa());
+        lanches.setChecked(preferencias.getLanches());
+        marmita.setChecked(preferencias.getMarmita());
+        pizza.setChecked(preferencias.getPizza());
+        saudavel.setChecked(preferencias.getSaudavel());
+        alacarte.setChecked(preferencias.getAlacarte());
+        rodizio.setChecked(preferencias.getRodizio());
+        selfservice.setChecked(preferencias.getSelfservice());
+        delivery.setChecked(preferencias.getDelivery());
+    }
+
+    private Categoria createCategoria(){
         Categoria categoria = new Categoria();
-        if(acai.isChecked()){
-            categoria.setAcai(true);
-        }
-        else{
-            categoria.setAcai(false);
-
-        }
-        if(brasileira.isChecked()){
-            categoria.setBrasileira(true);
-        }
-        else{
-            categoria.setBrasileira(false);
-
-        }
-        if(carnes.isChecked()){
-            categoria.setCarnes(true);
-        }
-        else{
-            categoria.setCarnes(false);
-        }
-        if(chinesa.isChecked()){
-            categoria.setChinesa(true);
-        }
-        else{
-            categoria.setChinesa(false);
-        }
-        if(conteporanea.isChecked()){
-            categoria.setContemporanea(true);
-        }
-        else{
-            categoria.setContemporanea(false);
-        }
-        if(italiana.isChecked()){
-            categoria.setItaliana(true);
-        }
-        else{
-            categoria.setItaliana(false);
-        }
-        if(japonesa.isChecked()){
-            categoria.setJaponesa(true);
-        }
-        else{
-            categoria.setJaponesa(false);
-        }
-        if(lanches.isChecked()){
-            categoria.setLanches(true);
-        }
-        else{
-            categoria.setLanches(false);
-        }
-        if(marmita.isChecked()){
-            categoria.setMarmita(true);
-        }
-        else{
-            categoria.setMarmita(false);
-        }
-        if(pizza.isChecked()){
-            categoria.setPizza(true);
-        }
-        else{
-            categoria.setPizza(false);
-        }
-        if(saudavel.isChecked()){
-            categoria.setSaudavel(true);
-        }
-        else{
-            categoria.setSaudavel(false);
-        }
-        if(alacarte.isChecked()){
-            categoria.setAlacarte(true);
-        }
-        else{
-            categoria.setAlacarte(false);
-        }
-        if(rodizio.isChecked()){
-            categoria.setRodizio(true);
-        }
-        else{
-            categoria.setRodizio(false);
-
-        }
-        if(selfservice.isChecked()){
-            categoria.setSelfservice(true);
-        }
-        else{
-            categoria.setSelfservice(false);
-        }
-        if(delivery.isChecked()){
-            categoria.setDelivery(true);
-        }
-        else{
-            categoria.setDelivery(false);
-        }
-
+        categoria.setAcai(acai.isChecked());
+        categoria.setBrasileira(brasileira.isChecked());
+        categoria.setCarnes(carnes.isChecked());
+        categoria.setChinesa(chinesa.isChecked());
+        categoria.setContemporanea(conteporanea.isChecked());
+        categoria.setItaliana(italiana.isChecked());
+        categoria.setJaponesa(japonesa.isChecked());
+        categoria.setLanches(lanches.isChecked());
+        categoria.setMarmita(marmita.isChecked());
+        categoria.setPizza(pizza.isChecked());
+        categoria.setSaudavel(saudavel.isChecked());
+        categoria.setAlacarte(alacarte.isChecked());
+        categoria.setRodizio(rodizio.isChecked());
+        categoria.setSelfservice(selfservice.isChecked());
+        categoria.setDelivery(delivery.isChecked());
         return categoria;
     }
 

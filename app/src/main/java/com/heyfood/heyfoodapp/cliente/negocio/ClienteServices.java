@@ -57,6 +57,7 @@ public class ClienteServices {
     public void cadastrarPreferencias(Categoria preferencias){
         long idPreferencias = preferenciaDAO.cadastrar(preferencias);
         preferencias.setId(idPreferencias);
+        Sessao.instance.getCliente().setPreferencias(preferencias);
     }
 
     public void login(String email, String password) throws Exception {
