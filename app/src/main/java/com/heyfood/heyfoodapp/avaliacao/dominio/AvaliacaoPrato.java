@@ -8,7 +8,7 @@ public class AvaliacaoPrato {
     private long id;
     private Prato prato;
     private Cliente cliente;
-    private int nota;
+    private float nota;
 
     public long getId() {
         return id;
@@ -22,7 +22,7 @@ public class AvaliacaoPrato {
         return cliente;
     }
 
-    public int getNota() {
+    public float getNota() {
         return nota;
     }
 
@@ -38,7 +38,7 @@ public class AvaliacaoPrato {
         this.cliente = cliente;
     }
 
-    public void setNota(int nota) {
+    public void setNota(float nota) {
         this.nota = nota;
     }
 }

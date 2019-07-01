@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 
 import com.heyfood.heyfoodapp.R;
+import com.heyfood.heyfoodapp.avaliacao.dominio.AvaliacaoPrato;
+import com.heyfood.heyfoodapp.avaliacao.persistencia.AvaliacaoPratoDAO;
 import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.prato.dominio.Prato;
 import com.heyfood.heyfoodapp.prato.persistencia.PratoDAO;
@@ -70,10 +72,14 @@ public class ListarPratosActivity extends AppCompatActivity {
 
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(ListarPratosActivity.this);
 
+                                LinearLayout linearLayout = new LinearLayout(contexto);
+                                linearLayout.setOrientation(LinearLayout.VERTICAL);
+
                                 //Configura titulo e mensagem
                                 dialog.setTitle(prato.getNome());
                                 dialog.setMessage(mensagem.toString());
                                 dialog.setCancelable(true);
+                                dialog.setView(linearLayout);
 
                                 //Configura acoes para o botao
                                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -83,8 +89,26 @@ public class ListarPratosActivity extends AppCompatActivity {
                                     }
                                 });
                                 if (Sessao.instance.getCliente() != null){
-                                    RatingBar ratingBar = new RatingBar(contexto);
-                                    dialog.setView(ratingBar);
+                                    final RatingBar ratingBar = new RatingBar(contexto);
+                                    ratingBar.setMax(5);
+                                    ratingBar.setRating(0.0f);
+                                    ratingBar.setNumStars(5);
+                                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT );
+                                    ratingBar.setLayoutParams(lp);
+                                    linearLayout.addView(ratingBar);
+
+
+                                    dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            AvaliacaoPrato avaliacao = new AvaliacaoPrato();
+                                            avaliacao.setPrato(prato);
+                                            avaliacao.setCliente(Sessao.instance.getCliente());
+                                            avaliacao.setNota(ratingBar.getRating());
+                                            AvaliacaoPratoDAO avaliacaoPratoDAO = new AvaliacaoPratoDAO(contexto);
+                                            avaliacaoPratoDAO.cadastrar(avaliacao);
+                                        }
+                                    });
 
                                 }
 
