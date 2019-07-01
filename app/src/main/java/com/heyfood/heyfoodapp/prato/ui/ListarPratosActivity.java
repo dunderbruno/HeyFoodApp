@@ -72,10 +72,14 @@ public class ListarPratosActivity extends AppCompatActivity {
 
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(ListarPratosActivity.this);
 
+                                LinearLayout linearLayout = new LinearLayout(contexto);
+                                linearLayout.setOrientation(LinearLayout.VERTICAL);
+
                                 //Configura titulo e mensagem
                                 dialog.setTitle(prato.getNome());
                                 dialog.setMessage(mensagem.toString());
                                 dialog.setCancelable(true);
+                                dialog.setView(linearLayout);
 
                                 //Configura acoes para o botao
                                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -91,7 +95,8 @@ public class ListarPratosActivity extends AppCompatActivity {
                                     ratingBar.setNumStars(5);
                                     LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT );
                                     ratingBar.setLayoutParams(lp);
-                                    dialog.setView(ratingBar);
+                                    linearLayout.addView(ratingBar);
+
 
                                     dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
