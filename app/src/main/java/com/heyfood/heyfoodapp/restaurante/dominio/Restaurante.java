@@ -8,7 +8,7 @@ import com.heyfood.heyfoodapp.proprietario.dominio.Proprietario;
 public class Restaurante{
     private long id;
     private String nome;
-    private float notaMedia;
+    private Double notaMedia;
     private String cnpj;
     private Endereco endereco;
     private Contato contato;
@@ -40,7 +40,7 @@ public class Restaurante{
         return nome;
     }
 
-    public float getNotaMedia() {
+    public Double getNotaMedia() {
         return notaMedia;
     }
 
@@ -68,7 +68,7 @@ public class Restaurante{
         this.nome = nome;
     }
 
-    public void setNotaMedia(float notaMedia) {
+    public void setNotaMedia(Double notaMedia) {
         this.notaMedia = notaMedia;
     }
 
