@@ -159,12 +159,21 @@ public class ListarRestaurantes extends AppCompatActivity {
                                     dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
-                                            AvaliacaoRestaurante avaliacao = new AvaliacaoRestaurante();
-                                            avaliacao.setRestaurante(restaurante);
-                                            avaliacao.setCliente(Sessao.instance.getCliente());
-                                            avaliacao.setNota(ratingBar.getRating());
-                                            AvaliacaoRestauranteDAO avaliacaoRestauranteDAO = new AvaliacaoRestauranteDAO(contexto);
-                                            avaliacaoRestauranteDAO.cadastrar(avaliacao);
+                                            if (avaliacaoRestauranteDAO.getAvaliacao(Sessao.instance.getCliente().getId()) == null) {
+                                                AvaliacaoRestaurante avaliacao = new AvaliacaoRestaurante();
+                                                avaliacao.setRestaurante(restaurante);
+                                                avaliacao.setCliente(Sessao.instance.getCliente());
+                                                avaliacao.setNota(ratingBar.getRating());
+                                                AvaliacaoRestauranteDAO avaliacaoRestauranteDAO = new AvaliacaoRestauranteDAO(contexto);
+                                                avaliacaoRestauranteDAO.cadastrar(avaliacao);
+                                            }
+                                            else {
+                                                AvaliacaoRestaurante avaliacao = new AvaliacaoRestaurante();
+                                                avaliacao = avaliacaoRestauranteDAO.getAvaliacao(Sessao.instance.getCliente().getId());
+                                                avaliacao.setNota(ratingBar.getRating());
+                                                AvaliacaoRestauranteDAO avaliacaoRestauranteDAO = new AvaliacaoRestauranteDAO(contexto);
+                                                avaliacaoRestauranteDAO.updateNota(avaliacao);
+                                            }
                                         }
                                     });
                                 }

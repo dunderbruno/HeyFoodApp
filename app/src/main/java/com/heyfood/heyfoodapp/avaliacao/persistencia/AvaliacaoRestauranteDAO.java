@@ -61,6 +61,15 @@ public class AvaliacaoRestauranteDAO extends AbstractDAO {
         return result;
     }
 
+    public void updateNota(AvaliacaoRestaurante avaliacao) {
+        db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.CAMPO_NOTA_RESTAURANTE, avaliacao.getNota());
+        String[] id = new String[]{Long.toString(avaliacao.getId())};
+        db.update(DBHelper.TABELA_AVALIACAO_RESTAURANTE, values, DBHelper.CAMPO_ID_AVALIACAO_RESTAURANTE+"=?", id);
+        super.close();
+    }
+
     private AvaliacaoRestaurante createAvaliacao(Cursor cursor){
         AvaliacaoRestaurante result = new AvaliacaoRestaurante();
         RestauranteDAO restauranteDAO = new RestauranteDAO(context);
