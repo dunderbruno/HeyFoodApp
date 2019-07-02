@@ -27,12 +27,14 @@ import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.restaurante.persistencia.RestauranteDAO;
 import com.heyfood.heyfoodapp.util.RecyclerItemClickListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class ListarRestaurantes extends AppCompatActivity {
     private RecyclerView recyclerRestaurante;
     private RestauranteDAO restauranteDAO;
+    private AvaliacaoRestauranteDAO avaliacaoRestauranteDAO;
     private Context contexto;
 
     @Override
@@ -72,6 +74,18 @@ public class ListarRestaurantes extends AppCompatActivity {
                             @Override
                             public void onItemClick(View view, int position) {
                                 final Restaurante restaurante = finalListaRestaurante.get(position);
+
+                                avaliacaoRestauranteDAO = new AvaliacaoRestauranteDAO(contexto);
+                                ArrayList<AvaliacaoRestaurante> avaliacoes;
+                                avaliacoes = avaliacaoRestauranteDAO.getAvaliacoes(restaurante.getId());
+
+                                Double soma = 0.0;
+
+                                for(AvaliacaoRestaurante avaliacao: avaliacoes){
+                                    soma = soma + avaliacao.getNota();
+                                }
+                                Double media = soma / avaliacoes.size();
+
                                 StringBuilder mensagem = new StringBuilder();
                                 mensagem.append("Endereço: \n");
                                 mensagem.append(restaurante.getEndereco().getRua() + ", " + restaurante.getEndereco().getNumero() + "\n");
@@ -79,6 +93,8 @@ public class ListarRestaurantes extends AppCompatActivity {
                                 mensagem.append(restaurante.getEndereco().getCidade() + "\n\n");
                                 mensagem.append("Fone: " + restaurante.getContato().getTelefone() + "\n");
                                 mensagem.append("Email: " + restaurante.getContato().getEmail() + "\n");
+                                mensagem.append("Média: " + media.toString() + "\n");
+
                                 mensagem.append(restaurante.getContato().getSite());
 
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(ListarRestaurantes.this);

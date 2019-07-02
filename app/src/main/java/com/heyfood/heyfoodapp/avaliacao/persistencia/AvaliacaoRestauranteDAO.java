@@ -11,6 +11,8 @@ import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 import com.heyfood.heyfoodapp.restaurante.persistencia.RestauranteDAO;
 
+import java.util.ArrayList;
+
 public class AvaliacaoRestauranteDAO extends AbstractDAO {
     private SQLiteDatabase db;
     private DBHelper helper;
@@ -44,6 +46,21 @@ public class AvaliacaoRestauranteDAO extends AbstractDAO {
         return id;
     }
 
+    public ArrayList<AvaliacaoRestaurante> getAvaliacoes(long id) {
+        ArrayList<AvaliacaoRestaurante> result = new ArrayList<>();
+        db = helper.getReadableDatabase();
+        String sql = "SELECT * FROM " + DBHelper.TABELA_AVALIACAO_RESTAURANTE + " WHERE " + DBHelper.CAMPO_FK_RESTAURANTE + " LIKE ?;";
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
+        if (cursor.moveToFirst()) {
+            result.add(createAvaliacao(cursor));
+            while(cursor.moveToNext()){
+                result.add(createAvaliacao(cursor));
+            }
+        }
+        super.close(cursor, db);
+        return result;
+    }
+
     private AvaliacaoRestaurante createAvaliacao(Cursor cursor){
         AvaliacaoRestaurante result = new AvaliacaoRestaurante();
         RestauranteDAO restauranteDAO = new RestauranteDAO(context);
@@ -55,7 +72,7 @@ public class AvaliacaoRestauranteDAO extends AbstractDAO {
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_CLIENTE_AVALIA_RESTAURANTE);
         result.setCliente(clienteDAO.getCliente(cursor.getInt(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_NOTA_RESTAURANTE);
-        result.setNota(Integer.parseInt(cursor.getString(columnIndex)));
+        result.setNota(Float.parseFloat(cursor.getString(columnIndex)));
         return result;
     }
 
