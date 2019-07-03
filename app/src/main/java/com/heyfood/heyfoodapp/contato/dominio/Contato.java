@@ -6,7 +6,6 @@ public class Contato {
     private String email;
     private String site;
 
-    //Get ID
     public long getId() {
         return id;
     }

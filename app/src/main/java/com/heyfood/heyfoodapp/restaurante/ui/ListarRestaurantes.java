@@ -3,7 +3,6 @@ package com.heyfood.heyfoodapp.restaurante.ui;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 
@@ -152,6 +150,9 @@ public class ListarRestaurantes extends AppCompatActivity {
                                     ratingBar.setMax(5);
                                     ratingBar.setRating(0.0f);
                                     ratingBar.setNumStars(5);
+                                    if (avaliacaoRestauranteDAO.getAvaliacao(Sessao.instance.getCliente().getId()) != null){
+                                        ratingBar.setRating(avaliacaoRestauranteDAO.getAvaliacao(Sessao.instance.getCliente().getId()).getNota());
+                                    }
                                     LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT );
                                     ratingBar.setLayoutParams(lp);
                                     linearLayout.addView(ratingBar);

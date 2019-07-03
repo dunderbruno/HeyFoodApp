@@ -59,7 +59,7 @@ public class PreferenciaDAO extends AbstractDAO {
     }
 
     private int booleanToInt(boolean valor){
-        if (valor == true){
+        if (valor){
             return 1;
         }else{
             return 0;
