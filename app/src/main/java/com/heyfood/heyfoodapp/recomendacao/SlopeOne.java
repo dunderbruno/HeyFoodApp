@@ -25,6 +25,7 @@ public class SlopeOne {
         buildDifferencesMatrix(inputData);
         //System.out.println("\nSlope One - With Predictions\n");
         predict(inputData);
+        
     }
 
     /**
