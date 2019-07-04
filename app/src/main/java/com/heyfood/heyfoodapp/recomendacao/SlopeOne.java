@@ -4,6 +4,7 @@ import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,16 +17,19 @@ public class SlopeOne {
     private static Map<Restaurante, Map<Restaurante, Integer>> freq = new HashMap<>();
     private static Map<Cliente, HashMap<Restaurante, Float>> inputData;
     private static Map<Cliente, HashMap<Restaurante, Float>> outputData = new HashMap<>();
+    private static List<Restaurante> listaRestaurantes;
     private static Recomendacao recomendacao;
 
-    public static void slopeOne(int numberOfUsers) {
+    public static Map<Cliente, HashMap<Restaurante, Float>> slopeOne(Map<Cliente, HashMap<Restaurante, Float>> matrizCliente, List<Restaurante> restaurantes) {
         //inputData = InputData.initializeData(numberOfUsers);
-        inputData = recomendacao.criaMatrizCliente();
+        //inputData = recomendacao.criaMatrizCliente();
+        inputData = matrizCliente;
+        listaRestaurantes = restaurantes;
         //System.out.println("Slope One - Before the Prediction\n");
         buildDifferencesMatrix(inputData);
         //System.out.println("\nSlope One - With Predictions\n");
         predict(inputData);
-        
+        return outputData;
     }
 
     /**
@@ -74,7 +78,7 @@ public class SlopeOne {
      * @param data
      *            existing user data and their items' ratings
      */
-    private static void predict(Map<Cliente, HashMap<Restaurante, Float>> data) {
+    private static Map<Cliente, HashMap<Restaurante, Float>> predict(Map<Cliente, HashMap<Restaurante, Float>> data) {
         HashMap<Restaurante, Float> uPred = new HashMap<Restaurante, Float>();
         HashMap<Restaurante, Integer> uFreq = new HashMap<Restaurante, Integer>();
         for (Restaurante j : diff.keySet()) {
@@ -99,17 +103,18 @@ public class SlopeOne {
                     clean.put(j, uPred.get(j).floatValue() / uFreq.get(j).intValue());
                 }
             }
-            for (Restaurante j : recomendacao.getListaRestaurantes()) {
+            for (Restaurante j : listaRestaurantes) {
                 if (e.getValue().containsKey(j)) {
                     clean.put(j, e.getValue().get(j));
                 }
 //                else {
-//                    clean.put(j, -1.0);
+//                    clean.put(j, -1.0f);
 //                }
             }
+
             outputData.put(e.getKey(), clean);
         }
-        //printData(outputData);
+        return outputData;
     }
 
 //    private static void printData(Map<Cliente, HashMap<Restaurante, Float>> data) {

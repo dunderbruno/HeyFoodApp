@@ -32,7 +32,6 @@ public class AdapterRestaurante extends RecyclerView.Adapter<AdapterRestaurante.
         holder.nomeRestaurante.setText(restaurante.getNome());
         holder.telefone.setText(restaurante.getContato().getTelefone());
         holder.bairro.setText(restaurante.getEndereco().getBairro());
-
     }
 
     @Override

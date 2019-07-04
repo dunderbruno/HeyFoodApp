@@ -60,7 +60,7 @@ public class AvaliacaoRestauranteDAO extends AbstractDAO {
             nota = result.getNota();
         }
         else{
-            nota = null;
+            nota = -11.0f;
         }
         super.close(cursor, db);
         return nota;

@@ -31,6 +31,7 @@ import com.heyfood.heyfoodapp.cliente.negocio.ClienteServices;
 import com.heyfood.heyfoodapp.infra.Sessao;
 import com.heyfood.heyfoodapp.prato.ui.CadastrarPratoActivity;
 import com.heyfood.heyfoodapp.prato.ui.ListarPratosActivity;
+import com.heyfood.heyfoodapp.recomendacao.Recomendacao;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.restaurante.ui.AdapterRestaurante;
 import com.heyfood.heyfoodapp.restaurante.ui.AtualizarRestauranteActivity;
@@ -50,6 +51,7 @@ public class HomeClienteActivity extends AppCompatActivity
     Cliente cliente;
     RecyclerView recyclerView;
     private AvaliacaoRestauranteDAO avaliacaoRestauranteDAO;
+    private Recomendacao recomendacao;
     public static Context contexto;
 
     @Override
@@ -57,6 +59,7 @@ public class HomeClienteActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_cliente);
         contexto = this;
+        recomendacao = new Recomendacao();
 
         cliente = Sessao.instance.getCliente();
 
@@ -82,9 +85,9 @@ public class HomeClienteActivity extends AppCompatActivity
         nomeMenu.setText(cliente.getUsuario().getPessoa().getNome());
         emailMenu = headerView.findViewById(R.id.emailMenuId);
         emailMenu.setText(cliente.getUsuario().getPessoa().getContato().getEmail());
-/*
-        AdapterRestaurante adapter = new AdapterRestaurante(listaRestaurante);
-        final List<Restaurante> finalListaRestaurante = listaRestaurante;
+
+        AdapterRestaurante adapter = new AdapterRestaurante(recomendacao.getListaRestaurantesRecomendados());
+        final List<Restaurante> finalListaRestaurante = recomendacao.getListaRestaurantesRecomendados();
 
         //Configurar Recyclerview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -124,7 +127,7 @@ public class HomeClienteActivity extends AppCompatActivity
 
                                 mensagem.append(restaurante.getContato().getSite());
 
-                                AlertDialog.Builder dialog = new AlertDialog.Builder(ListarRestaurantes.this);
+                                AlertDialog.Builder dialog = new AlertDialog.Builder(HomeClienteActivity.this);
 
                                 //Configura botão
                                 LinearLayout linearLayout = new LinearLayout(contexto);
@@ -226,7 +229,7 @@ public class HomeClienteActivity extends AppCompatActivity
                         }
                 )
         );
-        */
+
 
     }
 
