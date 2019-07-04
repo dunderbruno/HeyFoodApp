@@ -14,6 +14,7 @@ import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class RestauranteDAO extends AbstractDAO{
     private SQLiteDatabase db;
@@ -125,4 +126,5 @@ public class RestauranteDAO extends AbstractDAO{
         result.setEspecialidades(especialidadesDAO.getEspecialidade(cursor.getInt(columnIndex)));
         return result;
     }
+
 }

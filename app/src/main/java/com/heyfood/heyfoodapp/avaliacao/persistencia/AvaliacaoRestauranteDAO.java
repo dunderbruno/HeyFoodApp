@@ -46,6 +46,26 @@ public class AvaliacaoRestauranteDAO extends AbstractDAO {
         return id;
     }
 
+    public float getAvaliacao(long idCliente, long idRestaurante){
+        Float nota;
+        AvaliacaoRestaurante result = null;
+        db = helper.getReadableDatabase();
+        String sql = "SELECT * FROM " + DBHelper.TABELA_AVALIACAO_RESTAURANTE + " WHERE " + DBHelper.CAMPO_FK_RESTAURANTE + " LIKE ? AND "
+                + DBHelper.CAMPO_FK_CLIENTE_AVALIA_RESTAURANTE + " LIKE ?;";
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(idCliente), Long.toString(idRestaurante)});
+        if (cursor.moveToFirst()) {
+            result = createAvaliacao(cursor);
+        }
+        if(result != null){
+            nota = result.getNota();
+        }
+        else{
+            nota = null;
+        }
+        super.close(cursor, db);
+        return nota;
+    }
+
     public ArrayList<AvaliacaoRestaurante> getAvaliacoes(long id) {
         ArrayList<AvaliacaoRestaurante> result = new ArrayList<>();
         db = helper.getReadableDatabase();

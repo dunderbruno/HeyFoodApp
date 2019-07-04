@@ -1,5 +1,6 @@
 package com.heyfood.heyfoodapp.cliente.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -27,11 +28,13 @@ public class HomeClienteActivity extends AppCompatActivity
     TextView nomeMenu;
     TextView emailMenu;
     Cliente cliente;
+    public static Context contexto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_cliente);
+        contexto = this;
 
         cliente = Sessao.instance.getCliente();
 

@@ -12,6 +12,9 @@ import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
 import com.heyfood.heyfoodapp.infra.persistencia.AbstractDAO;
 import com.heyfood.heyfoodapp.infra.persistencia.DBHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by GABRIEL.CABOCLO on 29/05/2019.
  */
@@ -33,6 +36,21 @@ public class ClienteDAO extends AbstractDAO {
         Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(fk_usuario)});
         if (cursor.moveToFirst()) {
             result = createCliente(cursor);
+        }
+        super.close(cursor, db);
+        return result;
+    }
+
+    public List<Cliente> getListaClientes() {
+        List<Cliente> result = new ArrayList<Cliente>();
+        db = helper.getReadableDatabase();
+        String sql = "SELECT * FROM " + DBHelper.TABELA_CLIENTE;
+        Cursor cursor = db.rawQuery(sql, new String[]{});
+        if (cursor.moveToFirst()) {
+            result.add(createCliente(cursor));
+            while(cursor.moveToNext()){
+                result.add(createCliente(cursor));
+            }
         }
         super.close(cursor, db);
         return result;

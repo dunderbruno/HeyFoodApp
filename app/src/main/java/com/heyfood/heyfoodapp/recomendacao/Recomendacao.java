@@ -1,84 +1,66 @@
 package com.heyfood.heyfoodapp.recomendacao;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
+import com.heyfood.heyfoodapp.avaliacao.dominio.AvaliacaoRestaurante;
+import com.heyfood.heyfoodapp.avaliacao.persistencia.AvaliacaoRestauranteDAO;
 import com.heyfood.heyfoodapp.categoria.dominio.Categoria;
 import com.heyfood.heyfoodapp.cliente.dominio.Cliente;
+import com.heyfood.heyfoodapp.cliente.persistencia.ClienteDAO;
+import com.heyfood.heyfoodapp.cliente.ui.HomeClienteActivity;
+import com.heyfood.heyfoodapp.prato.ui.ListarPratosActivity;
 import com.heyfood.heyfoodapp.restaurante.dominio.Restaurante;
 import com.heyfood.heyfoodapp.restaurante.persistencia.RestauranteDAO;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Recomendacao {
-    private Cliente cliente;
-    private int pesoCategoria = 0;
-    private List<Restaurante> listaRestaurante;
+    private ClienteDAO clienteDAO = new ClienteDAO(HomeClienteActivity.contexto);
+    private RestauranteDAO restauranteDAO = new RestauranteDAO(HomeClienteActivity.contexto);
+    private AvaliacaoRestauranteDAO avaliacaoRestauranteDAO = new AvaliacaoRestauranteDAO(HomeClienteActivity.contexto);
+    private Map<Cliente,HashMap<Restaurante,Float>> usersMatrix;
+    private  List<Restaurante> listaRestaurantes;
 
-    public Recomendacao(Cliente cliente) {
-        this.cliente = cliente;
+    int maxItemsId = 0;
+    float mRatings[][];
+    int mFreq[][];
+
+    public Recomendacao(){
+        usersMatrix = criaMatrizCliente();
+        listaRestaurantes = restauranteDAO.getListaRestaurantes();
+//        predict();
     }
 
-    public List<Restaurante> getRestaurantes(Context context){
-        String cidade = cliente.getUsuario().getPessoa().getEndereco().getCidade();
-        RestauranteDAO restauranteDAO = new RestauranteDAO(context);
-        listaRestaurante = restauranteDAO.getRestaurantesByCidade(cidade);
-        return listaRestaurante;
-    }
-
-    public void setRank(){
-        for(Restaurante restaurante: listaRestaurante){
-            if(restaurante.getEspecialidades().getAcai() && cliente.getPreferencias().getAcai()){
-                pesoCategoria += 1;
-            }
-            if(restaurante.getEspecialidades().getBrasileira() && cliente.getPreferencias().getBrasileira()){
-                pesoCategoria += 1;
-            }
-            if(restaurante.getEspecialidades().getCarnes() && cliente.getPreferencias().getCarnes()){
-                pesoCategoria += 1;
-            }
-            if(restaurante.getEspecialidades().getChinesa() && cliente.getPreferencias().getChinesa()){
-                pesoCategoria += 1;
-            }
-            if(restaurante.getEspecialidades().getContemporanea() && cliente.getPreferencias().getContemporanea()){
-                pesoCategoria += 1;
-            }
-            if(restaurante.getEspecialidades().getItaliana() && cliente.getPreferencias().getItaliana()){
-                pesoCategoria += 1;
-            }
-            if(restaurante.getEspecialidades().getJaponesa() && cliente.getPreferencias().getJaponesa()){
-                pesoCategoria += 1;
-            }
-            if(restaurante.getEspecialidades().getLanches() && cliente.getPreferencias().getLanches()){
-                pesoCategoria += 1;
-            }
-            if(restaurante.getEspecialidades().getMarmita() && cliente.getPreferencias().getMarmita()){
-                pesoCategoria += 1;
-            }
-            if(restaurante.getEspecialidades().getPizza() && cliente.getPreferencias().getPizza()){
-                pesoCategoria += 1;
-            }
-            if(restaurante.getEspecialidades().getSaudavel() && cliente.getPreferencias().getSaudavel()){
-                pesoCategoria += 1;
-            }
-            restaurante.setPeso(pesoCategoria);
-            pesoCategoria = 0;
+    public Map<Cliente,HashMap<Restaurante,Float>> criaMatrizCliente(){
+        Map<Cliente,HashMap<Restaurante,Float>> matrizClientes = new HashMap<>();
+        List<Cliente> listaClientes = clienteDAO.getListaClientes();
+        for(Cliente cliente: listaClientes){
+            matrizClientes.put(cliente, criaMatrizRestaurante(cliente.getId()));
         }
-        ordenaLista();
-
+        return matrizClientes;
     }
 
-    public void ordenaLista(){
-        Collections.sort(listaRestaurante, new Comparator<Restaurante>() {
-            @Override
-            public int compare(Restaurante r1, Restaurante r2) {
-                int peso1 = r1.getPeso();
-                int peso2 = r2.getPeso();
-                return peso1 < peso2 ? -1 : (peso1 > peso2 ? +1 : 0);
+
+    private HashMap<Restaurante,Float> criaMatrizRestaurante(long idCliente){
+        HashMap<Restaurante,Float> matrizRestaurante = new HashMap<>();
+        for(Restaurante restaurante: listaRestaurantes){
+            Float avaliacaoRestaurante = avaliacaoRestauranteDAO.getAvaliacao(idCliente, restaurante.getId());
+            if(avaliacaoRestaurante != null){
+                matrizRestaurante.put(restaurante, avaliacaoRestauranteDAO.getAvaliacao(idCliente, restaurante.getId()));
             }
-        });
+        }
+        return matrizRestaurante;
     }
 
+    public List<Restaurante> getListaRestaurantes() {
+        return listaRestaurantes;
+    }
 }
