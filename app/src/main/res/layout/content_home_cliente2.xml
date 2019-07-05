@@ -12,9 +12,9 @@
         android:id="@+id/textBoasVindasClienteId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="Bem-vindo!"
         android:textColor="@android:color/background_dark"
@@ -25,11 +25,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
+        android:id="@+id/textRecomendacoes"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
         android:text=" Home Cliente "
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,6 +44,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/textRecomendacoes" />
 
 </android.support.constraint.ConstraintLayout>

@@ -46,12 +46,14 @@ public class HomeClienteActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView nome;
+    TextView mensagem;
     TextView nomeMenu;
     TextView emailMenu;
     Cliente cliente;
     RecyclerView recyclerView;
     private AvaliacaoRestauranteDAO avaliacaoRestauranteDAO;
     private Recomendacao recomendacao;
+    private List<Restaurante> restaurantesRecomendados;
     public static Context contexto;
 
     @Override
@@ -60,17 +62,25 @@ public class HomeClienteActivity extends AppCompatActivity
         setContentView(R.layout.activity_home_cliente);
         contexto = this;
         recomendacao = new Recomendacao();
+        restaurantesRecomendados = recomendacao.getListaRestaurantesRecomendados();
 
         cliente = Sessao.instance.getCliente();
 
         //Bem vindo 'nome do usuario'
         nome = findViewById(R.id.textBoasVindasClienteId);
         nome.setText(String.format("Bem vindo, %s!", cliente.getUsuario().getPessoa().getNome()));
+        mensagem = findViewById(R.id.textRecomendacoes);
         recyclerView = findViewById(R.id.recyclerViewHome);
+
+        if(restaurantesRecomendados.size()==0){
+            mensagem.setText("Infelizmente ainda não temos sugestões para você, tente avaliar mais restaurantes.");
+        }
+        else{
+            mensagem.setText("Essas são nossas sugestões para você:");
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

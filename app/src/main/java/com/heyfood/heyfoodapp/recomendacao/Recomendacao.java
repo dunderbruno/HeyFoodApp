@@ -31,14 +31,12 @@ public class Recomendacao {
     private List<Restaurante> listaRestaurantes;
     private List<Restaurante> listaRestaurantesRecomendados;
     private Map<Cliente, HashMap<Restaurante, Float>> predicao;
-    private int flag;
 
     public Recomendacao(){
         listaRestaurantes = restauranteDAO.getListaRestaurantes();
         usersMatrix = criaMatrizCliente();
         predicao = SlopeOne.slopeOne(usersMatrix, listaRestaurantes);
         listaRestaurantesRecomendados = getOrderList(getRecomendacao());
-        flag = 5;
     }
 
     public Map<Cliente,HashMap<Restaurante,Float>> criaMatrizCliente(){
@@ -100,10 +98,6 @@ public class Recomendacao {
         return restaurantes;
     }
 
-    public List<Restaurante> getListaRestaurantes() {
-        return listaRestaurantes;
-    }
-
     public List<Restaurante> getListaRestaurantesRecomendados() {
         return listaRestaurantesRecomendados;
     }
@@ -129,8 +123,5 @@ public class Recomendacao {
             return nota;
         }
 
-        public void setNota(Float nota) {
-            this.nota = nota;
-        }
     }
 }
