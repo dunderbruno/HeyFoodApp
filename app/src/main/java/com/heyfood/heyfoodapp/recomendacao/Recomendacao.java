@@ -85,12 +85,7 @@ public class Recomendacao {
     }
 
     private List<Restaurante> getOrderList(List<Avaliacao> avaliacao){
-        Collections.sort(avaliacao, new Comparator<Avaliacao>() {
-            @Override
-            public int compare(Avaliacao a1, Avaliacao a2) {
-                return a1.getNota() < a2.getNota() ? -1 : (a1.getNota() > a2.getNota() ? +1 : 0);
-            }
-        });
+        Collections.sort(avaliacao);
         List<Restaurante> restaurantes = new ArrayList<>();
         for(Avaliacao a: avaliacao){
             restaurantes.add(a.getRestaurante());
@@ -102,7 +97,7 @@ public class Recomendacao {
         return listaRestaurantesRecomendados;
     }
 
-    private class Avaliacao{
+    private class Avaliacao implements Comparable<Avaliacao>{
         private Restaurante restaurante;
         private Float nota;
 
@@ -119,9 +114,14 @@ public class Recomendacao {
             this.restaurante = restaurante;
         }
 
-        public Float getNota() {
-            return nota;
+        public int compareTo(Avaliacao outra) {
+            if(this.nota < outra.nota){
+                return 1;
+            }
+            if(this.nota > outra.nota){
+                return -1;
+            }
+            return 0;
         }
-
     }
 }
