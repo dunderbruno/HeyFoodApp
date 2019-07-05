@@ -91,7 +91,7 @@ public class ListarRestaurantes extends AppCompatActivity {
                                 mensagem.append(restaurante.getEndereco().getCidade() + "\n\n");
                                 mensagem.append("Fone: " + restaurante.getContato().getTelefone() + "\n");
                                 mensagem.append("Email: " + restaurante.getContato().getEmail() + "\n");
-                                mensagem.append("Média: " + media.toString() + "\n");
+                                mensagem.append("Média: " + media.toString().replace(".",",") + "\n");
 
                                 mensagem.append(restaurante.getContato().getSite());
 
