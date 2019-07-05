@@ -23,11 +23,12 @@ public class AvaliacaoRestauranteDAO extends AbstractDAO {
         helper = new DBHelper(context);
     }
 
-    public AvaliacaoRestaurante getAvaliacao(long id) {
+    public AvaliacaoRestaurante getAvaliacao(long idCliente, long idRestaurante) {
         AvaliacaoRestaurante result = null;
         db = helper.getReadableDatabase();
-        String sql = "SELECT * FROM " + DBHelper.TABELA_AVALIACAO_RESTAURANTE + " WHERE " + DBHelper.CAMPO_ID_AVALIACAO_RESTAURANTE + " LIKE ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
+        String sql = "SELECT * FROM " + DBHelper.TABELA_AVALIACAO_RESTAURANTE + " WHERE " + DBHelper.CAMPO_FK_RESTAURANTE + " LIKE ? AND "
+                + DBHelper.CAMPO_FK_CLIENTE_AVALIA_RESTAURANTE + " LIKE ?;";
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(idRestaurante), Long.toString(idCliente)});
         if (cursor.moveToFirst()) {
             result = createAvaliacao(cursor);
         }
@@ -86,7 +87,7 @@ public class AvaliacaoRestauranteDAO extends AbstractDAO {
         ContentValues values = new ContentValues();
         values.put(DBHelper.CAMPO_NOTA_RESTAURANTE, avaliacao.getNota());
         String[] id = new String[]{Long.toString(avaliacao.getId())};
-        db.update(DBHelper.TABELA_AVALIACAO_RESTAURANTE, values, DBHelper.CAMPO_ID_AVALIACAO_RESTAURANTE+"=?", id);
+        db.update(DBHelper.TABELA_AVALIACAO_RESTAURANTE, values, DBHelper.CAMPO_ID_AVALIACAO_RESTAURANTE+" = ?;", id);
         super.close();
     }
 

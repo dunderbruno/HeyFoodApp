@@ -21,13 +21,9 @@ public class SlopeOne {
     private static Recomendacao recomendacao;
 
     public static Map<Cliente, HashMap<Restaurante, Float>> slopeOne(Map<Cliente, HashMap<Restaurante, Float>> matrizCliente, List<Restaurante> restaurantes) {
-        //inputData = InputData.initializeData(numberOfUsers);
-        //inputData = recomendacao.criaMatrizCliente();
         inputData = matrizCliente;
         listaRestaurantes = restaurantes;
-        //System.out.println("Slope One - Before the Prediction\n");
         buildDifferencesMatrix(inputData);
-        //System.out.println("\nSlope One - With Predictions\n");
         predict(inputData);
         return outputData;
     }
@@ -68,7 +64,6 @@ public class SlopeOne {
                 diff.get(j).put(i, oldValue / count);
             }
         }
-        //printData(data);
     }
 
     /**
@@ -107,28 +102,11 @@ public class SlopeOne {
                 if (e.getValue().containsKey(j)) {
                     clean.put(j, e.getValue().get(j));
                 }
-//                else {
-//                    clean.put(j, -1.0f);
-//                }
             }
 
             outputData.put(e.getKey(), clean);
         }
         return outputData;
     }
-
-//    private static void printData(Map<Cliente, HashMap<Restaurante, Float>> data) {
-//        for (Cliente user : data.keySet()) {
-//            //System.out.println(user.getUserName() + ":");
-//           // print(data.get(user));
-//        }
-//    }
-//
-//    private static void print(HashMap<Item, Double> hashMap) {
-//        NumberFormat formatter = new DecimalFormat("#0.000");
-//        for (Item j : hashMap.keySet()) {
-//            System.out.println(" " + j.getItemName() + " --> " + formatter.format(hashMap.get(j).doubleValue()));
-//        }
-//    }
 
 }

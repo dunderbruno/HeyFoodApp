@@ -66,8 +66,9 @@ public class Recomendacao {
         for(Map.Entry r: avaliacoes.entrySet()){
             Restaurante restaurante = (Restaurante) r.getKey();
             Float avaliacao = avaliacaoRestauranteDAO.getValorAvaliacao(cliente.getId(), restaurante.getId());
+            Float nota = (Float)r.getValue();
             if (avaliacao == -1.0f){
-                notasCliente.add(new Avaliacao(restaurante,(Float) r.getValue()));
+                notasCliente.add(new Avaliacao(restaurante, nota));
             }
         }
         return notasCliente;
@@ -88,13 +89,15 @@ public class Recomendacao {
         Collections.sort(avaliacao);
         List<Restaurante> restaurantes = new ArrayList<>();
         for(Avaliacao a: avaliacao){
-            restaurantes.add(a.getRestaurante());
+            if(a.nota >= 2.0f){
+                restaurantes.add(a.getRestaurante());
+            }
         }
         return restaurantes;
     }
 
     public List<Restaurante> getListaRestaurantesRecomendados() {
-        return listaRestaurantesRecomendados;
+        return this.listaRestaurantesRecomendados;
     }
 
     private class Avaliacao implements Comparable<Avaliacao>{

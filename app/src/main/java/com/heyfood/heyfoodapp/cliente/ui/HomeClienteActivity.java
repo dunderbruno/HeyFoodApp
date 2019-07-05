@@ -192,8 +192,8 @@ public class HomeClienteActivity extends AppCompatActivity
                                     ratingBar.setMax(5);
                                     ratingBar.setRating(0.0f);
                                     ratingBar.setNumStars(5);
-                                    if (avaliacaoRestauranteDAO.getAvaliacao(Sessao.instance.getCliente().getId()) != null){
-                                        ratingBar.setRating(avaliacaoRestauranteDAO.getAvaliacao(Sessao.instance.getCliente().getId()).getNota());
+                                    if (avaliacaoRestauranteDAO.getAvaliacao(Sessao.instance.getCliente().getId(), restaurante.getId()) != null){
+                                        ratingBar.setRating(avaliacaoRestauranteDAO.getAvaliacao(Sessao.instance.getCliente().getId(), restaurante.getId()).getNota());
                                     }
                                     LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT );
                                     ratingBar.setLayoutParams(lp);
@@ -202,7 +202,7 @@ public class HomeClienteActivity extends AppCompatActivity
                                     dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
-                                            if (avaliacaoRestauranteDAO.getAvaliacao(Sessao.instance.getCliente().getId()) == null) {
+                                            if (avaliacaoRestauranteDAO.getAvaliacao(Sessao.instance.getCliente().getId(), restaurante.getId()) == null) {
                                                 AvaliacaoRestaurante avaliacao = new AvaliacaoRestaurante();
                                                 avaliacao.setRestaurante(restaurante);
                                                 avaliacao.setCliente(Sessao.instance.getCliente());
@@ -212,7 +212,7 @@ public class HomeClienteActivity extends AppCompatActivity
                                             }
                                             else {
                                                 AvaliacaoRestaurante avaliacao = new AvaliacaoRestaurante();
-                                                avaliacao = avaliacaoRestauranteDAO.getAvaliacao(Sessao.instance.getCliente().getId());
+                                                avaliacao = avaliacaoRestauranteDAO.getAvaliacao(Sessao.instance.getCliente().getId(), restaurante.getId());
                                                 avaliacao.setNota(ratingBar.getRating());
                                                 AvaliacaoRestauranteDAO avaliacaoRestauranteDAO = new AvaliacaoRestauranteDAO(contexto);
                                                 avaliacaoRestauranteDAO.updateNota(avaliacao);
