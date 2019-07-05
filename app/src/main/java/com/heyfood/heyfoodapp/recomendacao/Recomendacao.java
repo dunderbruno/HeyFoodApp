@@ -30,7 +30,7 @@ public class Recomendacao {
     private Map<Cliente,HashMap<Restaurante,Float>> usersMatrix;
     private List<Restaurante> listaRestaurantes;
     private List<Restaurante> listaRestaurantesRecomendados;
-    Map<Cliente, HashMap<Restaurante, Float>> predicao;
+    private Map<Cliente, HashMap<Restaurante, Float>> predicao;
 
     public Recomendacao(){
         listaRestaurantes = restauranteDAO.getListaRestaurantes();
@@ -51,36 +51,37 @@ public class Recomendacao {
     private HashMap<Restaurante,Float> criaMatrizRestaurante(long idCliente){
         HashMap<Restaurante,Float> matrizRestaurante = new HashMap<>();
         for(Restaurante restaurante: listaRestaurantes){
-            Float avaliacaoRestaurante = avaliacaoRestauranteDAO.getAvaliacao(idCliente, restaurante.getId());
-            if(avaliacaoRestaurante != -11.0f){
-                matrizRestaurante.put(restaurante, avaliacaoRestauranteDAO.getAvaliacao(idCliente, restaurante.getId()));
+            Float avaliacaoRestaurante = avaliacaoRestauranteDAO.getValorAvaliacao(idCliente, restaurante.getId());
+            if(avaliacaoRestaurante != -1.0f){
+                matrizRestaurante.put(restaurante, avaliacaoRestaurante);
             }
         }
         return matrizRestaurante;
     }
 
     private List<Avaliacao> getRecomendacao(){
-        List<Avaliacao> predicoes = new ArrayList<>();
-        Cliente cliente = Sessao.instance.getCliente();
+        List<Avaliacao> notasCliente = new ArrayList<>();
+        Cliente cliente = findCliente();
         HashMap<Restaurante, Float> avaliacoes = predicao.get(cliente);
-        //HashMap<Restaurante, Float> predicoes = new HashMap<>();
-//        if(avaliacoes!=null){
-//            for(Map.Entry r: avaliacoes.entrySet()){
-//                Restaurante restaurante = (Restaurante) r.getKey();
-//                Float avaliacao = avaliacaoRestauranteDAO.getAvaliacao(cliente.getId(), restaurante.getId());
-//                if (avaliacao==null){
-//                    predicoes.add(new Avaliacao(restaurante,(Float) r.getValue()));
-//                }
-//            }
-//        }
         for(Map.Entry r: avaliacoes.entrySet()){
             Restaurante restaurante = (Restaurante) r.getKey();
-            Float avaliacao = avaliacaoRestauranteDAO.getAvaliacao(cliente.getId(), restaurante.getId());
+            Float avaliacao = avaliacaoRestauranteDAO.getValorAvaliacao(cliente.getId(), restaurante.getId());
             if (avaliacao==null){
-                predicoes.add(new Avaliacao(restaurante,(Float) r.getValue()));
+                notasCliente.add(new Avaliacao(restaurante,(Float) r.getValue()));
             }
         }
-        return predicoes;
+        return notasCliente;
+    }
+
+    private Cliente findCliente(){
+        Cliente clienteLogado = Sessao.instance.getCliente();
+        for(Map.Entry e: predicao.entrySet()){
+            Cliente cliente = (Cliente) e.getKey();
+            if(clienteLogado.getId() == cliente.getId()){
+                return (Cliente) e.getKey();
+            }
+        }
+        return null;
     }
 
     private List<Restaurante> getOrderList(List<Avaliacao> avaliacao){

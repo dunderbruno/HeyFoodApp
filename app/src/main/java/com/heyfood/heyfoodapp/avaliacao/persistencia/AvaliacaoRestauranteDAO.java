@@ -46,13 +46,13 @@ public class AvaliacaoRestauranteDAO extends AbstractDAO {
         return id;
     }
 
-    public float getAvaliacao(long idCliente, long idRestaurante){
+    public float getValorAvaliacao(long idCliente, long idRestaurante){
         Float nota;
         AvaliacaoRestaurante result = null;
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + DBHelper.TABELA_AVALIACAO_RESTAURANTE + " WHERE " + DBHelper.CAMPO_FK_RESTAURANTE + " LIKE ? AND "
                 + DBHelper.CAMPO_FK_CLIENTE_AVALIA_RESTAURANTE + " LIKE ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(idCliente), Long.toString(idRestaurante)});
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(idRestaurante), Long.toString(idCliente)});
         if (cursor.moveToFirst()) {
             result = createAvaliacao(cursor);
         }
@@ -60,7 +60,7 @@ public class AvaliacaoRestauranteDAO extends AbstractDAO {
             nota = result.getNota();
         }
         else{
-            nota = -11.0f;
+            nota = -1.0f;
         }
         super.close(cursor, db);
         return nota;
@@ -99,7 +99,7 @@ public class AvaliacaoRestauranteDAO extends AbstractDAO {
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_RESTAURANTE);
         result.setRestaurante(restauranteDAO.getRestaurante(cursor.getInt(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_FK_CLIENTE_AVALIA_RESTAURANTE);
-        result.setCliente(clienteDAO.getCliente(cursor.getInt(columnIndex)));
+        result.setCliente(clienteDAO.getClienteById(cursor.getInt(columnIndex)));
         columnIndex = cursor.getColumnIndex(DBHelper.CAMPO_NOTA_RESTAURANTE);
         result.setNota(Float.parseFloat(cursor.getString(columnIndex)));
         return result;

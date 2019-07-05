@@ -41,6 +41,19 @@ public class ClienteDAO extends AbstractDAO {
         return result;
     }
 
+    public Cliente getClienteById(long id) {
+        Cliente result = null;
+        db = helper.getReadableDatabase();
+        String sql = "SELECT * FROM " + DBHelper.TABELA_CLIENTE+ " WHERE " + DBHelper.CAMPO_ID_CLIENTE + " LIKE ?;";
+        Cursor cursor = db.rawQuery(sql, new String[]{Long.toString(id)});
+        if (cursor.moveToFirst()) {
+            result = createCliente(cursor);
+        }
+        super.close(cursor, db);
+        return result;
+    }
+
+
     public List<Cliente> getListaClientes() {
         List<Cliente> result = new ArrayList<Cliente>();
         db = helper.getReadableDatabase();
