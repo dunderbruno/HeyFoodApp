@@ -18,12 +18,12 @@ jobs:
         #  command: sudo chmod +x ./gradlew androidDependencies
       - save_cache:
           paths:
-            - ~/.gradlew
+            - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Run Tests
           working_directory: ~/code/HeyFoodApp
-          command: sudo chmod +x ./gradle lint test
+          command: sudo chmod +x ./gradlew lint test
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: app/build/reports
           destination: reports
