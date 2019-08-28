@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/HeyFoodApp
+    #working_directory: ~/HeyFoodApp
     docker:
       - image: circleci/android:api-25-alpha
     environment:
@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+          key: jars-{{ checksum "HeyFoodApp/build.gradle" }}-{{ checksum  "HeyFoodApp/app/build.gradle" }}
       #      - run:
       #         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
       #         command: sudo chmod +x ./gradlew
@@ -19,11 +19,11 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+          key: jars-{{ checksum "HeyFoodApp/build.gradle" }}-{{ checksum  "HeyFoodApp/app/build.gradle" }}
       - run:
           name: Run Tests
           #working_directory: ~/HeyFoodApp
-          command: sudo chmod +x ./gradlew lint test
+          command: cd HeyFoodApp && sudo chmod +x ./gradlew lint test
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: app/build/reports
           destination: reports
