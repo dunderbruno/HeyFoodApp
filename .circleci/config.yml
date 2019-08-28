@@ -1,9 +1,9 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/app
+    working_directory: ~/HeyFoodApp
     docker:
-      - image: circleci/android:api-26-alpha
+      - image: circleci/android:api-25-alpha
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
@@ -22,7 +22,7 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Run Tests
-          #working_directory: ~/code/HeyFoodApp
+          working_directory: ~/HeyFoodApp
           command: sudo chmod +x ./gradlew lint test
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: app/build/reports
